@@ -51,3 +51,11 @@ async function loginUser(e){
 
     console.log(result);
 }
+
+
+/**
+ * function to diret user to Signup Page
+ */
+const redirectSignup = ()=>{
+    location.assign('/register');
+}

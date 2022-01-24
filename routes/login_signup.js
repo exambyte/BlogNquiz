@@ -29,4 +29,17 @@ router.get('/login',authcontrollers.login_get);
  */
 router.post('/login',authcontrollers.login_post);
 
+
+
+//......................Routes for Login.....................................
+
+/**
+ * Routing to logout
+ * @method {GET}
+ */
+router.get('/logout',authcontrollers.logout_get);
+
+/**
+ * @exporst express.Router()
+ */
 module.exports = router;

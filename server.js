@@ -39,12 +39,13 @@ const bodyParser = require('body-parser');
  * @require
  */
 const routes = require('./routes/home');
-
 /**
  * Acquiring route to login/signup
  * @require
  */
-const authRoute = require('./routes/login_signup')
+ const authRoute = require('./routes/login_signup')
+ const adminRoute = require('./routes/superAdmin')
+
 
 dotenv.config({path:'./config.env'});
 
@@ -72,11 +73,9 @@ app.set('views', path.join(__dirname, './templates/views'));
 /**
  * @routes
  */
-app.get('/',routes);    //Route to Home page
-app.get('/register',authRoute); //Route to Registration Page
-app.post('/register',authRoute);    //Route to POST Registration
-app.get('/login',authRoute);    //Route to login Page
-app.post('/login',authRoute);   //Route to POST login
+ app.use('', routes);
+ app.use('', authRoute);
+ app.use('', adminRoute);
 
 /**
  * @listen 
