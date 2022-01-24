@@ -14,6 +14,7 @@ router.get('/register', authcontrollers.register_get);
  * Routing to register
  * @method {POST}
  */
+
 router.post('/register', authcontrollers.register_post);
 
 //......................Routes for Login.....................................
@@ -22,11 +23,11 @@ router.post('/register', authcontrollers.register_post);
  * Routing to login.ejs
  * @method {GET}
  */
-router.get('/login',authcontrollers.login_get);
+router.get('/login', authcontrollers.login_get);
 /**
  * Routing to login
  * @method {POST}
  */
-router.post('/login',authcontrollers.login_post);
+router.post('/login', authcontrollers.login_post);
 
 module.exports = router;

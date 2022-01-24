@@ -28,7 +28,7 @@ async function loginUser(e) {
      * @headers {Object}
      * @body {string}
      */
-    const result = await fetch('/login', {
+    const result = await fetch('/loginSuperAdmin', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -42,7 +42,8 @@ async function loginUser(e) {
     /**
      * checking HTTP response from server
      */
-    if (data.status === 'ok') {
+
+    if (data.status === 'admin') {
         location.assign('/'); //Login successfull and directing to Home page
     } else {
         alert('Invalid Credentials!');

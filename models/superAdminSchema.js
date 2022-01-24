@@ -13,7 +13,7 @@ const jwt = require('jsonwebtoken');
 /**
  * Mongoose Schema for User
  */
-const userSchema = new mongoose.Schema({
+const SuperAdminSchema = new mongoose.Schema({
     name: {
         type: String,
         require: true
@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        default: 'user'
+        default: 'superAdmin'
     },
     tokens: [{
         token: {
@@ -42,7 +42,7 @@ const userSchema = new mongoose.Schema({
         }
     }]
 }, {
-    collection: 'userData'
+    collection: 'SUPERADMINDATA'
 });
 
 
@@ -52,7 +52,7 @@ const userSchema = new mongoose.Schema({
  * @params {method}
  * @async
  */
-userSchema.pre('save', async function(next) {
+SuperAdminSchema.pre('save', async function(next) {
     if (this.isModified('password')) {
         this.password = await bcrypt.hash(this.password, 12);
     }
@@ -62,7 +62,7 @@ userSchema.pre('save', async function(next) {
 
 //generating Token
 
-userSchema.methods.generateAuthToken = async function() {
+SuperAdminSchema.methods.generateAuthToken = async function() {
     try {
         let token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
         this.tokens = this.tokens.concat({ token: token });
@@ -74,7 +74,7 @@ userSchema.methods.generateAuthToken = async function() {
 }
 
 
-const user = mongoose.model('USERDATA', userSchema);
+const user = mongoose.model('SUPERADMINDATA', SuperAdminSchema);
 /**
  * @exports {mongoose.model}
  */
