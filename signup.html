@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+  <!-- Style Sheet -->
+  <link rel="stylesheet" href="signup.css">
+</head>
+
+<body>
+
+  <div class="container" id="container">
+
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <h1>Welcome Back!</h1>
+          <p>To keep connected with us please login with your personal info</p>
+          <!-- <button class="ghost" id="signIn"><a class="l" href="signin.html">Sign In</a></button> -->
+          <button class="ghost" id="signIn" type="submit" onclick="window.location.href='signin.html'">Sign In</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-container sign-in-container">
+      <form class="j" action="#">
+        <h1>Create Account</h1>
+        <div class="social-container">
+          <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <span>or use your email for registration</span>
+        <input class="form-name" type="text" placeholder="Name" />
+        <input class="form-email" type="email" placeholder="Email" />
+        <input class="form-phone" type="tel" placeholder="Phone No" />
+        <input class="form-password" type="password" placeholder="Password" />
+        <input class="form-cpassword" type="password" placeholder="Confirm Password" />
+        <button type="submit">Sign Up</button>
+        <a class="signUp-link" href="signin.html">SIGN IN</a>
+      </form>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
