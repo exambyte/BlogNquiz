@@ -136,3 +136,15 @@ exports.login_post = async(req, res) => {
         console.log(err);
     };
 }
+
+//.....................Implementing Logout Part...............................................
+
+/**
+ * GET request to logout the user
+ * @param {*} req 
+ * @param {Number} res 
+ */
+exports.logout_get=(req, res)=>{
+    res.clearCookie('jwtoken');
+    res.status(200).redirect('/login');
+}

@@ -3,7 +3,11 @@
  */
 const jwt = require('jsonwebtoken');
 
+<<<<<<< HEAD
 const Admin = require('../models/SuperAdminSchema');
+=======
+const Admin = require('../models/superAdminSchema');
+>>>>>>> 4688461b7323721fc028de688b3458f7996faaf7
 
 const Adminauthenticate = async(req, res, next) => {
     try {

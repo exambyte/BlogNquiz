@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 const Admin = require('../models/SuperAdminSchema'); //acquiring Schema for admin model
 const USer = require('../models/userSchema'); //acquiring Schema for admin model
 // const Admin = require('../models/SuperAdminSchema'); //acquiring Schema for admin model
+=======
+const Admin = require('../models/superAdminSchema'); //acquiring Schema for admin model
+const User = require('../models/userSchema'); //acquiring Schema for admin model
+>>>>>>> 4688461b7323721fc028de688b3458f7996faaf7
 const bcrypt = require('bcryptjs');
 
 //....................Implementing Signup Part..............................................

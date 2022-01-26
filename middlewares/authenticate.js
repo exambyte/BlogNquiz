@@ -23,7 +23,13 @@ const authenticate = async(req, res, next) => {
 
         const verifiedUser = await User.findOne({ _id: verifyToken._id, 'tokens?.token': token });
 
+<<<<<<< HEAD
         if (!verifiedUser) { throw new Error(`Could not find user`) }
+=======
+        if(!verifiedUser){
+            throw new Error(`Could not find user`);
+        }
+>>>>>>> 4688461b7323721fc028de688b3458f7996faaf7
 
         req.token = token;
         req.verifiedUser = verifiedUser;

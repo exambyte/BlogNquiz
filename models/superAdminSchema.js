@@ -74,8 +74,16 @@ SuperAdminSchema.methods.generateAuthToken = async function() {
 }
 
 
+<<<<<<< HEAD
 const user = mongoose.model('SUPERADMINDATA', SuperAdminSchema);
 /**
  * @exports {mongoose.model}
  */
 module.exports = user;
+=======
+const userAdmin = mongoose.model('SUPERADMINDATA', SuperAdminSchema);
+/**
+ * @exports {mongoose.model}
+ */
+module.exports = userAdmin;
+>>>>>>> 4688461b7323721fc028de688b3458f7996faaf7

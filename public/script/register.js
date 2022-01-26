@@ -13,11 +13,11 @@ formFields.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     // getting values of Form input fields
-    const name = formFields.name.value;
-    const email = formFields.email.value;
-    const contactNo = formFields.contactNo.value;
-    const password = formFields.password.value;
-    const confirm_password = formFields.confirm_password.value;
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const contactNo = document.getElementById('contactNo').value;
+    const password = document.getElementById('password').value;
+    const confirm_password = document.getElementById('confirm_password').value;
     console.log(name, email)//Testing Purpose
     try {
         /**
