@@ -5,7 +5,7 @@ form.addEventListener('submit', loginUser); //Adding Event listner to make Reque
 
 /**
  * Fuction to send request to server for POST login and receiving Response
- * @param {event} e 
+ * @param {event} 
  * @async function
  */
 async function loginUser(e) {
@@ -28,7 +28,7 @@ async function loginUser(e) {
      * @headers {Object}
      * @body {string}
      */
-    const result = await fetch('/loginSuperAdmin', {
+    const result = await fetch('/loginNormalAdmin', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -43,8 +43,8 @@ async function loginUser(e) {
      * checking HTTP response from server
      */
 
-    if (data.status === 'admin') {
-        location.assign('/SuperAdminDashboard'); //Login successfull and directing to Home page
+    if (data.status === 'normalAdmin') {
+        location.assign('/NormalAdminDashboard'); //Login successfull and directing to Home page
     } else {
         alert('Invalid Credentials!');
     }

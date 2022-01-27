@@ -1,80 +1,54 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-
-<body>
-    <h1>Login</h1>
-    <form id="login-form">
-        <input type="email" autocomplete="off" id="email" placeholder="email">
-        <input type="password" autocomplete="off" id="password" placeholder="password">
-        <input type="submit" value="Submit" />
-    </form>
-    <!-- Script for Login -->
-    <!-- Search in public/script -->
-    <script src="script/login.js"></script>
-</body>
-
-</html>
-=======
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign IN</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign IN</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-  <!-- Style Sheet -->
-  <link rel="stylesheet" href="css/signin.css">
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="css/signin.css">
 </head>
 
 <body>
 
-  <div class="container" id="container">
+    <div class="container" id="container">
 
-    <div class="form-container sign-in-container">
-      <form class="k" id="login-form" action="#" method="post">
-        <h1>Sign in</h1>
-        <div class="social-container">
-          <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+        <div class="form-container sign-in-container">
+            <form class="k" id="login-form" action="#" method="post">
+                <h1>Sign in</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your account</span>
+                <input id="email" type="email" autocomplete="off" placeholder="Email" />
+                <input id="password" type="password" autocomplete="off" placeholder="Password" />
+                <a href="#">Forgot your password?</a>
+                <button>Sign In</button>
+                <!-- <p>or</p> -->
+                <a class="signUp-link" href="/">SIGN UP</a>
+            </form>
         </div>
-        <span>or use your account</span>
-        <input id="email" type="email" autocomplete="off" placeholder="Email" />
-        <input id="password" type="password" autocomplete="off" placeholder="Password" />
-        <a href="#">Forgot your password?</a>
-        <button>Sign In</button>
-        <!-- <p>or</p> -->
-        <a class="signUp-link" href="/">SIGN UP</a>
-      </form>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <!-- <button class="ghost" id="signUp"><a class="l" href="signup.html">Sign Up</a></button> -->
+                    <button class="ghost" id="signUp" type="submit" onclick="redirectSignup()">Sign Up</button>
+                    <!-- <button class="ghost" id="signUp"><a class="l" href="signup.html">Sign Up</a></button> -->
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="overlay-container">
-      <div class="overlay">
-        <div class="overlay-panel overlay-right">
-          <h1>Hello, Friend!</h1>
-          <p>Enter your personal details and start journey with us</p>
-          <!-- <button class="ghost" id="signUp"><a class="l" href="signup.html">Sign Up</a></button> -->
-          <button class="ghost" id="signUp" type="submit" onclick="redirectSignup()">Sign Up</button>
-          <!-- <button class="ghost" id="signUp"><a class="l" href="signup.html">Sign Up</a></button> -->
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <script src="script/login.js"></script>
+    <script src="script/login.js"></script>
 </body>
 
 </html>
->>>>>>> 4688461b7323721fc028de688b3458f7996faaf7

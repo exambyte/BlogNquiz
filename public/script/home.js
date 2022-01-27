@@ -1,10 +1,12 @@
-const getDisplayNone=()=>{
-    document.getElementById('logout').style.display="none";
+const getDisplayNone = () => {
+    document.getElementById('logout').style.display = "none";
 }
-const getDisplay=()=>{
-    document.getElementById('logout').style.display="inline";
+
+const getDisplay = () => {
+    document.getElementById('logout').style.display = "inline";
 }
-const userHome=async()=>{
+
+const userHome = async() => {
     try {
         const res = await fetch('/getData', {
             method: 'GET',
@@ -14,7 +16,7 @@ const userHome=async()=>{
         });
 
         const data = await res.json();
-        if(data) {
+        if (data) {
             console.log(data);
             getDisplay();
             document.getElementById('name').innerHTML = `HI ${data.name}`;

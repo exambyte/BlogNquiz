@@ -43,14 +43,11 @@ const routes = require('./routes/home');
  * Acquiring route to login/signup
  * @require
  */
-<<<<<<< HEAD
+
 const authRoute = require('./routes/login_signup')
 const adminRoute = require('./routes/superAdmin')
-=======
- const authRoute = require('./routes/login_signup')
- const adminRoute = require('./routes/superAdmin')
+const normalAdmin = require('./routes/normalAdmin')
 
->>>>>>> 4688461b7323721fc028de688b3458f7996faaf7
 
 dotenv.config({ path: './config.env' });
 
@@ -81,27 +78,17 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './templates/views'));
 
-<<<<<<< HEAD
 // /**
 //  * @routes
 //  */
-app.use('', routes);
-app.use('', authRoute)
-app.use('', adminRoute)
 
-// app.get('/', routes); //Route to Home page
-// app.get('/register', authRoute); //Route to Registration Page
-// app.post('/register', authRoute); //Route to POST Registration
-// app.get('/login', authRoute); //Route to login Page
-// app.post('/login', authRoute); //Route to POST login
-=======
 /**
  * @routes
  */
- app.use('', routes);
- app.use('', authRoute);
- app.use('', adminRoute);
->>>>>>> 4688461b7323721fc028de688b3458f7996faaf7
+app.use('', routes);
+app.use('', authRoute);
+app.use('', adminRoute);
+app.use('', normalAdmin)
 
 /**
  * @listen 

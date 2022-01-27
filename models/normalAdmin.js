@@ -13,7 +13,7 @@ const jwt = require('jsonwebtoken');
 /**
  * Mongoose Schema for User
  */
-const SuperAdminSchema = new mongoose.Schema({
+const normalAdminSchema = new mongoose.Schema({
     name: {
         type: String,
         require: true
@@ -27,13 +27,21 @@ const SuperAdminSchema = new mongoose.Schema({
         type: Number,
         require: true
     },
+    gender: {
+        type: String,
+        require: true
+    },
+    subject: {
+        type: String,
+        require: true
+    },
     password: {
         type: String,
         require: true
     },
     role: {
         type: String,
-        default: 'superAdmin'
+        default: 'admin'
     },
     tokens: [{
         token: {
@@ -42,7 +50,7 @@ const SuperAdminSchema = new mongoose.Schema({
         }
     }]
 }, {
-    collection: 'SUPERADMINDATA'
+    collection: 'NORMALADMINDATA'
 });
 
 
@@ -52,7 +60,7 @@ const SuperAdminSchema = new mongoose.Schema({
  * @params {method}
  * @async
  */
-SuperAdminSchema.pre('save', async function(next) {
+normalAdminSchema.pre('save', async function(next) {
     if (this.isModified('password')) {
         this.password = await bcrypt.hash(this.password, 12);
     }
@@ -62,7 +70,7 @@ SuperAdminSchema.pre('save', async function(next) {
 
 //generating Token
 
-SuperAdminSchema.methods.generateAuthToken = async function() {
+normalAdminSchema.methods.generateAuthToken = async function() {
     try {
         let token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
         this.tokens = this.tokens.concat({ token: token });
@@ -74,16 +82,8 @@ SuperAdminSchema.methods.generateAuthToken = async function() {
 }
 
 
-<<<<<<< HEAD
-const user = mongoose.model('SUPERADMINDATA', SuperAdminSchema);
-/**
- * @exports {mongoose.model}
- */
-module.exports = user;
-=======
-const userAdmin = mongoose.model('SUPERADMINDATA', SuperAdminSchema);
-/**
- * @exports {mongoose.model}
- */
-module.exports = userAdmin;
->>>>>>> 4688461b7323721fc028de688b3458f7996faaf7
+const normalAdmin = mongoose.model('NORMALADMINDATA', normalAdminSchema);
+// /**
+//  * @exports {mongoose.model}
+//  */
+module.exports = normalAdmin;

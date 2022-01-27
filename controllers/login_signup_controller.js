@@ -1,5 +1,5 @@
 const User = require('../models/userSchema'); //acquiring Schema for user model
-const Admin = require('../models/SuperAdminSchema');
+const Admin = require('../models/SuperAdmin');
 const bcrypt = require('bcryptjs');
 
 //....................Implementing Signup Part..............................................
@@ -144,7 +144,7 @@ exports.login_post = async(req, res) => {
  * @param {*} req 
  * @param {Number} res 
  */
-exports.logout_get=(req, res)=>{
+exports.logout_get = (req, res) => {
     res.clearCookie('jwtoken');
     res.status(200).redirect('/login');
 }

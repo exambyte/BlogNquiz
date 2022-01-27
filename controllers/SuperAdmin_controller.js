@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-const Admin = require('../models/SuperAdminSchema'); //acquiring Schema for admin model
-const USer = require('../models/userSchema'); //acquiring Schema for admin model
-// const Admin = require('../models/SuperAdminSchema'); //acquiring Schema for admin model
-=======
-const Admin = require('../models/superAdminSchema'); //acquiring Schema for admin model
+const Admin = require('../models/SuperAdmin'); //acquiring Schema for admin model
 const User = require('../models/userSchema'); //acquiring Schema for admin model
->>>>>>> 4688461b7323721fc028de688b3458f7996faaf7
+const normalAdmin = require('../models/normalAdmin'); //acquiring Schema for admin model
 const bcrypt = require('bcryptjs');
 
 //....................Implementing Signup Part..............................................
@@ -118,6 +113,7 @@ exports.login_post = async(req, res) => {
          */
 
         const Adminsearch = await Admin.findOne({ email: email });
+
         if (!Adminsearch) {
             res.status(400).json({ error: "admin not found" });
         } else {
@@ -140,4 +136,71 @@ exports.login_post = async(req, res) => {
     } catch (err) {
         console.log(err);
     };
+}
+
+
+// super Admin Dashboard
+
+exports.dashboard_get = (req, res) => {
+    res.render('superAdminDashboard');
+}
+
+
+exports.normalAdmin_get = (req, res) => {
+    res.render('addNormalAdmin');
+}
+
+
+/**
+ * Function to POST request for Register if userregistered successfully server will send of status code 201
+ * else a status code of 404 will be send
+ * @param {Object} req 
+ * @param {Number} res 
+ * @returns {Number} status code
+ */
+exports.normalAdmin_post = async(req, res) => {
+    console.log(req.body);
+    const { name, email, contactNo, gender, subject, password, confirm_password } = req.body;
+    if (!name || !email || !contactNo || !gender || !subject || !password || !confirm_password) {
+        return res.status(422).json({ error: "Please fill the fields properly" });
+    } else if (password.length < 6) {
+        return res.status(401).json({ error: "Password must be at least 6 characters" })
+    }
+    try {
+        /**
+         * Searching if a user already exist with the email
+         */
+
+        // normal usersection
+        const dbEmail = await normalAdmin.findOne({ email: email });
+
+        if (dbEmail) {
+            return res.status(404).json({ error: 'Email Already Registered' })
+        }
+        if (password === confirm_password) {
+
+            const detail = new normalAdmin({
+                name,
+                email,
+                contactNo,
+                gender,
+                subject,
+                password
+            });
+
+            console.log(detail) //For testing purpose
+            const registered = await detail.save();
+
+            if (registered) {
+                res.status(201).json({ registered: registered._id });
+            } else {
+                res.status(500).json({ error: "User Failed to Register" });
+            }
+
+        } else {
+            res.status(404).json({ error: 'Enter same confirm password' })
+        }
+    } catch (error) {
+        res.status(404).json({ error: error });
+    }
 }
