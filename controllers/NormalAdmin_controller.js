@@ -1,6 +1,6 @@
 const normalAdmin = require('../models/normalAdmin'); //acquiring Schema for admin model
 const bcrypt = require('bcryptjs');
-
+const Article = require('../models/Blog')
 
 
 //.....................Implementing Login Part...............................................
@@ -71,4 +71,60 @@ exports.login_post = async(req, res) => {
 
 exports.dashboard_get = (req, res) => {
     res.render('NormalAdminDashboard');
+}
+
+exports.addBlog_get = (req, res) => {
+    res.render('addBlog');
+}
+
+
+exports.addBlog_post = async(req, res) => {
+
+    const title = req.body.title
+    const description = req.body.description
+    const markdown = req.body.markdown
+
+    // trying to save current user email in during post in articles collection
+    const createdBy = res.locals.Admin;
+    const createdById = res.locals.Admin.id;
+
+    // // image
+    const image = req.files;
+
+    // // category
+    const category = req.body.category;
+
+    let article = new Article({
+        title,
+        description,
+        markdown,
+        createdBy,
+        createdById,
+        image,
+        category
+    })
+
+    try {
+        article = await article.save()
+            // console.log(article.id)
+        return res.status(201).redirect(`/${article.slug}`)
+    } catch (error) {
+        console.log(error)
+        res.status(401).send({ error: "Error Occured, Please try again. " })
+    }
+}
+
+// exports.showBlog_get = async(req, res)
+
+exports.showBlog_get = async(req, res) => {
+
+    console.log(req.params.slug)
+
+    const article = await Article.findOne({ slug: req.params.slug })
+
+    if (article == undefined) {
+        res.redirect('/')
+    } else {
+        res.render('showBlog', { article: article })
+    }
 }

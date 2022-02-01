@@ -78,7 +78,7 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './templates/views'));
 
-// /**
+/**
 //  * @routes
 //  */
 
@@ -89,6 +89,7 @@ app.use('', routes);
 app.use('', authRoute);
 app.use('', adminRoute);
 app.use('', normalAdmin)
+
 
 /**
  * @listen 
