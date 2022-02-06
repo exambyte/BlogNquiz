@@ -86,6 +86,9 @@ const getAdminData = async () => {
                 <button onclick="displayShowBlogSection('${data._id}')">Show all blogs</button>
             `;
             document.getElementById('button-section').innerHTML = blogButtons;
+            document.getElementById('nav-link-3').innerHTML =`
+                <a class="nav-link" href="javascript:;" onclick="displayCreateBlogSection('${data._id}')">Create Blog</a>
+            `
         }
     } catch (err) {
         console.log(err);

@@ -89,6 +89,26 @@ exports.admin_details_get = (req, res) => {
     res.send(req.verifiedAdmin);
 };
 
+//.....................Implementing Normal Admin Profile......................
+
+/**
+ * Function to render normal admin  Profile
+ * @param {*} req 
+ * @param {NormalAdminDashBoard.ejs} res 
+ */
+exports.adminProfile_get=(req,res)=>{
+    res.render('NormalAdminProfile');
+}
+
+
+
+
+
+
+
+
+
+
 //.......................blog section Area CRUD operation.........................................
 
 /**

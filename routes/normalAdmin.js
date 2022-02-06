@@ -31,6 +31,18 @@ router.get('/NormalAdminDashboard', authenticate,normalAdminControllers.dashboar
  */
 router.get('/getNormalAdminDetails', authenticate,normalAdminControllers.admin_details_get);
 
+//......................Routes for Normal admin Profile.....................................
+
+
+/**
+ * Route to get normal admin Panel
+ * @method GET
+ */
+ router.get('/NormalAdminProfile', authenticate,normalAdminControllers.adminProfile_get);
+
+
+
+
 //......................Routes for CRUD operation of Blogs.....................................
 
 
