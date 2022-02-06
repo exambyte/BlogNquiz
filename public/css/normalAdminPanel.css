@@ -1,0 +1,35 @@
+#show-admin-all-blogs{
+    display: none;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 5px;
+    height:auto;
+    justify-content:center;
+}
+
+.blog-data-section-class{
+    height:12rem;
+    width:71rem;
+    background-color:rgb(253, 228, 196);
+    border:2px solid black;
+    border-radius: 5px;
+    display:flex;
+}
+
+.blog-content{
+    width:60rem;
+    height:12rem;
+}
+
+.blog-actions{
+    height:12rem;
+    width:11rem;
+}
+
+.blog-actions button{
+    margin:auto;
+}
+
+#edit-blog-section{
+    display:none;
+}
