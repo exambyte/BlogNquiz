@@ -4,18 +4,24 @@ const normalAdminControllers = require('../controllers/NormalAdmin_controller');
 const authenticate = require('../middlewares/authenticateAdmin');
 const multer = require('../middlewares/multer');
 
+
+
+
+
+
+
 //......................Routes for Login.....................................
 
 /**
  * Routing to login.ejs
  * @method GET
  */
-router.get('/loginNormalAdmin', normalAdminControllers.login_get);
+router.get('/loginNormalAdmin', normalAdminControllers.loginAdmin_get);
 /**
  * Routing to login
  * @method POST
  */
-router.post('/loginNormalAdmin', normalAdminControllers.login_post);
+router.post('/loginNormalAdmin', normalAdminControllers.loginAdmin_post);
 
 //......................Routes for Normal admin Panel.....................................
 
@@ -80,5 +86,9 @@ router.put('/updateBlog/:id', normalAdminControllers.updateBlog_put);
  * Route to delete a particular blog of an admin using the id of the particular blog
  */
 router.delete('/deleteBlog/:id', normalAdminControllers.deleteBlog_delete);
+
+
+
+
 
 module.exports = router;

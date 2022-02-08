@@ -1,6 +1,7 @@
 const normalAdmin = require('../models/normalAdmin'); //acquiring Schema for admin model
 const bcrypt = require('bcryptjs');
 const Article = require('../models/Blog');
+const Test = require('../models/Test');
 
 
 
@@ -15,7 +16,7 @@ const Article = require('../models/Blog');
  * @param {*} req 
  * @param {login.ejs} res 
  */
-exports.login_get = (req, res) => {
+exports.loginAdmin_get = (req, res) => {
     res.render('loginNormaladmin');
 }
 
@@ -29,7 +30,7 @@ exports.login_get = (req, res) => {
  * @async function
  */
 
-exports.login_post = async (req, res) => {
+exports.loginAdmin_post = async (req, res) => {
     try {
         /**
          * object destructuring to get email and password from client
@@ -259,3 +260,66 @@ exports.deleteBlog_delete=async (req, res) => {
         res.status(500).send({ message: err });
     })
 };
+
+
+
+
+//.................................Implementing Normal admin Test part.........................
+
+exports.saveTest_post=async (req, res) => {
+    const createdById = req.params.id;
+    const title = req.body.title;
+    const noOfQestions = req.body.noOfQestions;
+    const questions = req.body.questions;
+    console.log(noOfQestions);
+    let mcqTest = new Test({
+        title,
+        noOfQestions,
+        createdById,
+        questions
+    });
+
+    try{
+        const testData = await mcqTest.save();
+        res.status(200).json(testData.slug);
+    }catch(err){
+        console.log(err);
+    }
+}
+
+
+
+
+
+
+/**
+ * Function to render  the test Panel
+ * @param {*} req 
+ * @param {adminTestPanel.ejs} res 
+ */
+ exports.testAdmin_get =  (req, res)=>{
+    res.render('testPanel');
+}
+
+
+
+exports.testSlug_get = async (req, res)=>{
+    res.render('mcqTest');
+}
+
+
+
+exports.testData_get=async(req,res)=>{
+    let slug = req.params.slug;
+    try{
+        const result = await Test.find({slug:slug});
+        if(result.length > 0){
+            console.log(result);
+            res.status(200).json(result);
+        }
+    }catch(err){
+        console.log(err);
+        res.status(500).json(err);
+    }
+    
+}

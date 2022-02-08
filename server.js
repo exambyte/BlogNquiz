@@ -46,11 +46,12 @@ const routes = require('./routes/home');
  const authRoute = require('./routes/login_signup');
  const adminRoute = require('./routes/superAdmin');
  const normalAdmin = require('./routes/normalAdmin');
+ const test = require('./routes/test');
 
 
 dotenv.config({path:'./config.env'});
 
-const PORT = process.env.PORT||3000; //Getting PORT Dynamically in case not Dynamic a port 3000 is mentioned
+const PORT = process.env.PORT||8000; //Getting PORT Dynamically in case not Dynamic a port 3000 is mentioned
 const DB = process.env.DATABASE; //Getting Databse URI
 
 /**
@@ -78,6 +79,7 @@ app.set('views', path.join(__dirname, './templates/views'));
  app.use('', authRoute);
  app.use('', adminRoute);
  app.use('', normalAdmin);
+ app.use('',test);
 
 /**
  * @listen 

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Test</title>
+    <link rel="stylesheet" href="/css/adminTestPanel.css">
+</head>
+<body>
+    <section class="quiz-creation">
+        <h2>Create a quiz</h2>
+        <h4>No of questions: </h4>
+        <p id="no-of-qtn"></p>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" placeholder="Enter the title here">
+    </section>
+    <section class="quiz-area" id="quiz-area">
+        <form  id="form-field">
+            <div class="create-quiz">
+                <label for="question">Question Here</label>
+                <input type="text"  name = "question" placeholder="Write our questiion here">
+                <label for="option1">option 1</label>
+                <input type="text" name="option1" placeholder="option 1">
+                <label for="option2">option 2</label>
+                <input type="text" name="option2" placeholder="option 2">
+                <label for="answer">answer</label>
+                <!-- <input type="text"  name="answer" placeholder="answer"> -->
+                <select id="answer">
+                <option value='ans1'>ans1</option>
+                <option value='ans2'>ans2</option>
+                <option value='' selected>Select the correct answer</option>
+                </select>
+                <input type="submit">
+            </div>
+        </form>
+    </section>
+    
+    <section id="save-quiz-data">
+        
+    </section>
+    <section id="show-quiz-link">
+        <label for="link">link for your Test</label>
+        <input type="text" name="link" id ="link">
+        <div id="direct-link">
+            
+        </div>
+    </section>
+    <section class="start-quiz" id="start-quiz">
+        <h2 id="qtn">Question</h2>
+        <ul>
+            <li>
+                <input type="radio"  name="answer" id="ans1" class="answer" >
+                <label for="ans1" id="option1">option 1</label>
+            </li>
+            <li>
+                <input type="radio"  name="answer" id="ans2" class="answer" >
+                <label for="ans2" id="option2"> option 2</label>
+            </li>
+
+            <button id="submit">Submit</button>
+        </ul>
+        <div id="showScore">
+            
+        </div>
+    </section>
+
+    <script src="/script/adminTestPanel.js"></script>
+</body>
+</html>
