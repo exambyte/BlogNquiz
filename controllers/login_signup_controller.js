@@ -1,5 +1,4 @@
 const User = require('../models/userSchema'); //acquiring Schema for user model
-const Admin = require('../models/SuperAdmin');
 const bcrypt = require('bcryptjs');
 
 //....................Implementing Signup Part..............................................
@@ -97,13 +96,11 @@ exports.login_get = (req, res) => {
  * @returns {number}a status code o '400' when input fields are not filled
  * @async function
  */
-
 exports.login_post = async(req, res) => {
     try {
         /**
          * object destructuring to get email and password from client
          */
-
         const { email, password } = req.body;
         if (!email || !password) {
             return res.status(400).json({ error: "Please fill the data" });
@@ -111,8 +108,8 @@ exports.login_post = async(req, res) => {
         /**
          * Storing user data if user exists in database 
          */
-
         const validateUser = await User.findOne({ email: email });
+
         if (!validateUser) {
             res.status(400).json({ error: "User not found" });
         } else {

@@ -53,48 +53,15 @@
                     </div>
                 </div>
 
-                <a href="/home" class="btn btn-secondary btns mx-3">Cancel</a>
+                <a href="/NormalAdminProfile" class="btn btn-secondary btns mx-3">Cancel</a>
                 <button class="btn btn-secondary btns mx-3" type="submit">Save</button>
             </form>
         </div>
     </div>
 
-
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-
-
-    <script>
-        const formFields = document.querySelector('form');
-
-
-        formFields.addEventListener('submit', async(e) => {
-            e.preventDefault();
-
-            // get values 
-            const title = formFields.title.value;
-            const description = formFields.description.value;
-            const markdown = formFields.markdown.value;
-            const images = formFields.file.files
-            const category = formFields.category.value;
-
-            const formData = new FormData(document.getElementById("form"));
-
-            try {
-                const res = await fetch('/addBlog', {
-                    method: 'POST',
-                    body: formData
-                })
-
-                const url = await res.url;
-                // console.log(url)
-                location.assign(url)
-
-            } catch (err) {
-                console.log(err);
-            }
-        })
-    </script>
+    <script src="/script/addAdminBlog.js"></script>
 </body>
 
 

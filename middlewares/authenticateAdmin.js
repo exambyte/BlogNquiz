@@ -3,8 +3,7 @@
  */
 const jwt = require('jsonwebtoken');
 
-const Admin = require('../models/SuperAdmin');
-
+const Admin = require('../models/normalAdmin');
 
 const Adminauthenticate = async(req, res, next) => {
     try {
@@ -13,7 +12,7 @@ const Adminauthenticate = async(req, res, next) => {
 
         const verifiedAdmin = await Admin.findOne({ _id: verifyToken._id, 'tokens?.token': token });
 
-        if (!verifiedAdmin) { throw new Error(`Could not find Admin`) }
+        if (!verifiedAdmin) { throw new Error(`Could not find normal Admin`) }
 
         req.token = token;
         req.verifiedAdmin = verifiedAdmin;

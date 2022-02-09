@@ -14,7 +14,6 @@ router.get('/register', authcontrollers.register_get);
  * Routing to register
  * @method {POST}
  */
-
 router.post('/register', authcontrollers.register_post);
 
 //......................Routes for Login.....................................
@@ -32,13 +31,13 @@ router.post('/login', authcontrollers.login_post);
 
 
 
-//......................Routes for Login.....................................
+//......................Routes for Logout.....................................
 
 /**
  * Routing to logout
  * @method {GET}
  */
-router.get('/logout',authcontrollers.logout_get);
+router.get('/logout', authcontrollers.logout_get);
 
 /**
  * @exporst express.Router()

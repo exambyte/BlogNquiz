@@ -6,6 +6,7 @@ const getDisplay = () => {
     document.getElementById('logout').style.display = "inline";
 }
 
+
 const userHome = async() => {
     try {
         const res = await fetch('/getData', {
@@ -22,6 +23,7 @@ const userHome = async() => {
             document.getElementById('name').innerHTML = `HI ${data.name}`;
             document.getElementById('email').innerHTML = `Your Email: ${data.email}`;
             document.getElementById('userId').innerHTML = `Your Id: ${data._id}`;
+
         }
 
     } catch (err) {
@@ -29,4 +31,6 @@ const userHome = async() => {
         console.log(err);
     }
 }
+
 userHome();
+getAllData();

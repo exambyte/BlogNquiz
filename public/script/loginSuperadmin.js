@@ -44,7 +44,7 @@ async function loginUser(e) {
      */
 
     if (data.status === 'admin') {
-        location.assign('/SuperAdminDashboard'); //Login successfull and directing to Home page
+        location.assign('/adminPanel'); //Login successfull and directing to Home page
     } else {
         alert('Invalid Credentials!');
     }

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
-const slugify = require('slugify')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const slugify = require('slugify');
+const Schema = mongoose.Schema;
 
 const articleSchema = new mongoose.Schema({
 
@@ -22,11 +22,12 @@ const articleSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    createdBy: {
-        type: Schema.Types.Object
-    },
+    // createdBy: {
+    //     type: Schema.Types.Object
+    // },
     createdById: {
-        type: Schema.Types.ObjectId
+        type: Schema.Types.ObjectId,
+        ref: "NORMALADMINDATA"
     },
     image: [{ type: Schema.Types.Object }],
     category: {
@@ -48,4 +49,4 @@ articleSchema.pre('validate', function(next) {
 })
 
 
-module.exports = mongoose.model('Article', articleSchema)
+module.exports = mongoose.model('Article', articleSchema);

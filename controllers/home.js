@@ -10,11 +10,11 @@ const authenticate = require('../middlewares/authenticate');
  * @param {*} req 
  * @param {home.ejs} res 
  */
-exports.getHome=(req,res)=>{
+exports.getHome = (req, res) => {
     // const {name,email,contactNo,password} = req.verifiedUser;
     res.render('home');
 }
 
-exports.getData=(req, res)=>{
+exports.getData = (req, res) => {
     res.send(req.verifiedUser);
 }

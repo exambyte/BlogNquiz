@@ -43,10 +43,9 @@ const routes = require('./routes/home');
  * Acquiring route to login/signup
  * @require
  */
-
-const authRoute = require('./routes/login_signup')
-const adminRoute = require('./routes/superAdmin')
-const normalAdmin = require('./routes/normalAdmin')
+const authRoute = require('./routes/login_signup');
+const adminRoute = require('./routes/superAdmin');
+const normalAdmin = require('./routes/normalAdmin');
 
 
 dotenv.config({ path: './config.env' });
@@ -54,19 +53,16 @@ dotenv.config({ path: './config.env' });
 const PORT = process.env.PORT || 2000; //Getting PORT Dynamically in case not Dynamic a port 3000 is mentioned
 // const DB = process.env.DATABASE; //Getting Databse URI
 
+// connection to database
+mongoose.connect('mongodb://localhost:27017/Exambytedb')
+
 /**
  * @connect {*}Setting mongoose Connection
  */
-// mongoose.connect(DB).then(()=>{
+// mongoose.connect(DB).then(() => {
 //     console.log("connection Successful");
-// }).catch((err)=> console.log(err));
+// }).catch((err) => console.log(err));
 
-// local db connection
-// connection to database
-mongoose.connect('mongodb://localhost:27017/Exambytedb', {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-})
 
 const app = express();
 
@@ -79,17 +75,12 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './templates/views'));
 
 /**
-//  * @routes
-//  */
-
-/**
  * @routes
  */
 app.use('', routes);
 app.use('', authRoute);
 app.use('', adminRoute);
-app.use('', normalAdmin)
-
+app.use('', normalAdmin);
 
 /**
  * @listen 

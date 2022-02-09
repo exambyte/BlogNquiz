@@ -7,11 +7,12 @@ const mongoose = require('mongoose');
  * @imports module
  * @const
  */
+const { Schema } = mongoose;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 /**
- * Mongoose Schema for User
+ * Mongoose Schema for Admin User
  */
 const normalAdminSchema = new mongoose.Schema({
     name: {
@@ -35,14 +36,18 @@ const normalAdminSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    password: {
-        type: String,
-        require: true
-    },
     role: {
         type: String,
         default: 'admin'
     },
+    password: {
+        type: String,
+        require: true
+    },
+    blogs: [{
+        type: Schema.Types.ObjectId,
+        ref: "Article"
+    }],
     tokens: [{
         token: {
             type: String,
@@ -52,6 +57,10 @@ const normalAdminSchema = new mongoose.Schema({
 }, {
     collection: 'NORMALADMINDATA'
 });
+
+
+
+
 
 
 
