@@ -91,8 +91,9 @@ submit.addEventListener('click', () => {
     else {
         showScore.innerHTML = `
            <h3> Your Score:  ${score}/${quiz_data.length} </h3>
-           <button class="btn" onclick="location.reload()">Restart</button>
+           <br><br>
            <h3> Correct: ${score}&nbsp&nbsp&nbsp&nbspIncorrect: ${quiz_data.length - score} </h3>
+           <button class="btn3" onclick="location.reload()">Restart</button>
         `;
 
         // showScore.classList.remove('scoreArea');
@@ -124,7 +125,7 @@ const saveQuiz =async(ID) =>{
             document.getElementById('show-quiz-link').style.display ="block";
             document.getElementById('link').value = `http://localhost:8000/mcq/${data}`;
             document.getElementById('direct-link').innerHTML=`
-                <a href='http://localhost:8000/mcq/${data}' target='_blank'>click here to go to to test</a>
+                <a href='http://localhost:8000/mcq/${data}' target='_blank'><b>click here to go to test</b></a>
             
             `
         }
@@ -153,7 +154,7 @@ const getAdminData = async() => {
         const data = await res.json();
         ID = data._id;
         document.getElementById('save-quiz-data').innerHTML=`
-            <button onclick="saveQuiz(ID)">Create Quiz</button>
+            <button class="btn1" onclick="saveQuiz(ID)"><a href="#show-quiz-link" style="text-decoration: none; color:white;">Create Quiz</a></button>
         `
     }catch (err) {
         console.log(err);

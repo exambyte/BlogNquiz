@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+   
 }
 
 .row
@@ -41,7 +42,7 @@
 
 
 .btn1{
-    height: 50px;
+    height: 40%;
     width: 50%;
     border: none;
     outline: none;
@@ -49,7 +50,8 @@
     font-weight: 600;
     background: rgb(165, 14, 14);
     color: white;
-    bottom: 80%;
+    margin-bottom: 2%;
+    margin-top: 4%;
 
 }
 .btn1:hover{
@@ -82,8 +84,8 @@ label{
 }
 
 .btn{
-    height: 60px;
-    width: 180px;
+    height: 50%;
+    width: 40%;
     border: 12px 12px 22px;
     outline: none;
     border-radius: 60px;
@@ -93,6 +95,16 @@ label{
     display: inline;
 
 }
+
+.show-admins-data{
+    margin-bottom: 15%;
+}
+.admin-sec3 {
+    width: 100%;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
 .btn:hover{
     background:lightblue;
     transition: 0.5s;
@@ -100,7 +112,7 @@ label{
 
 .logout-btn 
 {
-    bottom: 50%;
+    margin-top: 35%;
 
 }
 section .admin-sec3 .container{
@@ -117,14 +129,18 @@ section .admin-sec3 .container{
     height: 40px;
 }
 
-
+body{
+    overflow-x: hidden;
+}
 
 /* Footer */
 .footer {
-    padding: 80px;
+    
     text-align: center;
     background: #ddd;
     margin-top: 80%;
+    left: 0;
+
     
   }
 
@@ -291,21 +307,70 @@ textarea{
     color: white;
   }
 
-  @media only screen and (min-width: 360px) {
-    table{
-        width: 100vw;
-        justify-content: space-between;
+ 
+@media (min-width:360px) {
+    .inp {
+        width: 90%;
     }
-    .button-sec,.btn{
-        width: 40vw;
-        height: auto;
+    .btn1{
+        height: 40%;
+        width: 35%;
         
     }
+    .row{
+        width: 95%; 
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .row1{
+        width: 100%; 
+        
+    }
+    table{
+        overflow-x: hidden;
+    }
+    .logout-btn 
+{
+    margin-top: 35%;
+    margin-left: 2rem;
+    margin-right: 2rem;
     
-  }
+
+}
+   
+    
+    
+}
+
+@media (max-width:550px) {
+    .btn{
+        height: 40%;
+        width: 45%;
+        
+ }
+}
+@media (min-width:550px) {
+    .btn{
+        height: 40%;
+        width: 25%; 
+        margin-right:0; 
+        margin-left: 1%;  
+ }
+
+}
+
+@media (max-width:480px) {
+    .row{
+        height: 60%;
+        width: 100%;    
+ }
+ .row1{
+     width: 100%;
+ }
+}
 
   .button-sec{
-    height: 44px;
+    height: 70px;
     width: 180px;
     border: 12px 12px 22px;
     outline: none;
@@ -320,7 +385,6 @@ textarea{
   .button-sec:hover{
       background:lightblue;
     transition: 0.5s;
-
   }
   
 
