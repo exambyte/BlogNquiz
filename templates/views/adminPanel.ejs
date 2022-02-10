@@ -67,7 +67,13 @@
                         </div>
                         <div class="form-row py-3 pt-2">
                             <div class="offset-1 ">
-                                <input type="text" class="inp px-3" placeholder="Gender" id="gender" autofocus />
+
+                                <input class="inp px-3" name="gender" list="data" placeholder="Gender" id="gender">
+                                <datalist id="data">
+                                    <option value="Male">
+                                    <option value="Female">
+                                    <option value="Others">
+                                </datalist>
                             </div>
                         </div>
                         <div class="form-row py-3 pt-2">
@@ -145,12 +151,17 @@
                             </div>
                             <div class="form-row py-3 pt-2">
                                 <div class="offset-1 ">
-                                    <input type="text" class="inp px-3" id="display-subject" placeholder="Contact No" autofocus />
+                                    <input type="text" class="inp px-3" id="display-subject" placeholder="Subject" autofocus />
                                 </div>
                             </div>
                             <div class="form-row py-3 pt-2">
                                 <div class="offset-1 ">
-                                    <input type="text" class="inp px-3" id="display-gender" placeholder="Contact No" autofocus />
+                                    <input class="inp px-3" name="gender" list="data" placeholder="Gender" id="gender">
+                                    <datalist id="data">
+                                    <option value="Male">
+                                    <option value="Female">
+                                    <option value="Others">
+                                </datalist>
                                 </div>
                             </div>
                             <div class="form-row py-3 pt-2">
@@ -170,6 +181,7 @@
 
     <br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="logout-btn py-3 pt-2">
+        <br><br><br><br><br><br><br><br><br><br><br><br>
         <div class="offset-4 col-xs-10"><br><br><br><br><br><br><br><br><br><br><br><br>
             <button type="submit" onclick="getLogout()" id="logout" class="btn1">Logout</button>
         </div>

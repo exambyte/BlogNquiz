@@ -16,7 +16,7 @@ const formFields = document.getElementById('add-admin-form');
  * Function to add admin user to database
  * @async function
  */
-formFields.addEventListener('submit', async (e) => {
+formFields.addEventListener('submit', async(e) => {
     e.preventDefault();
 
     // getting values of Form input fields
@@ -77,7 +77,7 @@ formFields.addEventListener('submit', async (e) => {
  * @param {String} id 
  * @async function
  */
-const displayData = async (id) => {
+const displayData = async(id) => {
     try {
         /**
          * @method GET
@@ -113,14 +113,14 @@ function editAdmin(id) {
     admin_edit_form.style.display = "block";
     display_table.style.display = "none";
     displayData(id);
-    admin_edit_form.addEventListener('submit', async (e) => {
+    admin_edit_form.addEventListener('submit', async(e) => {
         e.preventDefault();
         const name = document.getElementById('display-name').value;
         const contactNo = document.getElementById('display-contactNo').value;
         const email = document.getElementById('display-email').value;
         const subject = document.getElementById('display-subject').value;
         const gender = document.getElementById('display-gender').value;
-        console.log(`${name} and ${contactNo}`);//Testing Purpose
+        console.log(`${name} and ${contactNo}`); //Testing Purpose
         try {
             /**
              * @method PUT
@@ -147,8 +147,7 @@ function editAdmin(id) {
             if (data) {
                 alert("Successfully updated the data!");
                 location.assign("/adminPanel");
-            }
-            else {
+            } else {
                 alert("Error updating the data!");
             }
 
@@ -167,7 +166,7 @@ function editAdmin(id) {
  * @param {String} id 
  * @async function
  */
-const deleteAdmin = async (id) => {
+const deleteAdmin = async(id) => {
     if (confirm('Are you sure you want to delete the Admin?')) {
 
         try {
@@ -203,7 +202,7 @@ const deleteAdmin = async (id) => {
  * Function to receive data from backend 
  * @async function
  */
-const getAllData = async () => {
+const getAllData = async() => {
     try {
         /**
          * @method GET
@@ -266,7 +265,7 @@ const showAdminDetailPanel = () => {
 
 //Function to logout the Super admin
 
-const getLogout=()=>{
+const getLogout = () => {
     location.assign('/logoutSuperAdmin');
 }
 
@@ -280,7 +279,7 @@ const getLogout=()=>{
  * Function to show the Super admin details
  * @async function
  */
-const adminPanel = async () => {
+const adminPanel = async() => {
     try {
         /**
          * @method GET
@@ -299,22 +298,15 @@ const adminPanel = async () => {
             getDisplay();
             document.getElementById('name').innerHTML = `HI ${data.name}`;
             document.getElementById('email').innerHTML = `Your Email: ${data.email}`;
-        
+
             let buttons = `
-                            <div class="add-btn col-xs-7 py-3 pt-2">
-                            <div class="offset-4 col-xs-6">
+                            <div class="add-btn text-center col-xs-7 py-3 pt-2">
+                            <div class="offset-1 col-xs-6">
                                 <button class="btn" onclick="showAddAdminPanel()">Add Faculty/Admin</button>
-                            
-                            </div>
-                            </div><br>
-                            
-                            <div class="add-btn col-xs-7 py-3 pt-2" >
-                            <div class="offset-4 col-xs-6">
                                 <button class="btn" onclick="showAdminDetailPanel()" >Show All Faculty/Admin</button>
-                            
                             </div>
-                            </div> 
-                                                
+                            </div>
+                        
             `
             superAdminControlButtons.innerHTML = buttons;
             getAllData();
@@ -326,6 +318,4 @@ const adminPanel = async () => {
     }
 }
 
-adminPanel(); //Calling function to show the data 
-
-
+adminPanel(); //Calling function to show the data

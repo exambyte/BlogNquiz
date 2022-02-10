@@ -46,22 +46,22 @@ const routes = require('./routes/home');
 const authRoute = require('./routes/login_signup');
 const adminRoute = require('./routes/superAdmin');
 const normalAdmin = require('./routes/normalAdmin');
+const test = require('./routes/test');
 
 
 dotenv.config({ path: './config.env' });
 
 const PORT = process.env.PORT || 2000; //Getting PORT Dynamically in case not Dynamic a port 3000 is mentioned
 // const DB = process.env.DATABASE; //Getting Databse URI
-
 // connection to database
 mongoose.connect('mongodb://localhost:27017/Exambytedb')
 
-/**
- * @connect {*}Setting mongoose Connection
- */
-// mongoose.connect(DB).then(() => {
+// /**
+//  * @connect {*}Setting mongoose Connection
+//  */
+// mongoose.connect(DB).then(()=>{
 //     console.log("connection Successful");
-// }).catch((err) => console.log(err));
+// }).catch((err)=> console.log(err));
 
 
 const app = express();
@@ -81,6 +81,7 @@ app.use('', routes);
 app.use('', authRoute);
 app.use('', adminRoute);
 app.use('', normalAdmin);
+app.use('', test);
 
 /**
  * @listen 

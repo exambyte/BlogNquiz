@@ -12,7 +12,7 @@ const Adminauthenticate = async(req, res, next) => {
 
         const verifiedAdmin = await Admin.findOne({ _id: verifyToken._id, 'tokens?.token': token });
 
-        if (!verifiedAdmin) { throw new Error(`Could not find normal Admin`) }
+        if (!verifiedAdmin) { throw new Error(`Could not find Admin`) }
 
         req.token = token;
         req.verifiedAdmin = verifiedAdmin;

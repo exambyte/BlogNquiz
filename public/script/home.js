@@ -1,12 +1,9 @@
 const getDisplayNone = () => {
     document.getElementById('logout').style.display = "none";
 }
-
 const getDisplay = () => {
     document.getElementById('logout').style.display = "inline";
 }
-
-
 const userHome = async() => {
     try {
         const res = await fetch('/getData', {

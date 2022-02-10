@@ -10,13 +10,14 @@ const multer = require('../middlewares/multer');
  * Routing to login.ejs
  * @method GET
  */
-router.get('/loginNormalAdmin', normalAdminControllers.login_get);
+router.get('/loginNormalAdmin', normalAdminControllers.loginAdmin_get);
 
 /**
  * Routing to login
  * @method POST
  */
-router.post('/loginNormalAdmin', normalAdminControllers.login_post);
+
+router.post('/loginNormalAdmin', normalAdminControllers.loginAdmin_post);
 
 //......................Routes for Normal admin Panel.....................................
 

@@ -1,0 +1,12 @@
+.start-quiz{
+    display: none;
+}
+
+
+#show-quiz-link{
+    display:none;
+}
+
+#link{
+    width:90%;
+}

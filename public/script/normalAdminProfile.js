@@ -19,7 +19,7 @@ const displayCreateBlogSection = (id) => {
  * @param {String} id
  * @async function 
  */
-const displayShowBlogSection = async (id) => {
+const displayShowBlogSection = async(id) => {
 
     try {
         /**
@@ -64,7 +64,7 @@ const displayShowBlogSection = async (id) => {
 /**
  * @async function
  */
-const getAdminData = async () => {
+const getAdminData = async() => {
     try {
         /**
          * @method GET
@@ -82,11 +82,11 @@ const getAdminData = async () => {
         if (data) {
             document.getElementById('name').innerHTML = data.name;
             let blogButtons = `
-                <button onclick="displayCreateBlogSection('${data._id}')">Create a Blog</button>
-                <button onclick="displayShowBlogSection('${data._id}')">Show all blogs</button>
+                <button class="button-sec" onclick="displayCreateBlogSection('${data._id}')">Create a Blog</button>
+                <button class="button-sec" onclick="displayShowBlogSection('${data._id}')">Show all blogs</button>
             `;
             document.getElementById('button-section').innerHTML = blogButtons;
-            document.getElementById('nav-link-3').innerHTML =`
+            document.getElementById('nav-link-3').innerHTML = `
                 <a class="nav-link" href="javascript:;" onclick="displayCreateBlogSection('${data._id}')">Create Blog</a>
             `
         }
@@ -102,7 +102,7 @@ getAdminData(); //calling function to display admin data
  * @param {String} adminId 
  * @param {Number} i 
  */
-const fillInputfields = async (adminId, i) => {
+const fillInputfields = async(adminId, i) => {
     try {
         const res = await fetch(`/showAdminAllBlogs/${adminId}`, {
             method: 'GET',
@@ -134,11 +134,11 @@ const fillInputfields = async (adminId, i) => {
  * @param {Number} i 
  * @async function
  */
-const editBlog = async (adminId, blogId, i) => {
+const editBlog = async(adminId, blogId, i) => {
     displayAdminAllBlogsSection.style.display = 'none';
     editBlogSection.style.display = 'block';
     fillInputfields(adminId, i);
-    formFields.addEventListener('submit', async (e) => {
+    formFields.addEventListener('submit', async(e) => {
         e.preventDefault();
 
         // get values 
@@ -173,8 +173,7 @@ const editBlog = async (adminId, blogId, i) => {
             if (data) {
                 alert('blog updated successfully');
                 location.assign('/NormalAdminDashboard');
-            }
-            else {
+            } else {
                 alert('Failed to update blog');
             }
 
@@ -191,7 +190,7 @@ const editBlog = async (adminId, blogId, i) => {
  * @param {String} blogId 
  * @async function
  */
-const deleteBlog = async (blogId) => {
+const deleteBlog = async(blogId) => {
     if (confirm('Are you sure you want to delete this blog ?')) {
         try {
             const res = await fetch(`/deleteBlog/${blogId}`, {

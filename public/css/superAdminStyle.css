@@ -9,7 +9,7 @@
     border-radius: 30px;
     box-shadow: 12px 12px 22px;
     background-color: lightseagreen;
-    width: 100vw;
+    width: 85vw;
 }
 
 .login h2 {
@@ -72,14 +72,14 @@ label {
 
 .btn {
     height: 60px;
-    width: 70%;
+    width: 180px;
     border: 12px 12px 22px;
     outline: none;
     border-radius: 60px;
     font-weight: 600;
     background: rgb(52, 187, 52);
     color: white;
-    left: 70%;
+    display: inline;
 }
 
 .btn:hover {
@@ -92,7 +92,7 @@ label {
 }
 
 section .admin-sec3 .container {
-    width: 100vw;
+    width: 200px;
     margin-bottom: 80px;
 }
 
@@ -291,4 +291,27 @@ textarea {
         width: 100vw;
         justify-content: space-between;
     }
+    .button-sec,
+    .btn {
+        width: 40vw;
+        height: auto;
+    }
+}
+
+.button-sec {
+    height: 44px;
+    width: 180px;
+    border: 12px 12px 22px;
+    outline: none;
+    border-radius: 60px;
+    font-weight: 600;
+    background: rgb(52, 187, 52);
+    color: white;
+    left: 70%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.button-sec:hover {
+    background: lightblue;
+    transition: 0.5s;
 }

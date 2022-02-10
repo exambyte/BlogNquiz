@@ -37,6 +37,7 @@ router.post('/login', authcontrollers.login_post);
  * Routing to logout
  * @method {GET}
  */
+
 router.get('/logout', authcontrollers.logout_get);
 
 /**

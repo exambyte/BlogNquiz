@@ -27,6 +27,7 @@ footer {
     font-weight: 500;
     text-transform: capitalize;
     line-height: 3rem;
+    height: 10vh;
 }
 
 .footer-content p {
