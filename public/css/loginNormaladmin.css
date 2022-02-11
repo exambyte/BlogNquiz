@@ -9,6 +9,8 @@
     background: white;
     border-radius: 30px;
     box-shadow: 12px 12px 22px;
+    margin-top: 76px ;
+    font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
 .login img{
@@ -47,4 +49,19 @@
 .btn1:hover{
     background: brown;
     transition: 0.5s;
+}
+
+@media only screen and (min-width:360px) {
+   
+    .inp{
+        width: 85%;
+    }
+    
+}
+@media only screen and (max-width:99px) {
+   
+    .inp{
+        width: 70%;
+    }
+    
 }

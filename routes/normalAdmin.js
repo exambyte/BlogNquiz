@@ -52,36 +52,37 @@ router.get('/NormalAdminProfile', authenticate, normalAdminControllers.adminProf
  * Route to get add blog panel
  * @method GET
  */
-router.get('/addBlog/:id', normalAdminControllers.addBlog_get);
+router.get('/addBlog/:id', authenticate, normalAdminControllers.addBlog_get);
 
 /**
  * Route to post blog data of a normal Admin
  * @method POST
  */
-router.post('/addBlog/:id', multer.array('file'), normalAdminControllers.addBlog_post);
+router.post('/addBlog/:id', multer.array('file'), authenticate, normalAdminControllers.addBlog_post);
 
 /**
  * route to get a particular blog a normal Admin
  * @method GET
  */
-router.get(`/:slug`, normalAdminControllers.showBlog_get);
+
+router.get(`/:slug`, authenticate, normalAdminControllers.showBlog_get);
 
 /**
  * Route to get all blogs of admin
  * @method GET
  */
-router.get('/showAdminAllBlogs/:id', normalAdminControllers.showAllBlogs_get);
+router.get('/showAdminAllBlogs/:id', authenticate, normalAdminControllers.showAllBlogs_get);
 
 /**
  * Route to put admin blo details for updating
  * @method PUT
  */
 
-router.put('/updateBlog/:id', normalAdminControllers.updateBlog_put);
+router.put('/updateBlog/:id', authenticate, normalAdminControllers.updateBlog_put);
 
 /**
  * Route to delete a particular blog of an admin using the id of the particular blog
  */
-router.delete('/deleteBlog/:id', normalAdminControllers.deleteBlog_delete);
+router.delete('/deleteBlog/:id', authenticate, normalAdminControllers.deleteBlog_delete);
 
 module.exports = router;

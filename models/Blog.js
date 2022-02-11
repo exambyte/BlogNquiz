@@ -22,9 +22,9 @@ const articleSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // createdBy: {
-    //     type: Schema.Types.Object
-    // },
+    createdBy: {
+        type: Schema.Types.Object
+    },
     createdById: {
         type: Schema.Types.ObjectId,
         ref: "NORMALADMINDATA"
@@ -32,8 +32,8 @@ const articleSchema = new mongoose.Schema({
     image: [{ type: Schema.Types.Object }],
     category: {
         type: String
-    }
-
+    },
+    likes: [{ type: Schema.Types.ObjectId, ref: 'user' }]
 }, { timestamps: true })
 
 

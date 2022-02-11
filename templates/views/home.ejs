@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,11 +13,204 @@
     <h2 id="name">Hi</h2>
     <h3 id="email"></h3>
     <h4 id="userId"></h4>
-
-
-
     <a href="/logout" id="logout">Logout</a>
     <script src="script/home.js"></script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+
+
+<body>
+
+    <!-- div seperation -->
+    <div class="container-fluid">
+
+
+        <div class="row gx-5 mx-sm-auto">
+            <!-- to get left side div -->
+            <div class="col-lg-8 col-md-11 col-11 mx-auto" style="position: relative;">
+                <div class="row gy-5">
+                    <!-- first blog -->
+                    <% articles.forEach(article=> { %>
+                        <div class="col-12 card shadow p-4 blog_left__div mb-5">
+                            <div class="d-flex justify-content-center align-items-center flex-column pt-3 pb-3">
+                                <h1 class="read_more">
+                                    <%= article.title %>
+                                </h1>
+                                <p class="blog_title">Created On: <span class="font-weight-bold">
+                                                        <%= article.createdAt.toLocaleDateString() %>
+                                                    </span> </p>
+                                <p class="blog_title">Created By: <span data-post-id="<%= article.createdBy._id %>" id="userName" class="font-weight-bold">
+                                                        <%= article.createdBy.name %> <span id="in">in</span> <span>
+                                                                <%= article.category %>
+                                                            </span>
+                                    </span>
+                                </p>
+                            </div>
+
+
+
+
+
+                            <p class="read_more">
+                                <%= article.description %>
+                            </p>
+                            <p class=" read_more">
+                                <%= article.markdown %>
+                            </p>
+                            <div class="d-flex justify-content-between left_div_btns">
+
+                                <% if(article.likes.includes(user._id)) { %>
+                                    <div>
+                                        <button onclick="like_func(event);" data-post-id="<%= article.id %>" class="left_div__like" id="like_btn">
+                                                            Unlike
+                                                        </button>
+                                        <span id="likes-count-<%= article.id %>">
+                                                            <%= article.likes.length %>
+                                                        </span>
+                                    </div>
+                                    <% } else { %>
+                                        <div>
+                                            <button onclick="like_func(event);" data-post-id="<%= article.id %>" class="left_div__like" id="like_btn">
+                                                                Like
+                                                            </button>
+                                            <span id="likes-count-<%= article.id %>">
+                                                                <%= article.likes.length %>
+                                                            </span>
+                                        </div>
+                                        <% } %>
+                                            <% if(user.bookmarks.includes(article._id)) { %>
+                                                <div>
+                                                    <button onclick="save_func(event);" data-post-id="<%= article.id %>" class="left_div__save" id="save_btn">
+                                                                        Unsave
+                                                                    </button>
+                                                </div>
+                                                <% } else { %>
+                                                    <div>
+                                                        <button onclick="save_func(event);" data-post-id="<%= article.id %>" class="left_div__save" id="save_btn">
+                                                                            Save
+                                                                        </button>
+                                                    </div>
+                                                    <% } %>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+
+
+
+    <!-- JS  -->
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script>
+        // for like btn
+        const like = document.getElementById('like_btn');
+
+        var toggleButtonText = {
+            Like: function(button) {
+                button.textContent = "Unlike";
+            },
+            Unlike: function(button) {
+                button.textContent = "Like";
+            }
+        };
+
+        var updatePostStats = {
+            Like: function(postId) {
+                document.querySelector('#likes-count-' + postId).textContent++;
+            },
+            Unlike: function(postId) {
+                document.querySelector('#likes-count-' + postId).textContent--;
+            }
+        };
+
+        const like_func = async(e) => {
+            e.preventDefault();
+            var postId = event.target.dataset.postId;
+
+            var action = event.target.textContent.trim();
+            // console.log(action)
+            toggleButtonText[action](event.target);
+            updatePostStats[action](postId);
+
+            try {
+                const liked = await fetch(`/like/${postId}`, {
+
+                    method: 'PUT',
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                })
+                console.log(liked.json())
+            } catch (err) {
+                console.log('err')
+            }
+        };
+
+
+        // for save btn               
+
+        var toggleButtonTextSave = {
+            Save: function(button) {
+                button.textContent = "Unsave";
+            },
+            Unsave: function(button) {
+                button.textContent = "Save";
+            }
+        };
+
+
+        const save_func = async(e) => {
+
+            e.preventDefault();
+            var postId = event.target.dataset.postId;
+            console.log(postId)
+
+            // we can also implement that a post a alread saved in a user collection or not with action below
+            var action = event.target.textContent.trim();
+
+            toggleButtonTextSave[action](event.target);
+
+
+            try {
+                const saved = await fetch(`/bookmark/${postId}`, {
+
+                    method: 'PUT',
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                })
+                const data = await saved;
+                // console.log(data)
+                // location.assign(data.url);
+            } catch (err) {
+                console.log(err)
+            }
+        };
+    </script>
+
+
+
 </body>
 
 </html>

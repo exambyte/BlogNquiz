@@ -29,6 +29,7 @@ const authenticate = async(req, res, next) => {
         req.token = token;
         req.verifiedUser = verifiedUser;
         req.userId = verifiedUser._id;
+        res.locals.user = verifiedUser
 
         next();
     } catch (err) {

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authcontrollers = require('../controllers/login_signup_controller'); //Controller for and Registration authentication
+const authenticate = require('../middlewares/authenticate')
 
 //......................Routes for Registration.............................
 
@@ -15,6 +16,7 @@ router.get('/register', authcontrollers.register_get);
  * @method {POST}
  */
 router.post('/register', authcontrollers.register_post);
+
 
 //......................Routes for Login.....................................
 
@@ -38,7 +40,13 @@ router.post('/login', authcontrollers.login_post);
  * @method {GET}
  */
 
-router.get('/logout', authcontrollers.logout_get);
+
+router.put('/like/:id', authenticate, authcontrollers.like);
+
+router.put('/bookmark/:id', authenticate, authcontrollers.bookmark_put);
+
+
+router.get('/logout', authenticate, authcontrollers.logout_get);
 
 /**
  * @exporst express.Router()

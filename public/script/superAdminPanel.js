@@ -303,7 +303,7 @@ const adminPanel = async() => {
                             <div class="add-btn text-center col-xs-7 py-3 pt-2">
                             <div class="offset-1 col-xs-6">
                                 <button class="btn" onclick="showAddAdminPanel()">Add Faculty/Admin</button>
-                                <button class="btn" onclick="showAdminDetailPanel()" >Show All Faculty/Admin</button>
+                                <button class="btn" onclick="showAdminDetailPanel()" >Show Faculty/Admin</button>
                             </div>
                             </div>
                         

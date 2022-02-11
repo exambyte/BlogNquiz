@@ -1,6 +1,9 @@
 //Controller for home Routing
 const User = require('../models/userSchema');
 const authenticate = require('../middlewares/authenticate');
+const req = require('express/lib/request');
+const Article = require('../models/Blog')
+const Details = require('../models/userSchema')
 
 /**
  * @name get/home
@@ -10,10 +13,12 @@ const authenticate = require('../middlewares/authenticate');
  * @param {*} req 
  * @param {home.ejs} res 
  */
-exports.getHome = (req, res) => {
+exports.getHome = async(req, res) => {
     // const {name,email,contactNo,password} = req.verifiedUser;
-    res.render('home');
+    const articles = await Article.find();
+    res.render('home', { articles: articles });
 }
+
 
 exports.getData = (req, res) => {
     res.send(req.verifiedUser);

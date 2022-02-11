@@ -1,5 +1,7 @@
 const User = require('../models/userSchema'); //acquiring Schema for user model
 const bcrypt = require('bcryptjs');
+const Article = require('../models/Blog')
+const Details = require('../models/userSchema')
 
 //....................Implementing Signup Part..............................................
 
@@ -25,21 +27,23 @@ exports.register_get = (req, res) => {
  * @returns {Number} status code
  */
 exports.register_post = async(req, res) => {
-    console.log(req.body);
+
     const { name, email, contactNo, password, confirm_password } = req.body;
     if (!name || !email || !contactNo || !password || !confirm_password) {
         return res.status(422).json({ error: "Please fill the fields properly" });
     } else if (password.length < 6) {
         return res.status(401).json({ error: "Password must be at least 6 characters" })
     }
+
     try {
         /**
-         * Searching if a user already exist with the email
-         */
+         Searching if a user already exist with the email
+        */
         const dbEmail = await User.findOne({ email: email });
         if (dbEmail) {
             return res.status(404).json({ error: 'Email Already Registered' })
         }
+
         if (password === confirm_password) {
 
             const detail = new User({
@@ -82,6 +86,7 @@ exports.register_post = async(req, res) => {
  * @param {*} req 
  * @param {login.ejs} res 
  */
+
 exports.login_get = (req, res) => {
     res.render('login');
 }
@@ -144,4 +149,62 @@ exports.login_post = async(req, res) => {
 exports.logout_get = (req, res) => {
     res.clearCookie('jwtoken');
     res.status(200).redirect('/login');
+}
+
+
+
+// for likes 
+exports.like = async(req, res) => {
+
+    try {
+        const post = await Article.findById(req.params.id);
+
+        // check if post already been liked
+        if (post.likes.includes(res.locals.user._id)) {
+
+            post.likes.pull(res.locals.user._id)
+
+            await post.save();
+
+            return res.status(400).json({ "msg": 'Disliked' })
+        } else {
+
+            post.likes.push(res.locals.user._id);
+
+            await post.save();
+            return res.json({ "msg": 'Liked' });
+        }
+    } catch (error) {
+        // console.log(error.message);
+        return res.status(500).json({ "msg": error.message });
+    }
+}
+
+
+// bookmarks for user
+
+module.exports.bookmark_put = async(req, res) => {
+
+    console.log('request received')
+    try {
+        const user = await Details.findById(res.locals.user._id);
+
+        // check if post already been liked
+        if (user.bookmarks.includes(req.params.id)) {
+
+            user.bookmarks.pull(req.params.id)
+            await user.save();
+
+            return res.status(400).json({ "msg": 'Unsaved' })
+        } else {
+
+            user.bookmarks.push(req.params.id);
+
+            await user.save();
+            return res.json({ "msg": 'Saved' });
+        }
+    } catch (error) {
+        console.log(error.message);
+        return res.status(500).json({ 'err': error.message });
+    }
 }

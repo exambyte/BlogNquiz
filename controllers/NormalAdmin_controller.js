@@ -133,6 +133,7 @@ exports.addBlog_post = async(req, res) => {
     console.log("Coming in backend to add blog");
 
     const createdById = req.params.id;
+    const createdBy = res.locals.user
     const title = req.body.title;
     const description = req.body.description;
     const markdown = req.body.markdown;
@@ -141,8 +142,9 @@ exports.addBlog_post = async(req, res) => {
     // const createdBy = res.locals.Admin;
     // const createdById = res.locals.Admin.id;
 
-    // // image
+    // image
     const image = req.files;
+    console.log(image)
 
     // // category
     const category = req.body.category;
@@ -151,7 +153,7 @@ exports.addBlog_post = async(req, res) => {
         title,
         description,
         markdown,
-        // createdBy,
+        createdBy,
         createdById,
         image,
         category
@@ -176,6 +178,7 @@ exports.addBlog_post = async(req, res) => {
  * @param {String} req 
  * @param {Object} res 
  */
+
 exports.showBlog_get = async(req, res) => {
 
     console.log(req.params.slug)

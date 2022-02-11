@@ -5,6 +5,8 @@ const jwt = require('jsonwebtoken');
 
 const Admin = require('../models/normalAdmin');
 
+// this file is used in other files import export so keep this file and delete its duplicate
+
 const Adminauthenticate = async(req, res, next) => {
     try {
         const token = req.cookies.jwtoken;
@@ -12,12 +14,12 @@ const Adminauthenticate = async(req, res, next) => {
 
         const verifiedAdmin = await Admin.findOne({ _id: verifyToken._id, 'tokens?.token': token });
 
-        if (!verifiedAdmin) { throw new Error(`Could not find Admin`) }
+        if (!verifiedAdmin) { throw new Error(`Could not find normal Admin`) }
 
         req.token = token;
         req.verifiedAdmin = verifiedAdmin;
         req.AdminId = verifiedAdmin._id;
-        res.locals.admin = verifiedAdmin;
+        res.locals.user = verifiedAdmin;
 
         next();
 

@@ -16,7 +16,7 @@ const postBlog = (id) => {
         const markdown = formFields.markdown.value;
         const images = formFields.file.files;
         const category = formFields.category.value;
-
+        console.log(images)
 
         try {
             const res = await fetch(`/addBlog/${id}`, {
