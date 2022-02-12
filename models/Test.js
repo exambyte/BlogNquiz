@@ -1,3 +1,7 @@
+/**
+ * @file This file contains MongoDB Schema for MCQ test paper
+ */
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const slugify = require('slugify');

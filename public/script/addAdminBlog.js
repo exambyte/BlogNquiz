@@ -3,7 +3,7 @@ const formFields = document.querySelector('form');
 //function to create a blog Post 
 
 /**
- * 
+ * Function to send a request to save a blog post to the server
  * @param {String} id 
  */
 const postBlog = (id) => {
@@ -47,7 +47,7 @@ const postBlog = (id) => {
 //function to get admin id
 
 /**
- * @async function
+ * @async
  */
 const getAdminId = async() => {
 

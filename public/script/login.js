@@ -6,7 +6,7 @@ form.addEventListener('submit', loginUser); //Adding Event listner to make Reque
 /**
  * Fuction to send request to server for POST login and receiving Response
  * @param {event} e 
- * @async function
+ * @async 
  */
 async function loginUser(e) {
     e.preventDefault();

@@ -1,3 +1,9 @@
+/**
+ * @file Home.js inside Routes will be used to route to home page
+ * @see <a href="routes_home.js.html">see the source code Here</a>
+ */
+
+
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/home');

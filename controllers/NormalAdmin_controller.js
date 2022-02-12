@@ -1,3 +1,8 @@
+/**
+ * @file This file inside Controllers has function definition for normal Admin/Faculty  members functionalities
+ */
+
+
 const normalAdmin = require('../models/normalAdmin'); //acquiring Schema for admin model
 const bcrypt = require('bcryptjs');
 const Article = require('../models/Blog');
@@ -10,11 +15,13 @@ const Test = require('../models/Test');
 
 /**
  * Function to GET request for rendering HTML for login page
+ * @module loginAdmin_get
  * @name get/login
  * @param {string} path
  * @param {callback} middleware
  * @param {*} req 
  * @param {login.ejs} res 
+ * @exports loginAdmin_get
  */
 exports.loginAdmin_get = (req, res) => {
     res.render('loginNormaladmin');
@@ -23,11 +30,13 @@ exports.loginAdmin_get = (req, res) => {
 /**
  * Function to POST request for validating login and if user is verified a response 'ok' will be send to
  * client otherwise a status code '400' will be send to client.
+ * @module loginAdmin_post
  * @param {Object} req 
  * @param {Number} res 
  * @param {callback} middleware
  * @returns {number}a status code o '400' when input fields are not filled
- * @async function
+ * @async 
+ * @exports loginAdmin_post
  */
 
 exports.loginAdmin_post = async(req, res) => {
@@ -74,8 +83,10 @@ exports.loginAdmin_post = async(req, res) => {
 
 /**
  * Function to render normal admin  dashboard
+ * @module dashboard_get
  * @param {*} req 
  * @param {NormalAdminDashBoard.ejs} res 
+ * @exports dashboard_get
  */
 exports.dashboard_get = (req, res) => {
     res.render('NormalAdminDashboard');
@@ -83,8 +94,10 @@ exports.dashboard_get = (req, res) => {
 
 /**
  * Function to get admin details to show in the dashboard
+ * @module admin_details_get
  * @param {Object} req 
  * @param {Object} res 
+ * @exports admin_details_get
  */
 exports.admin_details_get = (req, res) => {
     res.send(req.verifiedAdmin);
@@ -94,8 +107,10 @@ exports.admin_details_get = (req, res) => {
 
 /**
  * Function to render normal admin  Profile
+ * @module adminProfile_get
  * @param {*} req 
  * @param {NormalAdminDashBoard.ejs} res 
+ * @exports adminProfile_get
  */
 exports.adminProfile_get = (req, res) => {
     res.render('NormalAdminProfile');
@@ -114,8 +129,10 @@ exports.adminProfile_get = (req, res) => {
 
 /**
  * Function to render add blog page for adding a blog
+ * @module addBlog_get
  * @param {*} req 
  * @param {addblog.ejs} res 
+ * @exports addBlog_get
  */
 exports.addBlog_get = (req, res) => {
     res.render('addBlog');
@@ -125,9 +142,11 @@ exports.addBlog_get = (req, res) => {
 
 /**
  * Function to add blog post to the database
+ * @module addBlog_post
  * @param {Object} req 
- * @param {Number,Object} res 
- * @returns 
+ * @param {Number|Object} res 
+ * @returns {Number} status code
+ * @exports addBlog_post
  */
 exports.addBlog_post = async(req, res) => {
     console.log("Coming in backend to add blog");
@@ -175,8 +194,10 @@ exports.addBlog_post = async(req, res) => {
 
 /**
  * Function to show a particular blog using the slug 
+ * @module showBlog_get
  * @param {String} req 
  * @param {Object} res 
+ * @exports showBlog_get
  */
 
 exports.showBlog_get = async(req, res) => {
@@ -196,9 +217,11 @@ exports.showBlog_get = async(req, res) => {
 
 /**
  * Function to show all blogs created by a particular admin
+ * @module showAllBlogs_get
  * @param {_id} req 
- * @param {Array Object} res 
- * @async function
+ * @param {Array|Object} res 
+ * @async 
+ * @exports showAllBlogs_get
  */
 exports.showAllBlogs_get = async(req, res) => {
     const id = req.params.id;
@@ -217,9 +240,11 @@ exports.showAllBlogs_get = async(req, res) => {
 
 /**
  * Function to Update a blog using the id of the blog
+ * @module updateBlog_put
  * @param {_id} req 
- * @param {Object} res 
- * @async function
+ * @param {JSON|Number} res Json Data and status Code 
+ * @async 
+ * @exports updateBlog_put
  */
 exports.updateBlog_put = async(req, res) => {
     const id = req.params.id;
@@ -244,9 +269,11 @@ exports.updateBlog_put = async(req, res) => {
 
 /**
  * Function to delete a particular blog using the blog Id
+ * @module deleteBlog_delete
  * @param {_id} req 
  * @param {Object} res 
- * @async function
+ * @async 
+ * @exports deleteBlog_delete
  */
 exports.deleteBlog_delete = async(req, res) => {
     const id = req.params.id;
@@ -265,7 +292,13 @@ exports.deleteBlog_delete = async(req, res) => {
 
 
 //.................................Implementing Normal admin Test part.........................
-
+/**
+ * Function to save MCQ test data created by an admin
+ * @module saveTest_post
+ * @param {Object} req 
+ * @param {Number} res Status code 
+ * @exports saveTest_post
+ */
 exports.saveTest_post = async(req, res) => {
     const createdById = req.params.id;
     const title = req.body.title;
@@ -294,21 +327,37 @@ exports.saveTest_post = async(req, res) => {
 
 /**
  * Function to render  the test Panel
+ * @module testAdmin_get
  * @param {*} req 
  * @param {adminTestPanel.ejs} res 
+ * @exports testAdmin_get
  */
 exports.testAdmin_get = (req, res) => {
     res.render('testPanel');
 }
 
 
-
+/**
+ * Function to render mcqTest.ejs File
+ * @module testSlug_get
+ * @param {*} req 
+ * @param {mcqTest.ejs} res 
+ * @async
+ * @exports testSlug_get
+ */
 exports.testSlug_get = async(req, res) => {
     res.render('mcqTest');
 }
 
 
-
+/**
+ * Function to send test data by a particular slug
+ * @module testData_get
+ * @param {*} req 
+ * @param {Number|JSON} res 
+ * @async
+ * @exports testData_get
+ */
 exports.testData_get = async(req, res) => {
     let slug = req.params.slug;
     try {
@@ -322,4 +371,19 @@ exports.testData_get = async(req, res) => {
         res.status(500).json(err);
     }
 
+}
+
+
+
+exports.allBlogs_get=async (req,res)=>{
+    try{
+        const result = await Article.find({createdAt:{$gte:new Date("2022-01-15").toISOString(),$lte:new Date("2022-02-13").toISOString()}}).
+        populate('createdById');
+        if(result){
+            res.status('200').json(result);
+        }
+    }catch(err){
+        console.log(err);
+        res.status(500).json(err);
+    }
 }

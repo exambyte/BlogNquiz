@@ -21,7 +21,7 @@ formFields.addEventListener('submit', async (e) => {
     console.log(name, email)//Testing Purpose
     try {
         /**
-         * @method {POST}
+         * @method POST
          * @header {Object}
          * @body {String}
          */

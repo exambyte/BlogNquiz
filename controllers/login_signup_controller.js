@@ -1,3 +1,9 @@
+/**
+ * @file This file inside Controllers has function definition for login and signup of a normal users
+ */
+
+
+
 const User = require('../models/userSchema'); //acquiring Schema for user model
 const bcrypt = require('bcryptjs');
 const Article = require('../models/Blog')
@@ -8,11 +14,13 @@ const Details = require('../models/userSchema')
 
 /**
  * Function to GET request for rendering HTML for Signup page
+ * @module register_normal_user_get
  * @name get/register
  * @param {String} path
  * @param {callback} middleware
  * @param {*} req 
  * @param {register.ejs} res 
+ * @exports register_normal_user_get
  */
 exports.register_get = (req, res) => {
     res.render('register');
@@ -22,9 +30,12 @@ exports.register_get = (req, res) => {
 /**
  * Function to POST request for Register if userregistered successfully server will send of status code 201
  * else a status code of 404 will be send
+ * @module register_normal_user_post
  * @param {Object} req 
  * @param {Number} res 
  * @returns {Number} status code
+ * @async
+ * @exports register_normal_user_post
  */
 exports.register_post = async(req, res) => {
 
@@ -80,11 +91,13 @@ exports.register_post = async(req, res) => {
 
 /**
  * Function to GET request for rendering HTML for login page
+ * @module normal_user_login_get
  * @name get/login
  * @param {string} path
  * @param {callback} middleware
  * @param {*} req 
  * @param {login.ejs} res 
+ * @exports normal_user_login_get
  */
 
 exports.login_get = (req, res) => {
@@ -95,11 +108,13 @@ exports.login_get = (req, res) => {
 /**
  * Function to POST request for validating login and if user is verified a response 'ok' will be send to
  * client otherwise a status code '400' will be send to client.
+ * @module normal_user_login_post
  * @param {Object} req 
  * @param {Number} res 
  * @param {callback} middleware
  * @returns {number}a status code o '400' when input fields are not filled
- * @async function
+ * @async 
+ * @exports normal_admin_login_post
  */
 exports.login_post = async(req, res) => {
     try {
@@ -143,8 +158,10 @@ exports.login_post = async(req, res) => {
 
 /**
  * GET request to logout the user
+ * @module normal_user_logout_get
  * @param {*} req 
  * @param {Number} res 
+ * @exports normal_user_logout_get
  */
 exports.logout_get = (req, res) => {
     res.clearCookie('jwtoken');

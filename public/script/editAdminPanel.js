@@ -26,9 +26,9 @@ formFields.addEventListener('submit', async (e) => {
     console.log(name, contactNo)//Testing Purpose
     try {
         /**
-         * @method {POST}
-         * @header {Object}
-         * @body {String}
+         * @method POST
+         * @header JSON
+         * @body String
          */
         const res = await fetch('/register', {
             method: "POST",

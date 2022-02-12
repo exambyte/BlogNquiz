@@ -21,9 +21,9 @@ formFields.addEventListener('submit', async(e) => {
     // console.log(name, email) //Testing Purpose
     try {
         /**
-         * @method {POST}
-         * @header {Object}
-         * @body {String}
+         * @method POST
+         * @header JSON
+         * @body String
          */
         const res = await fetch('/registerSuperAdmin', {
             method: "POST",

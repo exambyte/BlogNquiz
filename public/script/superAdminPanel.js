@@ -14,7 +14,7 @@ const formFields = document.getElementById('add-admin-form');
 
 /**
  * Function to add admin user to database
- * @async function
+ * @async 
  */
 formFields.addEventListener('submit', async(e) => {
     e.preventDefault();
@@ -75,7 +75,7 @@ formFields.addEventListener('submit', async(e) => {
 /**
  * Function to put the existiong admin values to the respective input fields
  * @param {String} id 
- * @async function
+ * @async 
  */
 const displayData = async(id) => {
     try {
@@ -164,7 +164,7 @@ function editAdmin(id) {
 /**
  * Function to DELETE the admin data
  * @param {String} id 
- * @async function
+ * @async 
  */
 const deleteAdmin = async(id) => {
     if (confirm('Are you sure you want to delete the Admin?')) {
@@ -200,7 +200,7 @@ const deleteAdmin = async(id) => {
 
 /**
  * Function to receive data from backend 
- * @async function
+ * @async 
  */
 const getAllData = async() => {
     try {
@@ -277,7 +277,7 @@ const getLogout = () => {
 
 /**
  * Function to show the Super admin details
- * @async function
+ * @async 
  */
 const adminPanel = async() => {
     try {

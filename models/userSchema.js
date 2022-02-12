@@ -1,4 +1,9 @@
 /**
+ * @file This file contains MongoDB schema for normal user
+ */
+
+
+/**
  * @imports module
  * @const
  */

@@ -1,4 +1,8 @@
 /**
+ * @file This file contains mongoDB schema for Normal Admin/faculty members .
+ */
+
+/**
  * @imports module
  * @const
  */

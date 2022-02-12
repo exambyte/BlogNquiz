@@ -1,4 +1,10 @@
 /**
+ * @file server.js is the main file for this application
+ * @author ExamBytes Pvt. Ltd.
+ * @see <a href="server.js.html">see all the source code Here</a>
+ */
+
+/**
  * express module
  * @const
  */
@@ -51,17 +57,17 @@ const test = require('./routes/test');
 
 dotenv.config({ path: './config.env' });
 
-const PORT = process.env.PORT || 2000; //Getting PORT Dynamically in case not Dynamic a port 3000 is mentioned
-// const DB = process.env.DATABASE; //Getting Databse URI
+const PORT = process.env.PORT || 8000; //Getting PORT Dynamically in case not Dynamic a port 3000 is mentioned
+const DB = process.env.DATABASE; //Getting Databse URI
 // connection to database
-mongoose.connect('mongodb://localhost:27017/Exambytedb')
+// mongoose.connect(DB);
 
-// /**
-//  * @connect {*}Setting mongoose Connection
-//  */
-// mongoose.connect(DB).then(()=>{
-//     console.log("connection Successful");
-// }).catch((err)=> console.log(err));
+/**
+ * @connect {*}Setting mongoose Connection
+ */
+mongoose.connect(DB).then(()=>{
+    console.log("connection Successful");
+}).catch((err)=> console.log(err));
 
 
 const app = express();

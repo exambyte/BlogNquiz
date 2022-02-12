@@ -1,3 +1,6 @@
+/**
+ * @file This file contains MongoDB schema and model for a Blog .
+ */
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 const Schema = mongoose.Schema;

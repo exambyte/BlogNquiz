@@ -17,7 +17,7 @@ const displayCreateBlogSection = (id) => {
 /**
  * 
  * @param {String} id
- * @async function 
+ * @async 
  */
 const displayShowBlogSection = async(id) => {
 
@@ -62,7 +62,7 @@ const displayShowBlogSection = async(id) => {
 
 //Function to get Admin data and display it dinamically
 /**
- * @async function
+ * @async 
  */
 const getAdminData = async() => {
     try {
@@ -101,6 +101,7 @@ getAdminData(); //calling function to display admin data
  * Function to fill input fields with existing Data
  * @param {String} adminId 
  * @param {Number} i 
+ * @async
  */
 const fillInputfields = async(adminId, i) => {
     try {
@@ -132,7 +133,7 @@ const fillInputfields = async(adminId, i) => {
  * @param {String} adminId 
  * @param {String} blogId 
  * @param {Number} i 
- * @async function
+ * @async 
  */
 const editBlog = async(adminId, blogId, i) => {
     displayAdminAllBlogsSection.style.display = 'none';
@@ -188,7 +189,7 @@ const editBlog = async(adminId, blogId, i) => {
 /**
  * 
  * @param {String} blogId 
- * @async function
+ * @async 
  */
 const deleteBlog = async(blogId) => {
     if (confirm('Are you sure you want to delete this blog ?')) {
