@@ -6,17 +6,20 @@
 
 .row{
     background: white;
-    border-radius: 30px;
-    border: solid;
-    background-color: whitesmoke;
+    border-radius: 25px;
+    background-color: rgb(66, 64, 64);
     width: 70vw;
+    margin-top: 3%;
+}
+.heading{
+    margin-top: 5%;
 }
 
 .row1{
     background: white;
     border-radius: 10px;
     border: solid;
-    background-color: rgb(179, 255, 102);
+    background-color: rgb(66, 64, 64);
     width: 70vw;
     margin-left: 15%;
     margin-top: 10%;
@@ -29,11 +32,8 @@
     margin-left: 4%;
     margin-right: 2%;
     margin-bottom: 4%;
-    background-color: rgb(255, 204, 255);
+    background-color: lightgray;
     
-}
-body{
-    background-color: paleturquoise;
 }
 
 .start-quiz h2{
@@ -58,6 +58,8 @@ margin-top: 2%;
     background-color: rgb(169, 211, 211);
 }
 
+
+
 .start-quiz .answer{
     margin-left: 30%;
     margin-top: 2%;
@@ -71,28 +73,29 @@ margin-top: 2%;
 
 
 .show-quiz-link{
-    font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bolder;
-    margin-left: 10%;
+    margin-left: 4%;
     margin-top: 5%;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
+    width: ;
+    
 
 }
 .show-quiz-link label{
-    margin-left: 1%; 
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+    margin-right: 55%;
+    font-family:'Times New Roman', Times, serif;
+    font-size: larger;
 }
 
 #show-quiz-link{
-   display: none;
+    display: none;
 }
 .start-quiz1{
     display: none;
 }
 
-#link{
-    width:90%;
-}
+
 
 .btn2{
     height: 40px;
@@ -155,8 +158,7 @@ margin-top: 2%;
     width: 70%;
     border: none;
     outline: none;
-    border-radius: 60px;
-    border: 1px solid;
+    border-radius: 8px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font:bolder;
     box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.75);
@@ -170,8 +172,7 @@ margin-top: 2%;
     width: 60%;
     border: none;
     outline: none;
-    border-radius: 60px;
-    border: 1px solid;
+    border-radius: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font:bolder;
     box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.75);
@@ -185,18 +186,17 @@ margin-top: 2%;
     width: 70%;
     border: none;
     outline: none;
-    border-radius: 60px;
-    border: 1px solid;
+    border-radius: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font:bolder;
-    background-color: lightsalmon;
+    background-color: lightgray;
    
 }
 
 
 .btn{
     height: 40px;
-    width: 70%;
+    width: 30%;
     border: 12px 12px 22px;
     outline: none;
     border-radius: 60px;
@@ -258,7 +258,7 @@ margin-top: 2%;
       #title{
         width: 60%; 
       }
-      .btn2{
+      .btn2,.btn{
           width: 30%;
       }
       .row1,.row2{
@@ -277,10 +277,11 @@ margin-top: 2%;
       .inp,select,option{
           width: 90%;
       }
+     
   }
   @media (min-width:360px){
     #title{
-        width: 90%;
+        width: 80%;
         
       }
       .row{
@@ -300,9 +301,32 @@ margin-top: 2%;
           font-size: medium;
           font-weight:300;
       }
-      .btn2{
+      .btn2,.btn{
           width: 40%;
+      }
+      .heading{
+          margin-top: 20%;
       }
       
   }
+  @media (min-width:600px) {
+      #title{
+          width: 60%;
+      }
+  }
+  @media (min-width:450px) {
+    .heading{
+        margin-top: 17%;
+    }
+}
+@media (min-width:650px) {
+    .heading{
+        margin-top: 10%;
+    }
+}
+@media (min-width:1043px) {
+    .heading{
+        margin-top: 5%;
+    }
+}
  

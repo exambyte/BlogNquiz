@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="css/superAdminStyle.css">
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/NormalAdminDashboard.css">
     <link rel="stylesheet" href="css/normalAdminProfile.css">
     <link rel="icon" href="data:,">
 
@@ -27,9 +28,10 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-info">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Exambyte</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -52,18 +54,19 @@
         </div>
     </nav>
 
+  
     <!-- This is a  test html it will replaced by front end developer -->
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <br>
-    <h2 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Normal Admin Dashboard Page</h2>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <h2 style="font-family:cursive;" id="name">Hi</h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="dashboard-heading">
+        <h2 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+        Normal Admin Dashboard Page</h2>
+        <div class="dashboard-heading-name">
+    <h2 style="font-family:cursive;" id="name">Hi</h2>
     <div class="button col-xs-8 py-3 ">
         <div id="button-section" class="offset-1 col-lg-10 text-center">
         </div>
-
+</div>
     </div>
-
+</div>
     <!-- div for getting Admins all blog -->
     <div id="show-admin-all-blogs">
 
@@ -85,32 +88,37 @@
 
             <form enctype="multipart/form-data" id="form">
                 <div class="form-group mb-4">
-                    <input style="height: 50px; font-size: 20px" type="text" name="title" id="title" class="form-control" placeholder="Enter title for your article">
+                    <input style="height: 50px; font-size: 20px" type="text" name="title" id="title"
+                        class="form-control" placeholder="Enter title for your article">
                 </div>
 
                 <div class="form-group">
-                    <textarea style="font-size: 20px" name="description" id="description" class="form-control" rows="5" placeholder="Enter Description"></textarea>
+                    <textarea style="font-size: 20px" name="description" id="description" class="form-control" rows="5"
+                        placeholder="Enter Description"></textarea>
                 </div>
 
                 <div class="form-group mb-3">
-                    <textarea style="font-size: 20px" name="markdown" id="markdown" class="form-control" placeholder="Enter Markdown"></textarea>
+                    <textarea style="font-size: 20px" name="markdown" id="markdown" class="form-control"
+                        placeholder="Enter Markdown"></textarea>
                 </div>
 
                 <!-- image upload -->
 
                 <div class="form-group mb-4 text-center
                         justify-content-center">
-                    <input style="height: 50px; font-size: 20px;" type='file' name="file" id="image" class="form-control" accept="image/*" multiple>
+                    <input style="height: 50px; font-size: 20px;" type='file' name="file" id="image"
+                        class="form-control" accept="image/*" multiple>
                 </div>
 
                 <div class="new_blog form-group">
                     <div class="btn-group my-4">
-                        <input class="btn btns" name="category" list="browsers" placeholder="Select Category" id="category">
+                        <input class="btn btns" name="category" list="browsers" placeholder="Select Category"
+                            id="category">
                         <datalist id="browsers">
-                <option value="Physics">
-                <option value="Chemistry">
-                <option value="Math">
-              </datalist>
+                            <option value="Physics">
+                            <option value="Chemistry">
+                            <option value="Math">
+                        </datalist>
                     </div>
                 </div>
 
@@ -153,9 +161,10 @@
 
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <script src="script/normalAdminProfile.js"></script>
-
 </body>
 
 </html>

@@ -6,22 +6,36 @@
 
 .row
 {
-    background: white;
-    border-radius: 30px;
+    background: rgba(58, 56, 56, 0.623);
+    border-radius: 15px;
     box-shadow: 12px 12px 22px;
-    margin-top: 76px ;
+    margin-top: 12%;
     font-family:Georgia, 'Times New Roman', Times, serif;
+    box-shadow: inset 0 0 2000px rgba(58, 56, 56, 0.623);
+    background: inherit;
+    
 }
 
-.login img{
-    border-top-left-radius: 30px ;
-    border-bottom-left-radius: 30px;
+
+.color{
+    border-radius: 15px;
+}
+.color h1{
+    font-weight: bolder;
+    font-size: 1000;
+    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+    font-family: 'Libre Baskerville', serif;
+    font-family: 'Mukta', sans-serif;
+    font-family: 'Source Serif 4', sans-serif;
 }
 
 .login h2{
-    font-size: 2rem;
+    font-size: 4rem;
     font-weight: 700;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+font-family: 'Libre Baskerville', serif;
+font-family: 'Mukta', sans-serif;
+font-family: 'Source Serif 4', sans-serif;
 }
 .inp{
     height: 50px;
@@ -42,26 +56,25 @@
     outline: none;
     border-radius: 60px;
     font-weight: 600;
-    background: rgb(223, 56, 56);
+    background: black;
     color: white;
 
 }
 .btn1:hover{
-    background: brown;
+    background: rgb(63, 62, 62);
     transition: 0.5s;
 }
 
-@media only screen and (min-width:360px) {
+
+@media (max-width:990px) {
    
     .inp{
         width: 85%;
     }
     
 }
-@media only screen and (max-width:99px) {
-   
-    .inp{
-        width: 70%;
+@media (max-width:990px){
+    div .color{
+        display: none;
     }
-    
 }

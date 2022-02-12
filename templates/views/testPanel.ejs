@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/css/adminTestPanel.css">
+    <link rel="icon" href="data:,">
 
     <!-------Fonts-------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,14 +25,15 @@
 
 <body>
 
-    <!--------------Navigation----------------->
+     <!--------------Navigation----------------->
 
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-info">
+     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-info">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Name/Logo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+            <a class="navbar-brand" href="#">Exambyte</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -52,7 +54,7 @@
                 </ul>
             </div>
         </div>
-    </nav><br><br><br><br><br>
+    </nav>
 
     <!--------------Header------------------>
     <div class="heading text-center offset-5">
@@ -62,16 +64,25 @@
         <p id="no-of-qtn"></p>
 
 
+        <section id="show-quiz-link" class="show-quiz-link">
+            <label for="link"><b>Link for your Test :</label>
+            <input type="text" name="link" id="link" class="link px-1">
+            <div id="direct-link">
+            </div>
+        </section>
+
         <!--------------container----------------->
         <section class="sec py-1">
-            <div class="row g-0 offset-2 ">
+            <div class="row g-2 offset-2 ">
                 <div class="col-xs-7 py-2 ">
-                    <input type="text" name="title" class="inp px-3" id="title" placeholder="Enter the title here" required>
+                    <input type="text" name="title" class="inp px-3" id="title" placeholder="Enter the title here"
+                        required>
                 </div>
                 <div id="quiz-area">
                     <form id="form-field">
                         <div class="col-xs-7 py-2">
-                            <input type="text" name="question" class="inp px-3" placeholder="Type your question here" required>
+                            <input type="text" name="question" class="inp px-3" placeholder="Type your question here"
+                                required>
                         </div>
                         <div class="col-xs-7 py-2">
                             <input type="text" name="option1" class="inp px-3" placeholder="option 1" required>
@@ -81,36 +92,31 @@
                         </div>
                         <div class="col-xs-7 py-2 ">
                             <select id="answer" class="inp px-3" required>
-                <option selected disabled>Select the correct answer</option>
-                <option value='ans1'>ans1</option>
-                <option value='ans2'>ans2</option>
-              </select><br>
+                                <option selected disabled>Select the correct answer</option>
+                                <option value='ans1'>ans1</option>
+                                <option value='ans2'>ans2</option>
+                            </select><br>
                         </div>
                         <div class="col-xs-7  py-2">
                             <button type="submit" class="btn">Submit Question</button>
                         </div>
                 </div>
         </section>
-        </div>
-        </form>
+    </div>
+    </form>
     </div>
 
     <!--------Create Quiz Button ------>
     <div class="row g-0  offset-2 text-center">
-        <div class="col-xs-7 py-2">
+        <div class="quiz col-xs-7 py-2">
             <section id="save-quiz-data">
 
             </section>
+            
         </div>
-    </div><br><br><br><br>
+    </div>
 
-    <section id="show-quiz-link" class="show-quiz-link">
-        <label for="link">Link for your Test :</label>
-        <input type="text" name="link" id="link" class="link px-1">
-        <div id="direct-link">
-
-        </div>
-    </section>
+    
     <section class="start-quiz1" id="start-quiz">
         <div class="row1">
             <div class="row2">
@@ -126,7 +132,8 @@
                     <label for="ans2" id="option2"> option 2</label>
                 </li>
 
-                <button id="submit" class="btn2"><a href="#showScore" style="text-decoration: none; color: white;">Submit</a></button>
+                <button id="submit" class="btn2"><a href="#showScore"
+                        style="text-decoration: none; color: white;">Submit</a></button>
             </ul>
         </div><br><br>
         <div class="row1">
@@ -139,7 +146,9 @@
     <script src="/script/adminTestPanel.js"></script>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+        </body>
 
 </html>
