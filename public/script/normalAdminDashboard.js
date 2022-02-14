@@ -3,7 +3,7 @@ const particular_blog_section = document.getElementById('particular-blog-section
 const displayfullBlog=(blogData)=>{
     blog_section.style.display="none";
     particular_blog_section.style.display = "flex";
-    console.log(blogData);
+    console.log(blogData.description);
     particular_blog_section.innerHTML =`
         <div class="particular-blog-info">
             <div class="particular-blog-title">
@@ -25,7 +25,7 @@ const displayfullBlog=(blogData)=>{
         </div>
         <div class="particular-blog-description">
             <hr>
-            <p>${blogData.description}</p>
+            <pre>${blogData.blogContent}</pre>
         </div>
     
     `
@@ -43,6 +43,7 @@ const dsplayBlogs = async ()=>{
         });
         const blog = await res.json();
         if(blog){
+            console.log(blog);
             for(let i=0; i<blog.length; i++){
                 blog_section.innerHTML+=`
                     <div class="blog-card">

@@ -152,9 +152,10 @@ exports.addBlog_post = async(req, res) => {
     console.log("Coming in backend to add blog");
 
     const createdById = req.params.id;
-    const createdBy = res.locals.user
+    const createdBy = res.locals.user;
     const title = req.body.title;
     const description = req.body.description;
+    const blogContent = req.body.blogContent;
     const markdown = req.body.markdown;
 
     // trying to save current user email in during post in articles collection
@@ -171,6 +172,7 @@ exports.addBlog_post = async(req, res) => {
     let article = new Article({
         title,
         description,
+        blogContent,
         markdown,
         createdBy,
         createdById,
@@ -377,7 +379,7 @@ exports.testData_get = async(req, res) => {
 
 exports.allBlogs_get=async (req,res)=>{
     try{
-        const result = await Article.find({createdAt:{$gte:new Date("2022-01-15").toISOString(),$lte:new Date("2022-02-13").toISOString()}}).
+        const result = await Article.find({createdAt:{$gte:new Date("2022-01-15").toISOString(),$lte:new Date("2022-02-15").toISOString()}}).
         populate('createdById');
         if(result){
             res.status('200').json(result);

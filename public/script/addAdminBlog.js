@@ -9,10 +9,11 @@ const formFields = document.querySelector('form');
 const postBlog = (id) => {
     formFields.addEventListener('submit', async(e) => {
         e.preventDefault();
-
+        const richtext = document.getElementById('richtext');
         // get values 
         const title = formFields.title.value;
         const description = formFields.description.value;
+        const blogContent = richtext.contentWindow.document.body.innerHTML;
         const markdown = formFields.markdown.value;
         const images = formFields.file.files;
         const category = formFields.category.value;
@@ -24,6 +25,7 @@ const postBlog = (id) => {
                 body: JSON.stringify({
                     title,
                     description,
+                    blogContent,
                     markdown,
                     images,
                     category,
@@ -42,6 +44,8 @@ const postBlog = (id) => {
         }
     });
 };
+
+
 
 
 //function to get admin id
@@ -63,6 +67,7 @@ const getAdminId = async() => {
 
         if (data) {
             postBlog(data._id);
+            // localStorage.setItem('admin_id', JSON.stringify(data._id));
         }
 
     } catch (err) {
@@ -71,3 +76,16 @@ const getAdminId = async() => {
 };
 
 getAdminId(); //Calling the function to get the admin id from database
+
+function enableEditMode(){
+    console.log('hiiii');
+    richTextField.document.designMode = 'on';
+}
+
+function execCmd(cmd) {
+    richTextField.document.execCommand(cmd,false,null);
+}
+
+function execCmdWithArg (cmd, arg) {
+    richTextField.document.execCommand(cmd,false,arg);
+}

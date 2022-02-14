@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
 .img-fluid {
     margin-top: 40px;
 }
@@ -13,7 +16,7 @@
 }
 
 .footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100vw;
     height: auto;
@@ -55,6 +58,137 @@
     margin-top: 4%;
     margin-bottom:5%;
 }
+
+
+/* Css for Blog Section */
+.blogs-section{
+    height: auto;
+    position: relative;
+    top: 2rem;
+    display:flex;
+    flex-wrap: wrap;
+}
+.blog-card{
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #134d5c;
+    color: white;
+    width:24rem;
+    box-shadow: 5px 10px 18px #888888;
+}
+
+.blog-details{
+    height: 8rem;
+    width: 100%;
+    background-color: #42d7ff;
+    color: #040404;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding:.4rem;
+}
+
+.blog-details:hover{
+    background-color:#134d5c;
+    color:white;
+    transition-duration: 1.5s;
+}
+
+.blog-details hr{
+    width:60%;
+}
+.author-details{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.author-details p{
+    margin:0rem 1rem;
+}
+
+.read-more-btn{
+    height: 4rem;
+    width: 100%;
+    display: flex;
+}
+.read-more-btn button{
+    margin: auto;
+    border: 0px;
+    padding:.2rem;
+    border-radius: 3px;
+}
+
+.read-more-btn button:hover{
+    background-color: #42d7ff;
+    color:black;
+}
+
+/* Particular blog section */
+.particular-blog-section{
+    display: none;
+    position:relative;
+    top:4rem;
+    height:auto;
+    width:100vw;
+    flex-direction: column;
+    background-color: black;
+    color:white;
+}
+
+.particular-blog-info{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+}
+
+.particular-blog-title{
+    margin-top:1rem;
+}
+
+.particular-blog-author-time-info{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 75%;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+}
+
+.particular-blog-category{
+    display: flex;
+    margin-top: 1rem;
+}
+
+.particular-blog-c{
+    width:50%;
+}
+
+.particular-blog-c p{
+    margin-left:.5rem;
+}
+
+.particular-blog-markdown p{
+    margin-left:5rem;
+}
+
+
+.particular-blog-description{
+    padding:1rem;
+}
+
+.particular-blog-description pre{
+    font-family: 'Roboto', sans-serif;
+    height: auto;
+    white-space: break-spaces;
+}
+
+
 
 @media only screen and (max-width:1722px) {
     footer {
