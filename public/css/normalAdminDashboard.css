@@ -16,7 +16,7 @@
 }
 
 .footer {
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 100vw;
     height: auto;
@@ -54,12 +54,11 @@
     text-align: center;
     
 }
+
 .dashboard-heading-name{
     margin-top: 4%;
     margin-bottom:5%;
 }
-
-
 /* Css for Blog Section */
 .blogs-section{
     height: auto;
@@ -181,14 +180,6 @@
 .particular-blog-description{
     padding:1rem;
 }
-
-.particular-blog-description pre{
-    font-family: 'Roboto', sans-serif;
-    height: auto;
-    white-space: break-spaces;
-}
-
-
 
 @media only screen and (max-width:1722px) {
     footer {

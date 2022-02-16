@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,189 +6,299 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped&family=Libre+Baskerville:ital@0;1&family=Mukta:wght@300;400;500&family=Source+Serif+4:ital,wght@0,200;1,200&display=swap"
+        rel="stylesheet">
+
+
+    <!--custom style-->
+    <link rel="stylesheet" href="css/home.css">
+    
+
+    <!---------AOS LIBRARY--------->
+    <link rel="stylesheet" href="../../public/css/aos.css">
 
 </head>
 
-
-
 <body>
 
-    <!-- div seperation -->
-    <div class="container-fluid">
+    <!--------------Navigation----------------->
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-info">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">logo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/home.ejs">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">SIGN IN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">SIGN UP</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 
-        <div class="row gx-5 mx-sm-auto">
-            <!-- to get left side div -->
-            <div class="col-lg-8 col-md-11 col-11 mx-auto" style="position: relative;">
-                <div class="row gy-5">
-                    <!-- first blog -->
-                    <% articles.forEach(article=> { %>
-                        <div class="col-12 card shadow p-4 blog_left__div mb-5">
-                            <div class="d-flex justify-content-center align-items-center flex-column pt-3 pb-3">
-                                <h1 class="read_more">
-                                    <%= article.title %>
-                                </h1>
-                                <p class="blog_title">Created On: <span class="font-weight-bold">
-                                                        <%= article.createdAt.toLocaleDateString() %>
-                                                    </span> </p>
-                                <p class="blog_title">Created By: <span data-post-id="<%= article.createdBy._id %>" id="userName" class="font-weight-bold">
-                                                        <%= article.createdBy.name %> <span id="in">in</span> <span>
-                                                                <%= article.category %>
-                                                            </span>
-                                    </span>
-                                </p>
+    <main>
+
+        <!---------Slide Show ------------>
+        <!-- <section class="site-title">
+            <div class="site-background" data-aos="fade-up" data-aos-delay="100">
+                <h1 style="color: whitesmoke;">Amazing Places on Earth</h1>
+                <button class="btn">Explore</button>
+            </div>
+        </section> -->
+
+
+
+        <!----site content-->
+
+        <section class="container">
+            <div class="site-content">
+                <div class="posts">
+                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="post-image">
+                            <div>
+                                <img src="pictures/raimond-klavins-KvVCDvD1_t0-unsplash.jpg" class="img" alt="blog3"
+                                    style="width: 80%; height: 30%;">
                             </div>
-
-
-
-
-
-                            <p class="read_more">
-                                <%= article.description %>
-                            </p>
-                            <p class=" read_more">
-                                <%= article.markdown %>
-                            </p>
-                            <div class="d-flex justify-content-between left_div_btns">
-
-                                <% if(article.likes.includes(user._id)) { %>
-                                    <div>
-                                        <button onclick="like_func(event);" data-post-id="<%= article.id %>" class="left_div__like" id="like_btn">
-                                                            Unlike
-                                                        </button>
-                                        <span id="likes-count-<%= article.id %>">
-                                                            <%= article.likes.length %>
-                                                        </span>
-                                    </div>
-                                    <% } else { %>
-                                        <div>
-                                            <button onclick="like_func(event);" data-post-id="<%= article.id %>" class="left_div__like" id="like_btn">
-                                                                Like
-                                                            </button>
-                                            <span id="likes-count-<%= article.id %>">
-                                                                <%= article.likes.length %>
-                                                            </span>
-                                        </div>
-                                        <% } %>
-                                            <% if(user.bookmarks.includes(article._id)) { %>
-                                                <div>
-                                                    <button onclick="save_func(event);" data-post-id="<%= article.id %>" class="left_div__save" id="save_btn">
-                                                                        Unsave
-                                                                    </button>
-                                                </div>
-                                                <% } else { %>
-                                                    <div>
-                                                        <button onclick="save_func(event);" data-post-id="<%= article.id %>" class="left_div__save" id="save_btn">
-                                                                            Save
-                                                                        </button>
-                                                    </div>
-                                                    <% } %>
+                            <div class="post-info flex-row">
+                                <span><i class="fa-solid fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
+                                <span><i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;&nbsp;January
+                                    14,2020</span>
+                                    <span>2 minutes</span>
                             </div>
                         </div>
-                        <% }) %>
+                        <div class="post-title">
+                            <a href="#">Title</a>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, voluptatibus distinctio
+                                architecto cupiditate ratione ex autem voluptatum, voluptate quasi voluptatem sint
+                                natus? Maxime, sequi. Ratione sequi iste voluptatem facere omnis!</p>
+                            <button class="btn post-btn">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="post-image">
+                            <div>
+                                <img src="pictures/greg-rakozy-oMpAz-DN-9I-unsplash.jpg" class="img" alt="blog2"
+                                    style="width: 80%; height: 40%;">
+                            </div>
+                            <div class="post-info flex-row">
+                                <span> <i class="fa-solid fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
+                                &nbsp;<span> <i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;&nbsp;January
+                                    14,2021</span>
+                                    <span>20 minutes</span>
+                            </div>
+                        </div>
+                        <div class="post-title">
+                            <a href="#">Title</a>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, voluptatibus distinctio
+                                architecto cupiditate ratione ex autem voluptatum, voluptate quasi voluptatem sint
+                                natus? Maxime, sequi. Ratione sequi iste voluptatem facere omnis!</p>
+                            <button class="btn post-btn">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="post-image">
+                            <div>
+                                <img src="pictures/irina-grotkjaer-dNQS9yHUXGE-unsplash.jpg" class="img" alt="blog2"
+                                    style="width: 80%; height: 40%;">
+                            </div>
+                            <div class="post-info flex-row">
+                                <span> <i class="fa-solid fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
+                                &nbsp;<span> <i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;&nbsp;January
+                                    14,2021</span>
+                                    <span>7 minutes</span>
+                            </div>
+                        </div>
+                        <div class="post-title">
+                            <a href="#">Title</a>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, voluptatibus distinctio
+                                architecto cupiditate ratione ex autem voluptatum, voluptate quasi voluptatem sint
+                                natus? Maxime, sequi. Ratione sequi iste voluptatem facere omnis!</p>
+                            <button class="btn post-btn">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="post-image">
+                            <div>
+                                <img src="pictures/leon-rohrberg-yFIds8Xa73I-unsplash.jpg" class="img" alt="blog2"
+                                    style="width: 80%; height: 40%;">
+                            </div>
+                            <div class="post-info flex-row">
+                                <span> <i class="fa-solid fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
+                                &nbsp;<span> <i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;&nbsp;January
+                                    14,2021</span>
+                                    <span>5 minutes</span>
+                            </div>
+                        </div>
+                        <div class="post-title">
+                            <a href="#">Title</a>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, voluptatibus distinctio
+                                architecto cupiditate ratione ex autem voluptatum, voluptate quasi voluptatem sint
+                                natus? Maxime, sequi. Ratione sequi iste voluptatem facere omnis!</p>
+                            <button class="btn post-btn">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="pagination flex-row">
+                        <a href="#"><i class="fa-solid fa-chevron-left"></i></a>
+                        <a href="#" class="page">1</a>
+                        <a href="#" class="page">2</a>
+                        <a href="#" class="page">3</a>
+                        <a href="#"><i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                <aside class="sidebar">
+                    <div class="category">
+                        <h2>Category</h2>
+                        <ul class="category-list">
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="100">
+                                <a href="#">Software</a>
+                                <span>(05)</span>
+                            </li>
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="200">
+                                <a href="#">Technology</a>
+                                <span>(07)</span>
+                            </li>
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="300">
+                                <a href="#">Lifestyle</a>
+                                <span>(01)</span>
+                            </li>
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="400">
+                                <a href="#">Shopping</a>
+                                <span>(15)</span>
+                            </li>
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="500">
+                                <a href="#">Food</a>
+                                <span>(08)</span>
+                            </li>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="popular-post">
+                        <h2>Popular post</h2>
+
+                        <div class="post-content" data-aos="flip-up" data-aos-delay="200">
+                            <div class="post-image">
+                                <div>
+                                    <img src="pictures/huper-by-joshua-earle-5lgPYsE_qe0-unsplash.jpg" class="img"
+                                        alt="blog3" style="width: 80%; height: 30%;">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span><i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;&nbsp;January
+                                        14,2020</span>
+                                    <span>2 Comments</span>
+                                </div>
+                            </div>
+                            <div class="post-title">
+                                <a href="#">New data recording system to better analyse road accidents</a>
+                            </div>
+                        </div>
+                        <div class="post-content" data-aos="flip-up" data-aos-delay="300">
+                            <div class="post-image">
+                                <div>
+                                    <img src="pictures/craig-bradford-5T01xlRRjPA-unsplash.jpg" class="img" alt="blog3"
+                                        style="width: 80%; height: 30%;">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span><i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;&nbsp;January
+                                        14,2020</span>
+                                    <span>2 Comments</span>
+                                </div>
+                            </div>
+                            <div class="post-title">
+                                <a href="#">New data recording system to better analyse road accidents</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="popular-tags">
+                        <h2>Popular Tags</h2>
+                        <div class="tags flex-row">
+                            <span class="tag" data-aos="flip-up" data-aos-delay="100">Software</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="200">Technology</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="300">Travel</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="400">Design</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="500">Photography</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="600">Nature</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="700">Lifestyle</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="800">Project</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <!---------Footer---------->
+
+    <footer class="footer">
+        <div class="container flex-row">
+            <div class="about-us" data-aos="fade-right" data-aos-delay="200">
+                <h2>About us</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur voluptas sint doloremque esse
+                    quis facere quisquam officiis nostrum, omnis quam.</p>
+
+            </div>
+            
+            
+            <div class="follow" data-aos="flip-left" data-aos-delay="200">
+                <h2>Follow</h2>
+                <p>Let us be Social</p>
+                <div>
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-youtube"></i>
                 </div>
             </div>
-
-
         </div>
-    </div>
-    </div>
+        <div class="rights flex-row">
+            <h4 class="text-gray">
+                Copyright@2022 All rights reserved
+                <a href="#">xyz</a>
+            </h4>
+        </div>
+        <!-- <div class="move-up">
+            <span><i class="fa-solid fa-circle-arrow-up fa-2x"></i></span>
+        </div> -->
+    </footer>
 
 
 
-    <!-- JS  -->
+    <!--  Font Awesome  -->
+    <script src="https://kit.fontawesome.com/50c832ee4b.js" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-    <script>
-        // for like btn
-        const like = document.getElementById('like_btn');
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
-        var toggleButtonText = {
-            Like: function(button) {
-                button.textContent = "Unlike";
-            },
-            Unlike: function(button) {
-                button.textContent = "Like";
-            }
-        };
+    <!------AOS JS------->
+    <script src="../../public/script/aos.js"></script>
 
-        var updatePostStats = {
-            Like: function(postId) {
-                document.querySelector('#likes-count-' + postId).textContent++;
-            },
-            Unlike: function(postId) {
-                document.querySelector('#likes-count-' + postId).textContent--;
-            }
-        };
-
-        const like_func = async(e) => {
-            e.preventDefault();
-            var postId = event.target.dataset.postId;
-
-            var action = event.target.textContent.trim();
-            // console.log(action)
-            toggleButtonText[action](event.target);
-            updatePostStats[action](postId);
-
-            try {
-                const liked = await fetch(`/like/${postId}`, {
-
-                    method: 'PUT',
-                    headers: {
-                        "Content-Type": "application/json",
-                    }
-                })
-                console.log(liked.json())
-            } catch (err) {
-                console.log('err')
-            }
-        };
-
-
-        // for save btn               
-
-        var toggleButtonTextSave = {
-            Save: function(button) {
-                button.textContent = "Unsave";
-            },
-            Unsave: function(button) {
-                button.textContent = "Save";
-            }
-        };
-
-
-        const save_func = async(e) => {
-
-            e.preventDefault();
-            var postId = event.target.dataset.postId;
-            console.log(postId)
-
-            // we can also implement that a post a alread saved in a user collection or not with action below
-            var action = event.target.textContent.trim();
-
-            toggleButtonTextSave[action](event.target);
-
-
-            try {
-                const saved = await fetch(`/bookmark/${postId}`, {
-
-                    method: 'PUT',
-                    headers: {
-                        "Content-Type": "application/json",
-                    }
-                })
-                const data = await saved;
-                // console.log(data)
-                // location.assign(data.url);
-            } catch (err) {
-                console.log(err)
-            }
-        };
-    </script>
-
-
+    <!--custom js-->
+    <script src="../../public/script/homePage.js"></script>
 
 </body>
 

@@ -12,30 +12,16 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
     <title>New Blog</title>
 </head>
 
 <body onload="enableEditMode();">
-
-    <div class="container-fluid">
-        <!-- to get space from sides -->
-        <div class="col-xl-6 col-lg-6 col-md-11 col-11 mx-auto mt-2
-                text-center">
-
-            <h1 class="mb-4 mt-3 new_blog">New Article</h1>
-
-            <form enctype="multipart/form-data" id="form">
-                <div class="form-group mb-4">
-                    <input style="height: 50px; font-size: 20px" type="text" name="title" id="title"
-                        class="form-control" placeholder="Enter title for your article">
-                </div>
-
-                <div class="form-group">
-                    <textarea style="font-size: 20px" name="description" id="description" class="form-control" rows="5"
-                        placeholder="Enter Description"></textarea>
-                </div>
-
-                <div class="form-group">
+    <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <div class="form-group" id="form-group">
                     <button type="button" onclick="execCmd('bold');"><i class="fa fa-bold"></i></button>
                     <button type="button" onclick="execCmd('italic');"><i class="fa fa-italic"></i></button>
                     <button type="button" onclick="execCmd('underline');"><i class="fa fa-underline"></i></button>
@@ -58,7 +44,7 @@
                     <button type="button" onclick="execCmd('insertHorizontalRule');">HR</button>
                     <button type="button" onclick="execCmdWithArg('createLink',prompt('Enter a URL','http:example.com'));"><i
                             class="fa fa-link"></i></button>
-                    <br>
+            
                     <select onclick="execCmdWithArg('fontName',this.value);">
                         <option value="Arial">Arial</option>
                         <option value="Courier">Courier</option>
@@ -78,7 +64,43 @@
                         <option value="5">5</option>
                     </select>
                 </div>
-                <iframe name="richTextField" id="richtext" style="width:500px; height:250px;"></iframe>
+                
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-info">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+        </nav>
+    </div>
+
+    
+
+  
+
+    <div class="container-fluid">
+        <!-- to get space from sides -->
+        <div class="col-xl-6 col-lg-6 col-md-11 col-11 mx-auto mt-2
+                text-center">
+
+            <h1 class="mb-4 mt-3 new_blog">New Article</h1>
+
+            <form enctype="multipart/form-data" id="form">
+                <div class="form-group mb-4">
+                    <input style="height: 50px; font-size: 20px" type="text" name="title" id="title"
+                        class="form-control" placeholder="Enter title for your article">
+                </div>
+
+                <div class="form-group">
+                    <textarea style="font-size: 20px;" name="description" id="description" class="form-control" rows="7"
+                        placeholder="Enter Description"></textarea>
+                </div>
+
+
+                <iframe name="richTextField" id="richtext" style="width:80%; height:250px;"></iframe>
 
 
                 <div class="form-group mb-3">
@@ -111,7 +133,6 @@
             </form>
         </div>
     </div>
-
 
 
 
