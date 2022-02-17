@@ -4,6 +4,8 @@ const start_quiz = document.getElementById('start-quiz');
 const questions = document.getElementById('qtn');
 const option_1 = document.getElementById('option1');
 const option_2 = document.getElementById('option2');
+const option_3 = document.getElementById('option3');
+const option_4 = document.getElementById('option4');
 const submit = document.getElementById('submit');
 const answers = document.querySelectorAll('.answer');
 const showScore = document.querySelector('#showScore');
@@ -15,6 +17,8 @@ let obj1 = {
     question: this.question,
     option1: this.option1,
     option2: this.option2,
+    option3: this.option3,
+    option4: this.option4,
     answer: this.answer
 }
 
@@ -33,8 +37,10 @@ form_field.addEventListener('submit',(e)=>{
     let question = form_field.question.value;
     let option1 = form_field.option1.value;
     let option2 = form_field.option2.value;
+    let option3 = form_field.option3.value;
+    let option4 = form_field.option4.value;
     let answer = form_field.answer.value;
-    obj1 = { question, option1, option2, answer };
+    obj1 = { question, option1, option2,option3,option4, answer };
     questionArray.push(obj1);
     console.log(questionArray);
     localStorage.setItem("questionData", JSON.stringify(questionArray));
@@ -118,7 +124,7 @@ const saveQuiz =async(ID) =>{
                 "Content-Type": "application/json"
             }
         });
-
+        localStorage.removeItem("questionData");
         const data = await res.json();
         if(data){
             console.log(data);

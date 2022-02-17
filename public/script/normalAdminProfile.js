@@ -43,7 +43,7 @@ const displayShowBlogSection = async(id) => {
                         <div id="blog-data-section" class="blog-data-section-class">
                             <div class="blog-content">
                                 <h2>${data[i].title}</h2>
-                                <p>${data[i].description}</p>
+                                <p>${data[i].description.substring(0,100)}</p>
                             </div>
                             <div class="blog-actions">
                                 <button onclick="editBlog('${id}','${data[i]._id}','${i}')">Edit</button>
@@ -81,6 +81,7 @@ const getAdminData = async() => {
 
         if (data) {
             document.getElementById('name').innerHTML = data.name;
+            document.getElementById('email').innerHTML = data.email;
             let blogButtons = `
                 <button class="button-sec" onclick="displayCreateBlogSection('${data._id}')">Create a Blog</button>
                 <button class="button-sec" onclick="displayShowBlogSection('${data._id}')">Show all blogs</button>

@@ -1,3 +1,4 @@
+AOS.init();
 const getDisplayNone = () => {
     document.getElementById('logout').style.display = "none";
 }

@@ -3,6 +3,8 @@ let quizData =[];
 const questions = document.getElementById('qtn');
 const option_1 = document.getElementById('option1');
 const option_2 = document.getElementById('option2');
+const option_3 = document.getElementById('option3');
+const option_4 = document.getElementById('option4');
 const submit = document.getElementById('submit');
 const answers = document.querySelectorAll('.answer');
 const showScore = document.querySelector('#showScore');
@@ -22,11 +24,12 @@ const getTestData = async()=>{
         });
 
         const data = await res.json();
-        if(data){
-            console.log(data);
-            quizData = data[0].questions;
-            localStorage.setItem("quizData", JSON.stringify(quizData));
-        }
+            if(data){
+                console.log(data);
+                quizData = data[0].questions;
+                localStorage.setItem("quizData", JSON.stringify(quizData));
+            }
+
     }catch (err) {
         console.log(err);
     }
@@ -40,11 +43,13 @@ let score = 0;
 
 
 const startQuiz = () => {
-    
+    console.log(quiz_data[0]);
     const question_data = quiz_data[questionCount];
     questions.innerText = question_data.question;
     option_1.innerText = question_data.option1;
     option_2.innerText = question_data.option2;
+    option_3.innerText = question_data.option3;
+    option_4.innerText = question_data.option4;
 }
 
 function getCheckAnswer() {

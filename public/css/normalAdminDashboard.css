@@ -181,6 +181,12 @@
     padding:1rem;
 }
 
+.particular-blog-description pre{
+    font-family: 'Roboto', sans-serif;
+    height: auto;
+    white-space: break-spaces;
+}
+
 @media only screen and (max-width:1722px) {
     footer {
         width: inherit;
