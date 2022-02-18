@@ -46,26 +46,32 @@ const dsplayBlogs = async () => {
             console.log(blog);
             for (let i = 0; i < blog.length; i++) {
                 blog_section.innerHTML += `
-                <div class="blog-card">
-                <div class="blog-title">
-                    <h2>${blog[i].title}</h2>
+                <div class="site-content">
+                <div class="posts">
+                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                
+                            <div class="post-info flex-row">
+                                <span><i class="fa-solid fa-user text-gray"></i>&nbsp;&nbsp;${blog[i].createdById.name}</span>
+                                <span><i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;&nbsp;January
+                                    14,2020</span>
+                                <span>${blog[i].category}</span>
+                            </div>
+                        </div>
+                        <div class="post-title">
+                            <a href="#">${blog[i].title}</a>
+                            <p>${blog[i].description.substring(0,100)}.....</p>
+                            <button class="bttn post-bttn"  onclick="displayfullBlog(${JSON.stringify(blog[i]).split('"').join("&quot;")})">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
+                        </div>
+                        
+                    </div>
                     <hr>
-                </div>
-                <div class="author-details">
-                    <p>Author: ${blog[i].createdById.name}</p>
-                    <p>Category: ${blog[i].category}</p>
-                </div>
-                <div class="blog-details">
-                     <hr>
-                    ${blog[i].description.substring(0,100)}.....
-                </div>
-                <div class="read-more-btn">
-                    <button onclick="displayfullBlog(${JSON.stringify(blog[i]).split('"').join("&quot;")})">Read More</button>
-                </div>
-            </div>
+                    </div>
+                    </div>
                    
                 `
+                
             }
+            
         }
     } catch (err) {
         console.log(err);

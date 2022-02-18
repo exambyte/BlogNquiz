@@ -51,7 +51,7 @@ h3{
     font-size: 1.3rem;
 }
 
-button .btn{
+button .bttn{
     border: none;
     border-radius: 10rem;
     
@@ -83,57 +83,12 @@ p{
 
 /* ------------- navbar -------------- */
 
-.nav{
-    background: white;
-    padding: 0 2rem;
-    height: 0rem;
-    min-height: 10vh;
-    overflow:hidden;
-}
-
-.nav .nav-menu{
-    justify-content: space-between;
-   
-}
-
-.nav .toggle-collapse{
-    position:absolute;
-    top:0%;
-    width: 90%;
-    cursor: pointer;
-    display: none;
-}
-
-.nav .toggle-collapse .toggle-icons {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1.7rem 0;
-}
-
-.nav .toggle-collapse .toggle-icons i{
-    font-size: 1.4rem;
-    color: var(--text-gray);
-}
-.nav .nav-items{
-    display: flex;
-    margin: 0;
-}
-
-.nav .nav-items .nav-link{
-    padding: 1.6rem 1rem;
-    font-size: 1.1rem;
-    position: relative;
-    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
-    font-size: 1.1rem;
-}
 
 .navbar .collapse .navbar-nav li:hover{
     background-color: lightblue;
 }
 
-.nav .nav-items .nav-link:hover a{
-    color: var(--bg-color);
-}
+
 
 .navbar  a{
     padding: 1rem 0;
@@ -143,17 +98,6 @@ p{
 
 }
 
-.nav .social{
-    padding: 1.4rem 0;
-}
-
-.nav .social i{
-    padding: 0.2rem;
-}
-
-.nav .social:hover{
-    color: #a1c4cf;
-}
 
 /*------ main content ----000*/
 
@@ -184,12 +128,12 @@ main .site-title .site-bg{
 main .site-title h1,h3{
     margin: .3rem;
 } 
-main .site-title .btn{
+main .site-title .bttn{
     margin: 1.8rem;
     background: var(--sky);
 }
 
-main .site-title .btn:hover{
+main .site-title .bttn:hover{
     background: transparent;
     border: 1px solid var(--white);
     color: var(--white);
@@ -243,7 +187,7 @@ main .site-content .post-content > .post-image .img:hover{
   main .post-info span{
       margin-left: .5rem;
   }
-  main .site-content .post-content .post-title .post-btn{
+  main .site-content .post-content .post-title .post-bttn{
       border-radius: 0;
       padding: .7rem 1.5rem;
       background: var(--sky);
@@ -317,29 +261,6 @@ main .site-content .post-content > .post-image .img:hover{
   .site-content .sidebar .popular-post .post-title a{
       font-size: 1rem;
 
-  }
-
-  .site-content .sidebar .newsletter{
-      padding-top: 10rem;
-  }
-
-  .site-content .sidebar .newsletter .form-element{
-      padding: .5rem 2rem;
-  }
-
-  .site-content .sidebar .newsletter .input-element{
-      width: 80%;
-      height: 1.9rem;
-      padding: .3rem .5rem;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      font-size: 1rem;
-  }
-
-  .site-content .sidebar .newsletter .form-btn{
-      border-radius: 0;
-      padding: .8rem 32%;
-      margin: 1rem 0;
-      background: var(--sky);
   }
 
   .site-content .sidebar .popular-tags{
