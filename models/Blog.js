@@ -1,6 +1,3 @@
-/**
- * @file This file contains MongoDB schema and model for a Blog .
- */
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 const Schema = mongoose.Schema;
@@ -13,7 +10,7 @@ const articleSchema = new mongoose.Schema({
     description: {
         type: String
     },
-    blogContent:{
+    blogContent: {
         type: String
     },
     markdown: {
@@ -41,7 +38,6 @@ const articleSchema = new mongoose.Schema({
     },
     likes: [{ type: Schema.Types.ObjectId, ref: 'user' }]
 }, { timestamps: true })
-
 
 
 

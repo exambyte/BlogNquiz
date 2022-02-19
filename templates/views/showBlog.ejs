@@ -27,13 +27,22 @@
                                             <%= article.createdAt.toLocaleDateString() %>
                                             </span> </p>
                     <p class="blog_title">Created By: <span class="font-weight-bold">
-                                            
+                        <%= article.createdBy.name %>
                                                 </span> </p>
+
                 </div>
 
                 <figure class="mb-5">
 
+                    <img src="/uploads/<%= article.image[0].filename %>" style="width: 300px ; height: 250px;" alt="...">
+
+
                 </figure>
+
+                <div>
+                    <!-- special text  -->
+                    <%= article.blogContent %>
+                </div>
 
                 <p>
                     <%=article.description%>

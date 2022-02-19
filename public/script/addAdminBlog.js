@@ -6,7 +6,7 @@ const formFields = document.querySelector('form');
  * Function to send a request to save a blog post to the server
  * @param {String} id 
  */
-const postBlog = (id) => {
+const postBlog = async(id) => {
     formFields.addEventListener('submit', async(e) => {
         e.preventDefault();
         const richtext = document.getElementById('richtext');
@@ -15,36 +15,26 @@ const postBlog = (id) => {
         const description = formFields.description.value;
         const blogContent = richtext.contentWindow.document.body.innerHTML;
         const markdown = formFields.markdown.value;
-        const images = formFields.file.files;
+        const images = formFields.file.files
         const category = formFields.category.value;
-        console.log(images)
+        console.log('in blog script')
 
+        const formData = new FormData(document.getElementById("form"));
+        console.log(formData.blogContent)
         try {
             const res = await fetch(`/addBlog/${id}`, {
                 method: 'POST',
-                body: JSON.stringify({
-                    title,
-                    description,
-                    blogContent,
-                    markdown,
-                    images,
-                    category,
-                }),
-                headers: {
-                    "Content-Type": "application/json"
-                }
+                body: formData
             })
 
             const url = await res.url;
             // console.log(url)
-            location.assign(url);
-
+            location.assign(url)
         } catch (err) {
             console.log(err);
         }
     });
 };
-
 
 
 
@@ -77,15 +67,15 @@ const getAdminId = async() => {
 
 getAdminId(); //Calling the function to get the admin id from database
 
-function enableEditMode(){
+function enableEditMode() {
     console.log('hiiii');
     richTextField.document.designMode = 'on';
 }
 
 function execCmd(cmd) {
-    richTextField.document.execCommand(cmd,false,null);
+    richTextField.document.execCommand(cmd, false, null);
 }
 
-function execCmdWithArg (cmd, arg) {
-    richTextField.document.execCommand(cmd,false,arg);
+function execCmdWithArg(cmd, arg) {
+    richTextField.document.execCommand(cmd, false, arg);
 }

@@ -12,7 +12,7 @@ const multer = require('../middlewares/multer');
 
 
 
-router.get('/getAllBlogs',authenticate,normalAdminControllers.allBlogs_get);
+router.get('/getAllBlogs', authenticate, normalAdminControllers.allBlogs_get);
 
 //......................Routes for Login.....................................
 
@@ -75,7 +75,7 @@ router.get('/addBlog/:id', authenticate, normalAdminControllers.addBlog_get);
  * @module normal_admin_router
  * @method POST
  */
-router.post('/addBlog/:id', multer.array('file'), authenticate, normalAdminControllers.addBlog_post);
+router.post('/addBlog/:id', authenticate, multer.array('file'), normalAdminControllers.addBlog_post);
 
 /**
  * route to get a particular blog a normal Admin

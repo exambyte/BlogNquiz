@@ -57,18 +57,22 @@ const test = require('./routes/test');
 
 dotenv.config({ path: './config.env' });
 
-const PORT = process.env.PORT || 8000; //Getting PORT Dynamically in case not Dynamic a port 3000 is mentioned
+const PORT = process.env.PORT || 2000; //Getting PORT Dynamically in case not Dynamic a port 3000 is mentioned
 const DB = process.env.DATABASE; //Getting Databse URI
 // connection to database
 // mongoose.connect(DB);
 
+
 /**
  * @connect {*}Setting mongoose Connection
  */
-mongoose.connect(DB).then(()=>{
-    console.log("connection Successful");
-}).catch((err)=> console.log(err));
 
+// mongoose.connect(DB).then(() => {
+//     console.log("connection Successful");
+// }).catch((err) => console.log(err));
+
+// connection to database
+mongoose.connect('mongodb://localhost:27017/Exambytedb')
 
 const app = express();
 

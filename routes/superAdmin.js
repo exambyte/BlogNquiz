@@ -75,6 +75,7 @@ router.post('/createAdmin', superAdminControllers.create_admin);
  * @module super_Admin_Routes
  * @method GET
  */
+
 router.get('/getAllData', superAdminControllers.getAllDocuments);
 
 /**

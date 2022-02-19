@@ -25,7 +25,7 @@ formFields.addEventListener('submit', async(e) => {
     const contactNo = formFields.contactNo.value;
     const gender = formFields.gender.value;
     const subject = formFields.subject.value;
-    const role = formFields.role.value;
+    // const role = formFields.role.value;
     const password = formFields.password.value;
     const confirm_password = formFields.confirm_password.value;
     // console.log(name, email) //Testing Purpose
@@ -43,7 +43,6 @@ formFields.addEventListener('submit', async(e) => {
                 contactNo,
                 gender,
                 subject,
-                role,
                 password,
                 confirm_password
             }),

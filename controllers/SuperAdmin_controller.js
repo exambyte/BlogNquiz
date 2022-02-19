@@ -189,12 +189,13 @@ exports.get_admin_data = (req, res) => {
  */
 exports.create_admin = async(req, res) => {
     console.log(req.body);
-    const { name, email, contactNo, gender, subject, role, password, confirm_password } = req.body;
-    if (!name || !email || !contactNo || !gender || !subject || !role || !password || !confirm_password) {
+    const { name, email, contactNo, gender, subject, password, confirm_password } = req.body;
+    if (!name || !email || !contactNo || !gender || !subject || !password || !confirm_password) {
         return res.status(422).json({ error: "Please fill the fields properly" });
     } else if (password.length < 6) {
         return res.status(401).json({ error: "Password must be at least 6 characters" })
     }
+    console.log('create normal admin section')
     try {
         /**
          * Searching if a user already exist with the email
@@ -214,7 +215,6 @@ exports.create_admin = async(req, res) => {
                 contactNo,
                 gender,
                 subject,
-                role,
                 password
             });
 
@@ -296,7 +296,6 @@ exports.edit_admin_data_get = (req, res) => {
 }
 
 
-
 /**
  * Function to DELETE a particular admin using it's ID
  * @module delete_admin_data
@@ -315,7 +314,6 @@ exports.delete_admin_data = (req, res) => {
     }).catch(err => {
         res.status(500).send({ message: err });
     })
-
 }
 
 

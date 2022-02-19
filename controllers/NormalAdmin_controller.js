@@ -151,7 +151,9 @@ exports.addBlog_get = (req, res) => {
 exports.addBlog_post = async(req, res) => {
     console.log("Coming in backend to add blog");
 
-    const createdById = req.params.id;
+    console.log(req.body)
+
+    const createdById = req.AdminId;
     const createdBy = res.locals.user;
     const title = req.body.title;
     const description = req.body.description;
@@ -164,20 +166,20 @@ exports.addBlog_post = async(req, res) => {
 
     // image
     const image = req.files;
-    console.log(image)
+    console.log(image, blogContent)
 
-    // // category
+    //  category
     const category = req.body.category;
 
     let article = new Article({
-        title,
-        description,
-        blogContent,
-        markdown,
-        createdBy,
-        createdById,
-        image,
-        category
+        title: title,
+        description: description,
+        blogContent: blogContent,
+        markdown: markdown,
+        createdBy: createdBy,
+        createdById: createdById,
+        image: image,
+        category: category
     })
 
     try {
@@ -377,14 +379,14 @@ exports.testData_get = async(req, res) => {
 
 
 
-exports.allBlogs_get=async (req,res)=>{
-    try{
-        const result = await Article.find({createdAt:{$gte:new Date("2022-01-15").toISOString(),$lte:new Date("2022-02-15").toISOString()}}).
+exports.allBlogs_get = async(req, res) => {
+    try {
+        const result = await Article.find({ createdAt: { $gte: new Date("2022-01-15").toISOString(), $lte: new Date("2022-02-15").toISOString() } }).
         populate('createdById');
-        if(result){
+        if (result) {
             res.status('200').json(result);
         }
-    }catch(err){
+    } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
