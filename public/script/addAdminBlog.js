@@ -19,8 +19,10 @@ const postBlog = async(id) => {
         const category = formFields.category.value;
         console.log('in blog script')
 
+        console.log(blogContent)
         const formData = new FormData(document.getElementById("form"));
-        console.log(formData.blogContent)
+        // console.log(formData.blogContent)
+
         try {
             const res = await fetch(`/addBlog/${id}`, {
                 method: 'POST',

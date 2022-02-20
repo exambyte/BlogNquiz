@@ -37,6 +37,12 @@ const testSchema = new mongoose.Schema({
             option2: {
                 type: String
             },
+            option3:{
+                type:String
+            },
+            option4:{
+                type:String
+            },
             answer: {
                 type: String
             }

@@ -1,5 +1,154 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+/* .site-content .post-content .post-title .post-bttn{
+    border-radius: 0;
+    padding: .7rem 1.5rem;
+    background: var(--sky);
+}
+main .site-title .bttn{
+  margin: 1.8rem;
+  background: var(--sky);
+}
+.site-title .bttn:hover{
+  background: transparent;
+  border: 1px solid var(--white);
+  color: var(--white);
+} */
+html,body{
+    
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+ul{
+    list-style-type: none;
+}
+
+h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 2.5rem;
+}
+
+h2{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+h3{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.3rem;
+}
+
+.container-fluid{
+    display: grid;
+    grid-template-columns: 60% 40%; 
+    
+}
+.site-content{
+    padding: 1rem;
+    margin-right: 8rem;
+}
+.post-content{
+    width: 60%;
+    
+}
+.container{
+    margin-top: 14%;
+}
+
+
+button .bttn{
+    border: none;
+    border-radius: 10rem;
+    
+    font-size: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    cursor: pointer;
+}
+.post-title .bttn{
+    border-radius: 0;
+    padding: .7rem 1.5rem;
+    background: var(--sky);
+}
+
+.post-title button:hover{
+    background: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+
+.post-info span{
+    margin-left: .5rem;
+}
+.post-info{
+    background: var(--sky);
+    padding: 1rem;
+    position:absolute;
+    bottom: 0;
+    left: 18%;
+    border-radius: 3rem;
+}
+
+.post-title a{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    
+}
+.post-title a{
+    font-size: 1rem;
+
+}
+.post-title a{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    
+}
+
+
+.container > .site .sidebar .category-list{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+
+ .site .sidebar .category-list .list-items{
+    background:rgb(101, 212, 207);
+    padding: .4rem 1rem;
+    margin: .8rem 0;
+    border-radius: 3rem;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+.site{
+    padding: 1rem;
+    margin-left: 4rem;
+    
+}
+
+.category h2{
+    margin-left: 1rem;
+    font-size: xx-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.site{
+    margin-top: 14%;
+}
+
+.site-content > .site.sidebar .category-list .list-items a{
+    color: black;
+}
+.site .sidebar .popular-tags{
+    padding: 2rem 0;
+}
+.popular-tags .tags .tag{
+    background:var(--sky);
+    padding: .3rem 1rem;
+    border-radius: 3rem;
+    margin: .3rem .4rem;
+}
+
 
 .img-fluid {
     margin-top: 40px;
@@ -16,7 +165,7 @@
 }
 
 .footer {
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 100vw;
     height: auto;
@@ -54,77 +203,12 @@
     text-align: center;
     
 }
+
 .dashboard-heading-name{
     margin-top: 4%;
     margin-bottom:5%;
 }
 
-
-/* Css for Blog Section */
-.blogs-section{
-    height: auto;
-    position: relative;
-    top: 2rem;
-    display:flex;
-    flex-wrap: wrap;
-}
-.blog-card{
-    border: 2px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 5px;
-    background-color: #134d5c;
-    color: white;
-    width:24rem;
-    box-shadow: 5px 10px 18px #888888;
-}
-
-.blog-details{
-    height: 8rem;
-    width: 100%;
-    background-color: #42d7ff;
-    color: #040404;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding:.4rem;
-}
-
-.blog-details:hover{
-    background-color:#134d5c;
-    color:white;
-    transition-duration: 1.5s;
-}
-
-.blog-details hr{
-    width:60%;
-}
-.author-details{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.author-details p{
-    margin:0rem 1rem;
-}
-
-.read-more-btn{
-    height: 4rem;
-    width: 100%;
-    display: flex;
-}
-.read-more-btn button{
-    margin: auto;
-    border: 0px;
-    padding:.2rem;
-    border-radius: 3px;
-}
-
-.read-more-btn button:hover{
-    background-color: #42d7ff;
-    color:black;
-}
 
 /* Particular blog section */
 .particular-blog-section{
@@ -188,8 +272,6 @@
     white-space: break-spaces;
 }
 
-
-
 @media only screen and (max-width:1722px) {
     footer {
         width: inherit;
@@ -216,7 +298,33 @@
         margin-top: 8%;
         margin-bottom:5%;
     }
+    .pagination{
+        width: 70%;
+    }
 }
+@media only screen and (max-width:750px) {
+   
+    .post-content >  .post-info{
+        left: 1.5rem !important;
+        bottom: 1rem !important;
+        border-radius: 0% !important;
+        width: 60% !important;
+        height: 20% !important;
+        font-size: 1rem !important;
+ }
+ .pagination{
+    width: 60vw !important;
+    margin-bottom: 2rem !important;
+}
+.sidebar .category{
+    width: 70vw;
+    align-content: center;
+}
+.sidebar .popular-tags{
+    width: 90vw ;
+}
+ }
+    
 @media (max-width:600px) {
     
     .dashboard-heading{
@@ -229,6 +337,7 @@
         margin-bottom:5%;
     }
 }
+
 
 @media (max-width:950px) {
     footer .content-foot {
@@ -245,3 +354,4 @@
         margin-top: 30px;
     }
 }
+

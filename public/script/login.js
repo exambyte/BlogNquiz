@@ -42,9 +42,13 @@ async function loginUser(e) {
     /**
      * checking HTTP response from server
      */
-    if (data.status === 'ok') {
+    if (data.status === 'okUser') {
         location.assign('/'); //Login successfull and directing to Home page
-    } else {
+    }
+    else if(data.status === 'okAdmin'){
+        location.assign('/NormalAdminDashboard');
+    }
+     else {
         alert('Invalid Credentials!');
     }
 

@@ -151,7 +151,7 @@ exports.addBlog_get = (req, res) => {
 exports.addBlog_post = async(req, res) => {
     console.log("Coming in backend to add blog");
 
-    console.log(req.body)
+    // console.log(req.body)
 
     const createdById = req.AdminId;
     const createdBy = res.locals.user;

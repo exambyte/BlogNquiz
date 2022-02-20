@@ -6,8 +6,9 @@
 
 const User = require('../models/userSchema'); //acquiring Schema for user model
 const bcrypt = require('bcryptjs');
-const Article = require('../models/Blog')
-const Details = require('../models/userSchema')
+const Article = require('../models/Blog');
+const Details = require('../models/userSchema');
+const normalAdmin = require('../models/normalAdmin');
 
 //....................Implementing Signup Part..............................................
 
@@ -129,10 +130,8 @@ exports.login_post = async(req, res) => {
          * Storing user data if user exists in database 
          */
         const validateUser = await User.findOne({ email: email });
-
-        if (!validateUser) {
-            res.status(400).json({ error: "User not found" });
-        } else {
+        const validateNormalAdmin = await normalAdmin.findOne({ email: email});
+        if (validateUser) {
             const isValidlogin = await bcrypt.compare(password, validateUser.password);
             const token = await validateUser.generateAuthToken();
             console.log(token); //for testing pupose 
@@ -145,8 +144,28 @@ exports.login_post = async(req, res) => {
                 res.status(400).json({ error: "User not found" });
             } else {
                 console.log('user found'); //For testing purpose in backend
-                res.json({ status: 'ok' });
+                res.json({ status: 'okUser' });
             }
+        } 
+        else if(validateNormalAdmin){
+            console.log(validateNormalAdmin);
+            const isValidlogin = await bcrypt.compare(password, validateNormalAdmin.password);
+            const token = await validateNormalAdmin.generateAuthToken();
+            console.log(token); //for testing pupose 
+            res.cookie("jwtoken", token, {
+                expires: new Date(Date.now() + 60480000), //expiry data of token set for 1 week
+                httpOnly: true
+            });
+
+            if (!isValidlogin) {
+                res.status(400).json({ error: "User not found" });
+            } else {
+                console.log('user found'); //For testing purpose in backend
+                res.json({ status: 'okAdmin' });
+            }
+        }
+        else{
+            res.status(400).json({ error: "User not found" });
         }
 
     } catch (err) {
