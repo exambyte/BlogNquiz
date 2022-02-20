@@ -69,99 +69,105 @@
 
         <!----site content-->
 
+
+
         <section class="container">
             <div class="site-content">
                 <div class="posts">
-                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="post-image">
-                            <div>
-                                <img src="pictures/raimond-klavins-KvVCDvD1_t0-unsplash.jpg" class="img" alt="blog3" style="width: 80%; height: 30%;">
+                    <% articles.forEach(article=> { %>
+                        <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="post-image">
+                                <div>
+                                    <img src="/uploads/<%= article.image[0].filename %>" class="img" alt="blog3" style="width: 80%; height: 30%;">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span><i class="fa-solid fa-user text-gray"></i>&nbsp;&nbsp; <%= article.createdBy.name %></span>
+                                    <span><i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;&nbsp;<%= article.createdAt.toLocaleDateString() %>
+                                    </span>
+                                    <span>2 comments</span>
+                                </div>
                             </div>
-                            <div class="post-info flex-row">
-                                <span><i class="fa-solid fa-user text-gray"></i>&nbsp;&nbsp;Admin</span>
-                                <span><i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;&nbsp;January
-                                    14,2020</span>
-                                <span>2 comments</span>
+                            <div class="post-title">
+                                <a href="#">
+                                    <%= article.title %>
+                                </a>
+                                <p>
+                                    <%= article.description %>
+                                </p>
+                                <button class="bttn post-bttn">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
                             </div>
                         </div>
-                        <div class="post-title">
-                            <a href="#">Title</a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, voluptatibus distinctio architecto cupiditate ratione ex autem voluptatum, voluptate quasi voluptatem sint natus? Maxime, sequi. Ratione sequi iste voluptatem facere
-                                omnis!
-                            </p>
-                            <button class="bttn post-bttn">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="post-image">
-                            <div>
-                                <img src="pictures/greg-rakozy-oMpAz-DN-9I-unsplash.jpg" class="img" alt="blog2" style="width: 80%; height: 40%;">
-                            </div>
-                            <div class="post-info flex-row">
-                                <span> <i class="fa-solid fa-user text-gray"></i>&nbsp;&nbsp;Admin</span> &nbsp;
-                                <span> <i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;&nbsp;January
+                        <hr>
+                        <!-- <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="post-image">
+                                <div>
+                                    <img src="pictures/greg-rakozy-oMpAz-DN-9I-unsplash.jpg" class="img" alt="blog2" style="width: 80%; height: 40%;">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span> <i class="fa-solid fa-user text-gray"></i>&nbsp;&nbsp;Admin</span> &nbsp;
+                                    <span> <i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;&nbsp;January
                                     14,2021</span>
-                                <span>20 comments</span>
+                                    <span>20 comments</span>
+                                </div>
+                            </div>
+                            <div class="post-title">
+                                <a href="#">Title</a>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, voluptatibus distinctio architecto cupiditate ratione ex autem voluptatum, voluptate quasi voluptatem sint natus? Maxime, sequi. Ratione sequi iste voluptatem
+                                    facere omnis!
+                                </p>
+                                <button class="bttn post-bttn">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
                             </div>
                         </div>
-                        <div class="post-title">
-                            <a href="#">Title</a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, voluptatibus distinctio architecto cupiditate ratione ex autem voluptatum, voluptate quasi voluptatem sint natus? Maxime, sequi. Ratione sequi iste voluptatem facere
-                                omnis!
-                            </p>
-                            <button class="bttn post-bttn">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="post-image">
-                            <div>
-                                <img src="pictures/irina-grotkjaer-dNQS9yHUXGE-unsplash.jpg" class="img" alt="blog2" style="width: 80%; height: 40%;">
-                            </div>
-                            <div class="post-info flex-row">
-                                <span> <i class="fa-solid fa-user text-gray"></i>&nbsp;&nbsp;Admin</span> &nbsp;
-                                <span> <i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;&nbsp;January
+                        <hr>
+                        <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="post-image">
+                                <div>
+                                    <img src="pictures/irina-grotkjaer-dNQS9yHUXGE-unsplash.jpg" class="img" alt="blog2" style="width: 80%; height: 40%;">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span> <i class="fa-solid fa-user text-gray"></i>&nbsp;&nbsp;Admin</span> &nbsp;
+                                    <span> <i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;&nbsp;January
                                     14,2021</span>
-                                <span>7 comments</span>
+                                    <span>7 comments</span>
+                                </div>
+                            </div>
+                            <div class="post-title">
+                                <a href="#">Title</a>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, voluptatibus distinctio architecto cupiditate ratione ex autem voluptatum, voluptate quasi voluptatem sint natus? Maxime, sequi. Ratione sequi iste voluptatem
+                                    facere omnis!
+                                </p>
+                                <button class="bttn post-bttn">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
                             </div>
                         </div>
-                        <div class="post-title">
-                            <a href="#">Title</a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, voluptatibus distinctio architecto cupiditate ratione ex autem voluptatum, voluptate quasi voluptatem sint natus? Maxime, sequi. Ratione sequi iste voluptatem facere
-                                omnis!
-                            </p>
-                            <button class="bttn post-bttn">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="post-image">
-                            <div>
-                                <img src="pictures/leon-rohrberg-yFIds8Xa73I-unsplash.jpg" class="img" alt="blog2" style="width: 80%; height: 40%;">
-                            </div>
-                            <div class="post-info flex-row">
-                                <span> <i class="fa-solid fa-user text-gray"></i>&nbsp;&nbsp;Admin</span> &nbsp;
-                                <span> <i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;&nbsp;January
+                        <hr>
+                        <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="post-image">
+                                <div>
+                                    <img src="pictures/leon-rohrberg-yFIds8Xa73I-unsplash.jpg" class="img" alt="blog2" style="width: 80%; height: 40%;">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span> <i class="fa-solid fa-user text-gray"></i>&nbsp;&nbsp;Admin</span> &nbsp;
+                                    <span> <i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;&nbsp;January
                                     14,2021</span>
-                                <span>5 comments</span>
+                                    <span>5 comments</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="post-title">
-                            <a href="#">Title</a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, voluptatibus distinctio architecto cupiditate ratione ex autem voluptatum, voluptate quasi voluptatem sint natus? Maxime, sequi. Ratione sequi iste voluptatem facere
-                                omnis!
-                            </p>
-                            <button class="bttn post-bttn">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    <div class="pagination flex-row">
-                        <a href="#"><i class="fa-solid fa-chevron-left"></i></a>
-                        <a href="#" class="page">1</a>
-                        <a href="#" class="page">2</a>
-                        <a href="#" class="page">3</a>
-                        <a href="#"><i class="fa-solid fa-chevron-right"></i></a>
-                    </div>
+                            <div class="post-title">
+                                <a href="#">Title</a>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, voluptatibus distinctio architecto cupiditate ratione ex autem voluptatum, voluptate quasi voluptatem sint natus? Maxime, sequi. Ratione sequi iste voluptatem
+                                    facere omnis!
+                                </p>
+                                <button class="bttn post-bttn">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div> -->
+                        <% }) %>
+                            <div class="pagination flex-row">
+                                <a href="#"><i class="fa-solid fa-chevron-left"></i></a>
+                                <a href="#" class="page">1</a>
+                                <a href="#" class="page">2</a>
+                                <a href="#" class="page">3</a>
+                                <a href="#"><i class="fa-solid fa-chevron-right"></i></a>
+                            </div>
                 </div>
                 <aside class="sidebar">
                     <div class="category">
@@ -289,7 +295,7 @@
     <script src="script/aos.js"></script>
 
     <!--custom js-->
-    <script src="script/homePage.js"></script>
+    <script src="script/home.js"></script>
 
 </body>
 

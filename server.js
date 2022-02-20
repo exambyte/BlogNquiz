@@ -59,8 +59,6 @@ dotenv.config({ path: './config.env' });
 
 const PORT = process.env.PORT || 2000; //Getting PORT Dynamically in case not Dynamic a port 3000 is mentioned
 const DB = process.env.DATABASE; //Getting Databse URI
-// connection to database
-// mongoose.connect(DB);
 
 
 /**

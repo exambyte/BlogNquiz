@@ -27,6 +27,8 @@ exports.getHome = async(req, res) => {
 }
 
 
-exports.getData = (req, res) => {
-    res.send(req.verifiedUser);
+exports.getData = async(req, res) => {
+    const articles = await Article.find();
+    res.render('home', { articles: articles });
+    // res.send(req.verifiedUser);
 }
