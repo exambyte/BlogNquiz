@@ -381,7 +381,7 @@ exports.testData_get = async(req, res) => {
 
 exports.allBlogs_get = async(req, res) => {
     try {
-        const result = await Article.find({ createdAt: { $gte: new Date("2022-01-15").toISOString(), $lte: new Date("2022-02-15").toISOString() } }).
+        const result = await Article.find({ createdAt: { $gte: new Date("2022-01-15").toISOString(), $lte: new Date("2022-02-30").toISOString() } }).
         populate('createdById');
         if (result) {
             res.status('200').json(result);

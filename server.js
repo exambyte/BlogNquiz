@@ -65,12 +65,12 @@ const DB = process.env.DATABASE; //Getting Databse URI
  * @connect {*}Setting mongoose Connection
  */
 
-// mongoose.connect(DB).then(() => {
-//     console.log("connection Successful");
-// }).catch((err) => console.log(err));
+mongoose.connect(DB).then(() => {
+    console.log("connection Successful");
+}).catch((err) => console.log(err));
 
 // connection to database
-mongoose.connect('mongodb://localhost:27017/Exambytedb')
+// mongoose.connect('mongodb://localhost:27017/Exambytedb')
 
 const app = express();
 

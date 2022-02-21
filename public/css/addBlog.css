@@ -1,3 +1,4 @@
+
 #form-group {
     height: 100%;
     width: 0;
@@ -16,7 +17,7 @@
     text-decoration: none;
     font-size: 25px;
     color: #818181;
-    display: block
+    display: block;
     transition: 0.3s;
   }
   
@@ -51,7 +52,8 @@
   }
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-  @media screen and (max-height: 450px) {
+  /* @media screen and (max-height: 450px) {
     #form-group {padding-top: 15px;}
     #form-group a, #form-group button, #form-group select option {font-size: 18px;}
-  }
+  } */ 
+
