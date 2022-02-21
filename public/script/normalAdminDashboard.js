@@ -1,6 +1,67 @@
 const blog_section = document.getElementById('blogs-section');
 const particular_blog_section = document.getElementById('particular-blog-section');
 const tag_and_Categories = document.getElementById('tags-categories');
+const category_blog_section = document.getElementById('category-blog-section');
+const blogCategory = ['Mathematics','Physics','Chemistry'];
+const showBlogByCategory = async(category)=>{
+    try{
+        const res = await fetch(`/categoryBlog/${category}`,{
+            method:'GET',
+            headers:{contentType:'application/json'}
+        });
+    
+        const data = await res.json();
+        if(res.status === 200){
+            console.log(data);
+            blog_section.style.display = 'none';
+            
+            for(let i=0; i<blogCategory.length;i++){
+                if(blogCategory[i]===category){
+                    let ct = `category-blog-section-${category}`
+                    document.getElementById(ct).style.display="block";    
+                }
+                else{
+                    let ct = `category-blog-section-${blogCategory[i]}`;
+                    document.getElementById(ct).style.display="none";
+                }
+            }
+
+            let ct = `category-blog-section-${category}`;
+            for (let i = 0; i < data.length; i++) {
+                document.getElementById(ct).innerHTML += `
+                <div class="site-content">
+                <div class="posts">
+                    <div class="post-content" >
+                        <div class="blog-picture">
+                            <img src="/uploads/${data[i].image[0].filename}">
+                        </div>
+                        <div class="blog-small-info">
+                            <p>-${data[i].createdById.name}</p>
+                            <p>${data[i].markdown}</p>
+                        </div>
+                        <div class="post-title">
+                            <a href="#">${data[i].title}</a>
+                            <p>${data[i].description.substring(0,100)}.....</p>
+                            <button class="bttn post-bttn"  onclick="displayfullBlog(${JSON.stringify(data[i]).split('"').join("&quot;")})">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <hr>
+                    </div>
+                </div>
+                   
+                `
+            }
+        }
+    }catch(err){
+        console.log(err);
+    }
+
+}
+
+
+
+
+
 const displayfullBlog = (blogData) => {
     blog_section.style.display = "none";
     tag_and_Categories.style.display="none";
@@ -24,6 +85,9 @@ const displayfullBlog = (blogData) => {
             <div class="particular-blog-markdown">
                 <p>${blogData.markdown}</p>
             </div>
+        </div>
+        <div class="particular-blog-image">
+            <img src="/uploads/${blogData.image[0].filename}"/>
         </div>
         <div class="particular-blog-description">
             <hr>
@@ -51,6 +115,9 @@ const dsplayBlogs = async () => {
                 <div class="site-content">
                 <div class="posts">
                     <div class="post-content" >
+                        <div class="blog-picture">
+                            <img src="/uploads/${blog[i].image[0].filename}">
+                        </div>
                         <div class="blog-small-info">
                             <p>-${blog[i].createdById.name}</p>
                             <p>${blog[i].markdown}</p>
@@ -60,7 +127,6 @@ const dsplayBlogs = async () => {
                             <p>${blog[i].description.substring(0,100)}.....</p>
                             <button class="bttn post-bttn"  onclick="displayfullBlog(${JSON.stringify(blog[i]).split('"').join("&quot;")})">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
                         </div>
-
                     </div>
                     <hr>
                     </div>
@@ -74,10 +140,10 @@ const dsplayBlogs = async () => {
                     <div class="category-area">
                         <h2>Categories</h2>
                         <div class="category-btns">
-                            <button>Mathematics</button>
-                            <button>Computer Science</button>
-                            <button>Physics</button>
-                            <button>Chemistry</button>
+                            <button onclick="showBlogByCategory('Mathematics');">Mathematics</button>
+                            <button onclick="showBlogByCategory('Computer Science');">Computer Science</button>
+                            <button onclick="showBlogByCategory('Physics');">Physics</button>
+                            <button onclick="showBlogByCategory('Chemistry');">Chemistry</button>
                         </div>
                     </div>
                 `

@@ -210,6 +210,20 @@ button .bttn{
 }
 
 
+#category-blog-section-Mathematics {
+    display: none;;
+
+}
+
+#category-blog-section-Physics{
+    display:none;
+}
+
+#category-blog-section-Chemistry{
+    display:none;
+}
+
+
 /* Particular blog section */
 .particular-blog-section{
     display: none;
@@ -300,6 +314,31 @@ button .bttn{
     flex-direction: column;
     text-align: center;
 }
+
+.blog-picture{
+    width: 25rem;
+    height: 15rem;
+}
+
+
+.blog-picture img{
+    transition: all 0.6s ease-in-out;
+    width: 25rem;
+    height: 15rem;
+}
+
+.blog-picture img:hover{
+    width: 28rem;
+    height: 18rem;
+    transition: all 0.6s ease-in-out;
+}
+
+.particular-blog-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 @media only screen and (max-width:1722px) {
     footer {
@@ -404,6 +443,15 @@ button .bttn{
     }
     .page-container{
         min-height: 0vh;
+    }
+
+    .blog-picture{
+        width:16rem;
+        height:10rem;
+    }
+    .blog-picture img{
+        height:10rem;
+        width:16rem;
     }
 }
 

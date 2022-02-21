@@ -391,3 +391,18 @@ exports.allBlogs_get = async(req, res) => {
         res.status(500).json(err);
     }
 }
+
+
+exports.Blog_category_get = async (req,res)=>{
+    const category = req.params.category;
+    try{
+        const result = await Article.find({ category: category}).
+        populate('createdById');
+        if(result){
+            res.status(200).json(result);
+        }
+    }catch(err){
+        console.log(err);
+        res.status(500).json(err);
+    }
+}

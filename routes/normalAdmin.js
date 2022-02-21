@@ -14,6 +14,8 @@ const multer = require('../middlewares/multer');
 
 router.get('/getAllBlogs', authenticate, normalAdminControllers.allBlogs_get);
 
+router.get('/categoryBlog/:category',normalAdminControllers.Blog_category_get);
+
 //......................Routes for Login.....................................
 
 /**
