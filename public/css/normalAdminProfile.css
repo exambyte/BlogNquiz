@@ -17,6 +17,9 @@
     display: flex;
     margin:1rem;
 }
+.navbar .collapse .navbar-nav li:hover{
+    background-color: lightblue;
+}
 
 .blog-content {
     width: 80%;

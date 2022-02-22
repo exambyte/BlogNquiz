@@ -11,6 +11,9 @@
     transition: 0.5s;
     padding-top: 60px;
   }
+  .navbar .collapse .navbar-nav li:hover{
+    background-color: lightblue;
+}
   
   #form-group a, #form-group button, #form-group select option {
     padding: 8px 8px 8px 32px;

@@ -11,6 +11,9 @@
     background-color: lightseagreen;
     width: 85vw;
 }
+.navbar .collapse .navbar-nav li:hover{
+    background-color: lightblue;
+}
 
 .login h2 {
     font-size: 4rem;

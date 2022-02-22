@@ -21,7 +21,7 @@
     <!---------AOS LIBRARY--------->
     <link rel="stylesheet" href="css/aos.css">
 
-    <link rel="stylesheet" href="css/home.css">
+    <!-- <link rel="stylesheet" href="css/home.css"> -->
     <link rel="stylesheet" href="css/superAdminStyle.css">
     <link rel="stylesheet" href="css/normalAdminDashboard.css">
 
@@ -30,6 +30,10 @@
 </head>
 
 <body>
+
+
+    
+
 
     <!--------------Navigation----------------->
 
@@ -61,6 +65,28 @@
             </div>
         </div>
     </nav>
+
+    <!-- <section class="site-title">
+        <div class="site-background" data-aos="fade-up" data-aos-delay="100">
+            <h1 style="color:black;">Amazing Places on Earth</h1>
+            <button class="bttn">Explore</button>
+        </div>
+    </section> -->
+
+    <section id="slider" data-aos="fade-up" data-aos-delay="100">
+        <input type="radio" name="slider" id="s1" checked>
+        <input type="radio" name="slider" id="s2">
+        <input type="radio" name="slider" id="s3">
+        <input type="radio" name="slider" id="s4">
+        <input type="radio" name="slider" id="s5">
+      
+        <label for="s1" id="slide1"><img src="uploads/e-bbok-7_1645369239893.png" alt=""></label>
+        <label for="s2" id="slide2"><img src="uploads/marc-kleen-tzN29HwmNiI-unsplash_1645430534583.jpg" alt=""></label>
+        <label for="s3" id="slide3"><img src="uploads/irina-iriser-cNweIpRMTDw-unsplash_1645371535745.jpg" alt=""></label>
+        <label for="s4" id="slide4"><img src="uploads/marc-kleen-tzN29HwmNiI-unsplash_1645430534583.jpg" alt=""></label>
+        <label for="s5" id="slide5"><img src="uploads/irina-iriser-cNweIpRMTDw-unsplash_1645371535745.jpg" alt=""></label>
+      </section>
+    
     <!-- Blogs Section -->
     <div class="container-fluid blog-area">
         <section class="container" id="blogs-section">
@@ -76,7 +102,7 @@
         <section class="container" id="category-blog-section-Chemistry">
             <!--- data will come dynamically---->
         </section>
-        <section class="tags-categories" id="tags-categories">
+        <section class="tags-categories" id="tags-categories" data-aos="flip-up" data-aos-delay="100">
              <!--- data will come dynamically---->
         </section>
     </div>
@@ -90,14 +116,11 @@
 
 
     <!-- <div class="page-container"> -->
-        <div class="content-wrap">
-            <!-- Section -->
-
-        </div>
+       
         <!-------Footer------->
 
         <footer class="footer col-xs-8 col-lg-8">
-            <div class="container-foot">
+            <div class="container-foot" style="color: white;">
                 <a href="#">About us </a>|
                 <a href="#">Career</a>|
                 <a href="#">Contact us</a>
@@ -111,7 +134,7 @@
                 <a href="#"><i class="fa fa-linkedin-square"></i></a>
 
             </div>
-            <div class="bottom">
+            <div class="bottom" style="color: white;">
                 <p>copyright &copy;2021 <a href="#">XYZ</a></p>
             </div>
 
@@ -134,6 +157,9 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="script/normalAdminDashboard.js"></script>
+    
+    <!--custom js-->
+    <script src="script/home.js"></script>
 
 </body>
 

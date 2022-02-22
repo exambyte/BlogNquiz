@@ -35,10 +35,10 @@ const showBlogByCategory = async(category)=>{
                         <div class="blog-picture">
                             <img src="/uploads/${data[i].image[0].filename}">
                         </div>
-                        <div class="blog-small-info">
-                            <p>-${data[i].createdById.name}</p>
-                            <p>${data[i].markdown}</p>
-                        </div>
+                        <div class="post-info flex-row">
+                        <span><i class="fa-solid fa-user text-gray"></i>&nbsp;${data[i].createdById.name}</span>
+                        <span><i class="fa-solid fa-highlighter text-gray"></i>&nbsp;${data[i].markdown}</span>
+                    </div>
                         <div class="post-title">
                             <a href="#">${data[i].title}</a>
                             <p>${data[i].description.substring(0,100)}.....</p>
@@ -114,14 +114,16 @@ const dsplayBlogs = async () => {
                 blog_section.innerHTML += `
                 <div class="site-content">
                 <div class="posts">
-                    <div class="post-content" >
+                    <div class="post-content">
                         <div class="blog-picture">
                             <img src="/uploads/${blog[i].image[0].filename}">
                         </div>
-                        <div class="blog-small-info">
-                            <p>-${blog[i].createdById.name}</p>
-                            <p>${blog[i].markdown}</p>
-                        </div>
+                        <div class="post-info flex-row">
+                        <span><i class="fa-solid fa-user text-gray"></i>&nbsp;${blog[i].createdById.name}</span>
+                        <span><i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;${blog[i].createdAt.substring(0, 10)}</span>
+                        <span><i class="fa-solid fa-highlighter text-gray"></i>&nbsp;${blog[i].markdown}</span>
+                        
+                    </div>
                         <div class="post-title">
                             <a href="#">${blog[i].title}</a>
                             <p>${blog[i].description.substring(0,100)}.....</p>

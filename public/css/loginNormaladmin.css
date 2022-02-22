@@ -15,6 +15,9 @@
     background: inherit;
     
 }
+.navbar .collapse .navbar-nav li:hover{
+    background-color: lightblue;
+}
 
 
 .color{
