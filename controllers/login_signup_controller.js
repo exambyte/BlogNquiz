@@ -130,7 +130,7 @@ exports.login_post = async(req, res) => {
          * Storing user data if user exists in database 
          */
         const validateUser = await User.findOne({ email: email });
-        const validateNormalAdmin = await normalAdmin.findOne({ email: email});
+        const validateNormalAdmin = await normalAdmin.findOne({ email: email });
         if (validateUser) {
             const isValidlogin = await bcrypt.compare(password, validateUser.password);
             const token = await validateUser.generateAuthToken();
@@ -146,8 +146,7 @@ exports.login_post = async(req, res) => {
                 console.log('user found'); //For testing purpose in backend
                 res.json({ status: 'okUser' });
             }
-        } 
-        else if(validateNormalAdmin){
+        } else if (validateNormalAdmin) {
             console.log(validateNormalAdmin);
             const isValidlogin = await bcrypt.compare(password, validateNormalAdmin.password);
             const token = await validateNormalAdmin.generateAuthToken();
@@ -163,8 +162,7 @@ exports.login_post = async(req, res) => {
                 console.log('user found'); //For testing purpose in backend
                 res.json({ status: 'okAdmin' });
             }
-        }
-        else{
+        } else {
             res.status(400).json({ error: "User not found" });
         }
 
@@ -242,5 +240,33 @@ module.exports.bookmark_put = async(req, res) => {
     } catch (error) {
         console.log(error.message);
         return res.status(500).json({ 'err': error.message });
+    }
+}
+
+
+// showBlog
+// exports.showBlog_get = async(req, res) => {
+
+//     // console.log(req.params.id)
+//     console.log('request received in backend')
+
+//     const article = await Article.findOne({ id: req.params.id })
+//     if (article == undefined) {
+//         res.redirect('/')
+//     } else {
+//         return res.status(200).send({ 'article': article })
+//     }
+// }
+
+exports.showBlogUser_get = async(req, res) => {
+
+    // console.log(req.params.slug)
+
+    const article = await Article.findOne({ slug: req.params.slug })
+
+    if (article == undefined) {
+        res.redirect('/')
+    } else {
+        res.render('showBlog', { article: article })
     }
 }

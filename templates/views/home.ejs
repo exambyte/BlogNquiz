@@ -72,19 +72,19 @@
             </div>
          </section> -->
 
-         <section id="slider">
+        <section id="slider">
             <input type="radio" name="slider" id="s1" checked>
             <input type="radio" name="slider" id="s2">
             <input type="radio" name="slider" id="s3">
             <input type="radio" name="slider" id="s4">
             <input type="radio" name="slider" id="s5">
-          
+
             <label for="s1" id="slide1"><img src="uploads/e-bbok-7_1645369239893.png" alt=""></label>
             <label for="s2" id="slide2"><img src="uploads/marc-kleen-tzN29HwmNiI-unsplash_1645430534583.jpg" alt=""></label>
             <label for="s3" id="slide3"><img src="uploads/irina-iriser-cNweIpRMTDw-unsplash_1645371535745.jpg" alt=""></label>
             <label for="s4" id="slide4"><img src="uploads/marc-kleen-tzN29HwmNiI-unsplash_1645430534583.jpg" alt=""></label>
             <label for="s5" id="slide5"><img src="uploads/irina-iriser-cNweIpRMTDw-unsplash_1645371535745.jpg" alt=""></label>
-          </section>
+        </section>
 
 
         <!----site content-->
@@ -114,7 +114,7 @@
                                 <p>
                                     <%= article.description %>
                                 </p>
-                                <button class="bttn post-bttn">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
+                                <button data-post-id="<%= article.id %>" class="bttn post-bttn" onclick="document.location.href = '/showBlogUser/<%= article.slug %>'">Read More &nbsp;<i class="fas fa-arrow-right"></i></button>
                             </div>
                         </div>
                         <hr>
@@ -220,25 +220,25 @@
                     <div class="popular-post">
                         <h2>Popular Post</h2>
                         <% articles.forEach(article=> { %>
-                        <div class="post-content" data-aos="flip-up" data-aos-delay="200">
-                            <div class="post-image">
-                                <div>
-                                    <img src="/uploads/<%= article.image[0].filename %>" class="img" alt="blog3" style="width: 80%; height: 30%;">
-                                </div>
-                                <div class="post-info flex-row">
-                                    <span><i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;<%= article.createdAt.toLocaleDateString() %>
+                            <div class="post-content" data-aos="flip-up" data-aos-delay="200">
+                                <div class="post-image">
+                                    <div>
+                                        <img src="/uploads/<%= article.image[0].filename %>" class="img" alt="blog3" style="width: 80%; height: 30%;">
+                                    </div>
+                                    <div class="post-info flex-row">
+                                        <span><i class="fa-solid fa-calendar-days text-gray"></i>&nbsp;<%= article.createdAt.toLocaleDateString() %>
                                     </span>
-                                    <span><i class="fa-solid fa-highlighter text-gray"></i>&nbsp;<%= article.markdown %></span>
+                                        <span><i class="fa-solid fa-highlighter text-gray"></i>&nbsp;<%= article.markdown %></span>
+                                    </div>
+                                </div>
+                                <div class="post-title">
+                                    <a href="#">
+                                        <%= article.title %>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="post-title">
-                                <a href="#">
-                                    <%= article.title %>
-                                </a>
-                            </div>
-                        </div>
-                       
-                        <% }) %>
+
+                            <% }) %>
                     </div>
 
                     <div class="popular-tags">

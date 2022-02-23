@@ -11,18 +11,22 @@ const postBlog = async(id) => {
         e.preventDefault();
         const richtext = document.getElementById('richtext');
         // get values 
-        const blogcontent = richtext.contentWindow.document.body.innerHTML;
+        const title = formFields.title.value;
+        const description = formFields.description.value;
+        const blogContent = richtext.contentWindow.document.body.innerHTML;
+        const markdown = formFields.markdown.value;
+        const images = formFields.file.files
+        const category = formFields.category.value;
         console.log('in blog script')
-        // debugger;
+
+        console.log(blogContent)
         const formData = new FormData(document.getElementById("form"));
-        formData.append('blogContent',blogcontent);
-        console.log(formData.blogContent);
-        console.log(formData);
+        // console.log(formData.blogContent)
 
         try {
             const res = await fetch(`/addBlog/${id}`, {
                 method: 'POST',
-                body:formData
+                body: formData
             })
 
             const url = await res.url;
@@ -31,13 +35,10 @@ const postBlog = async(id) => {
         } catch (err) {
             console.log(err);
         }
-    });
-};
-
-
+    })
+}
 
 //function to get admin id
-
 /**
  * @async
  */
