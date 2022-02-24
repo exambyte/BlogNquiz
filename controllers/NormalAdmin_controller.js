@@ -406,3 +406,31 @@ exports.Blog_category_get = async (req,res)=>{
         res.status(500).json(err);
     }
 }
+
+
+exports.Admin_test_get = async (req,res)=>{
+    const id = req.params.id;
+    try{
+        const result = await Test.find({createdById: id});
+        if(result.length > 0){
+            res.status(200).json(result);
+        }
+    }catch(err){
+        console.log(err);
+        res.status(500).json(err);
+    }
+}
+
+
+exports.Admin_test_delete= async (req,res)=>{
+    const id = req.params.id;
+    Test.findByIdAndDelete(id).then(data => {
+        if (!data) {
+            res.status(404).send({ message: "can't delete'" });
+        } else {
+            res.send({ message: "Test deleted" });
+        }
+    }).catch(err => {
+        res.status(500).send({ message: err });
+    })
+}

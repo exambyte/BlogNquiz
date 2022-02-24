@@ -48,3 +48,58 @@
 .container {
     display: none;
 }
+
+#show-admin-all-tests{
+    display: none;
+    flex-direction: column;
+}
+
+.test-detail{
+    border-bottom: 2px solid rgb(34, 34, 34);
+    display:flex;
+    text-align: center;
+}
+
+.foot{
+    position: absolute;
+    background-color: black;
+    width:100vw;
+    height:20vh;
+    text-align: center;
+}
+
+.admin-test-title{
+    margin:.5rem .5rem;
+}
+
+.admin-test-date{
+    margin:.5rem .5rem;
+}
+
+.admin-test-questionCount{
+    margin:.5rem .5rem;
+}
+
+
+.admin-test-link{
+    margin:.5rem .5rem;
+}
+
+.admin-test-actions{
+    margin:.5rem .5rem;
+}
+
+.admin-test-actions button{
+    border:0px;
+}
+
+.admin-test-actions button:hover{
+    color:rgb(95, 95, 95);
+}
+
+
+@media only screen and (max-width:500px){
+    .test-detail{
+        flex-direction: column;
+    }
+}

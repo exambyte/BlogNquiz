@@ -12,34 +12,6 @@ const previousBtn = document.getElementById('go-back');
 const questionArea = document.getElementById('question-area');
 
 
-const getTestData = async () => {
-    let queryString = window.location.href;
-    console.log(queryString);
-    let slug = queryString.substring(26);
-    console.log(slug);
-    try {
-        const res = await fetch(`/getTestData/${slug}`, {
-            method: 'GET',
-            headers: {
-                'Content-type': 'application/json'
-            }
-        });
-
-        const data = await res.json();
-        if (data) {
-            console.log(data);
-            quizData = data[0].questions;
-            localStorage.setItem("quizData", JSON.stringify(quizData));
-        }
-
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-getTestData();
-
-const quiz_data = JSON.parse(localStorage.getItem("quizData", quizData));
 let questionCount = 0;
 let score = 0;
 let inputsId = [];
@@ -48,14 +20,14 @@ const startQuiz = () => {
     if(questionCount === 0){
         previousBtn.style.display = "none";
     }
-    else if(questionCount === quiz_data.length-1){
+    else if(questionCount === window.quizData.length-1){
         submit.innerText = "Submit";
     }
     else{
         previousBtn.style.display = "block";
         submit.style.display = "block";
     }
-    const question_data = quiz_data[questionCount];
+    const question_data = window.quizData[questionCount];
     questions.innerText = question_data.question;
     option_1.innerText = question_data.option1;
     option_2.innerText = question_data.option2;
@@ -101,7 +73,7 @@ const isAlreadySelected = (checkAnswer) => {
         return 0;
     }
     else {
-        if (quiz_data[questionCount].answer === checkAnswer) {
+        if (window.quizData[questionCount].answer === checkAnswer) {
             score++;
             return 1;
         }
@@ -136,17 +108,17 @@ submit.addEventListener('click', () => {
     if (checkRepeatedAnswer(checkAnswer) != 0) {
         // inputsId.push(checkAnswer);
         console.log(inputsId);
-        if (checkAnswer === quiz_data[questionCount].answer) {
+        if (checkAnswer === window.quizData[questionCount].answer) {
             score++;
             console.log(score);
         }
     }
     questionCount += 1;
-    if (questionCount < quiz_data.length && questionCount >= inputsId.length) {
+    if (questionCount < window.quizData.length && questionCount >= inputsId.length) {
         deSelectOptions();
         startQuiz();
     }
-    else if (questionCount < quiz_data.length && questionCount < inputsId.length) {
+    else if (questionCount < window.quizData.length && questionCount < inputsId.length) {
         startQuiz();
         previousSelection();
     }
@@ -154,9 +126,9 @@ submit.addEventListener('click', () => {
         questionArea.style.display='none';
         questions.style.display='none';
         showScore.innerHTML = `
-               <h3> Your Score:  ${score}/${quiz_data.length} </h3>
+               <h3> Your Score:  ${score}/${window.quizData.length} </h3>
                <button class="btn" onclick="location.reload()">Restart</button>
-               <h3> Correct: ${score}&nbsp&nbsp&nbsp&nbspIncorrect: ${quiz_data.length - score} </h3>
+               <h3> Correct: ${score}&nbsp&nbsp&nbsp&nbspIncorrect: ${window.quizData.length - score} </h3>
             `;
 
         // showScore.classList.remove('scoreArea');
@@ -164,4 +136,40 @@ submit.addEventListener('click', () => {
 
 });
 
-startQuiz();
+
+
+
+
+
+
+const getTestData = async () => {
+    let queryString = window.location.href;
+    console.log(queryString);
+    let slug = queryString.substring(26);
+    console.log(slug);
+    try {
+        const res = await fetch(`/getTestData/${slug}`, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+
+        const data = await res.json();
+        if (data) {
+            console.log(data);
+            window.quizData = data[0].questions;
+            console.log(quizData);
+            console.log(window.quizData);
+            startQuiz();
+        }
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+getTestData();
+
+
+

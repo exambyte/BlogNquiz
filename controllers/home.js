@@ -8,8 +8,9 @@
 const User = require('../models/userSchema');
 const authenticate = require('../middlewares/authenticate');
 const req = require('express/lib/request');
-const Article = require('../models/Blog')
-const Details = require('../models/userSchema')
+const Article = require('../models/Blog');
+const Details = require('../models/userSchema');
+const Test = require('../models/Test');
 
 /**
  * @name get/home
@@ -23,8 +24,30 @@ const Details = require('../models/userSchema')
 exports.getHome = async(req, res) => {
     // const {name,email,contactNo,password} = req.verifiedUser;
     const articles = await Article.find();
-    res.render('home', { articles: articles });
+    const tests = await Test.find();
+    res.render('home', { articles: articles ,tests:tests});
 }
+
+exports.getUserTest=async(req,res)=>{
+    res.render('userTest');
+}
+
+
+exports.allTests_get=async(req,res)=>{
+    try{
+        const tests = await Test.find();
+        if(tests.length > 0){
+            res.status(200).json(tests);
+        }
+    }catch(err){
+        console.log(err);
+        res.status(500).json(err);
+    }
+}
+
+
+
+
 
 
 exports.getData = async(req, res) => {

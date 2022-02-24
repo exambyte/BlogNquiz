@@ -1,6 +1,7 @@
 const displayAdminAllBlogsSection = document.getElementById('show-admin-all-blogs');
 const editBlogSection = document.getElementById('edit-blog-section');
 const formFields = document.querySelector('form');
+const show_admin_all_tests_section = document.getElementById('show-admin-all-tests');
 
 
 //Function to redirect admin to add blog Section
@@ -13,13 +14,89 @@ const displayCreateBlogSection = (id) => {
     location.assign(`/addBlog/${id}`);
 }
 
+
+
+
+
+const displayShowTestSection = async (id) => {
+    try {
+        const res = await fetch(`/getAdminTest/${id}`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+        const data = await res.json();
+        if (data) {
+            editBlogSection.style.display = 'none';
+            displayAdminAllBlogsSection.style.display = 'none';
+            let display = window.getComputedStyle(show_admin_all_tests_section).display;
+            if (display === 'none') {
+                show_admin_all_tests_section.innerHTML="";
+                show_admin_all_tests_section.style.display = 'flex';
+                for (let i = 0; i < data.length; i++) {
+                    show_admin_all_tests_section.innerHTML += `
+                        <div class="test-detail">
+                            <div class="admin-test-title">
+                                <p>${data[i].title}</p>
+                            </div>
+                            <div class="admin-test-date">
+                                <p>Created at:&nbsp${data[i].createdAt}</p>
+                            </div>
+                            <div class="admin-test-questionCount">
+                                <p>No. Of Questions:&nbsp${data[i].noOfQestions}</p>
+                            </div>
+                            <div class="admin-test-link">
+                                <a href="http://localhost:2000/mcq/${data[i].slug}" target="_blank">Link to Test</a>
+                            </div>
+                            <div class="admin-test-actions">
+                                <button onclick="deleteTest('${data[i]._id}')">Delete</button>
+                            </div>
+                        </div>
+
+                    `
+                }
+
+            }
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
+const deleteTest = async (id) => {
+    try {
+        const res = await fetch(`/deleteTest/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'contentType': 'application/json'
+            }
+        });
+        const data = await res.json();
+
+        if (data.message === 'Test deleted') {
+            alert('Test deleted successfully');
+            location.assign('/normalAdminProfile');
+        }
+        else {
+            alert("Can't perform the action");
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
+
+
 //Function to Display all the Blogs creted by user
 /**
  * 
  * @param {String} id
  * @async 
  */
-const displayShowBlogSection = async(id) => {
+const displayShowBlogSection = async (id) => {
 
     try {
         /**
@@ -35,24 +112,30 @@ const displayShowBlogSection = async(id) => {
 
         const data = await res.json();
         if (data) {
+            show_admin_all_tests_section.style.display = 'none';
             editBlogSection.style.display = 'none';
-            displayAdminAllBlogsSection.style.display = 'flex';
-            //Displaying data dynamically
-            for (let i = 0; i < data.length; i++) {
-                let blogData = `
-                        <div id="blog-data-section" class="blog-data-section-class">
-                            <div class="blog-content">
-                                <h2>${data[i].title}</h2>
-                                <p>${data[i].description.substring(0,100)}</p>
+            let display = window.getComputedStyle(displayAdminAllBlogsSection).display;
+            if (display === 'none') {
+                displayAdminAllBlogsSection.innerHTML="";
+                displayAdminAllBlogsSection.style.display = 'flex';
+                //Displaying data dynamically
+                for (let i = 0; i < data.length; i++) {
+                    let blogData = `
+                            <div id="blog-data-section" class="blog-data-section-class">
+                                <div class="blog-content">
+                                    <h2>${data[i].title}</h2>
+                                    <p>${data[i].description.substring(0, 100)}</p>
+                                </div>
+                                <div class="blog-actions">
+                                    <button onclick="editBlog('${id}','${data[i]._id}','${i}')">Edit</button>
+                                    <button onclick="deleteBlog('${data[i]._id}')">Delete</button>
+                                </div>
                             </div>
-                            <div class="blog-actions">
-                                <button onclick="editBlog('${id}','${data[i]._id}','${i}')">Edit</button>
-                                <button onclick="deleteBlog('${data[i]._id}')">Delete</button>
-                            </div>
-                        </div>
-                    `
-                displayAdminAllBlogsSection.innerHTML += blogData;
+                        `
+                    displayAdminAllBlogsSection.innerHTML += blogData;
+                }
             }
+
         }
     } catch (err) {
         console.log(err);
@@ -64,7 +147,7 @@ const displayShowBlogSection = async(id) => {
 /**
  * @async 
  */
-const getAdminData = async() => {
+const getAdminData = async () => {
     try {
         /**
          * @method GET
@@ -85,6 +168,7 @@ const getAdminData = async() => {
             let blogButtons = `
                 <button class="button-sec" onclick="displayCreateBlogSection('${data._id}')">Create a Blog</button>
                 <button class="button-sec" onclick="displayShowBlogSection('${data._id}')">Show all blogs</button>
+                <button class="button-sec" onclick="displayShowTestSection('${data._id}')">My created Tests</button>
             `;
             document.getElementById('button-section').innerHTML = blogButtons;
             document.getElementById('nav-link-3').innerHTML = `
@@ -104,7 +188,7 @@ getAdminData(); //calling function to display admin data
  * @param {Number} i 
  * @async
  */
-const fillInputfields = async(adminId, i) => {
+const fillInputfields = async (adminId, i) => {
     try {
         const res = await fetch(`/showAdminAllBlogs/${adminId}`, {
             method: 'GET',
@@ -136,11 +220,11 @@ const fillInputfields = async(adminId, i) => {
  * @param {Number} i 
  * @async 
  */
-const editBlog = async(adminId, blogId, i) => {
+const editBlog = async (adminId, blogId, i) => {
     displayAdminAllBlogsSection.style.display = 'none';
     editBlogSection.style.display = 'block';
     fillInputfields(adminId, i);
-    formFields.addEventListener('submit', async(e) => {
+    formFields.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         // get values 
@@ -192,7 +276,7 @@ const editBlog = async(adminId, blogId, i) => {
  * @param {String} blogId 
  * @async 
  */
-const deleteBlog = async(blogId) => {
+const deleteBlog = async (blogId) => {
     if (confirm('Are you sure you want to delete this blog ?')) {
         try {
             const res = await fetch(`/deleteBlog/${blogId}`, {

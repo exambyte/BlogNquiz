@@ -16,6 +16,10 @@ router.get('/getAllBlogs', authenticate, normalAdminControllers.allBlogs_get);
 
 router.get('/categoryBlog/:category',normalAdminControllers.Blog_category_get);
 
+router.get('/getAdminTest/:id',normalAdminControllers.Admin_test_get);
+
+router.delete('/deleteTest/:id',normalAdminControllers.Admin_test_delete);
+
 //......................Routes for Login.....................................
 
 /**
