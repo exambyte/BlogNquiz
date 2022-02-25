@@ -1,0 +1,184 @@
+
+.container{
+    color:antiquewhite;
+    background-color: black;
+    margin: 4%;
+    padding: 3%;
+    overflow-x: hidden;
+}
+.container-fluid .container{
+    margin-left: 2%;
+    margin-top: 3rem;
+    margin-right: 2%;
+}
+.container-fluid .container .row h1{
+    margin-left: 35%;
+    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+    font-family: 'Libre Baskerville', serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Mukta', sans-serif;
+    font-family: 'Source Serif 4', sans-serif;
+}
+
+.container-fluid .container .row p{
+    margin-left: 4%;
+}
+.container-data .image img{
+    margin-left: 12%;
+    margin-top: 4%;
+    width: 70%;
+    height: 40%;
+}
+.container-data .image p{
+    margin-left: 40%;
+    margin-bottom: 4%;
+    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+font-family: 'Libre Baskerville', serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Mukta', sans-serif;
+font-family: 'Roboto Mono', monospace;
+font-family: 'Source Serif 4', sans-serif;
+}
+pre{
+    font-family: 'Roboto', sans-serif;
+    height: auto;
+    white-space: break-spaces;
+}
+.description{
+    margin-left: 4%;
+    font-size:medium;
+    font-weight: bolder;
+    margin-bottom: 3%;
+}
+
+.buttons{
+    margin-left: 40%;
+    display: flex;
+    flex-direction: initial;
+}
+.buttons button{
+    width: 4rem;
+    height: 2rem;
+}
+.buttons span{
+    color:antiquewhite;
+}
+.like-btn, .unlike-btn{
+    margin-right: .5rem;
+    margin-left: 1rem;
+    background-color: #008CBA;
+    font-size: medium;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 5px;
+    
+}
+.save-btn, .unsave-btn{
+    margin-right: 1rem;
+    margin-left: 2rem;
+    background-color: green;
+    font-size: medium;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 5px;
+}
+.like-btn:hover, .unlike-btn:hover{
+    background-color: skyblue;
+    transition: .5s;
+    border: 1px solid black;
+}
+.save-btn:hover, .unsave-btn:hover{
+    background-color: lightgreen;
+    transition: .5s;
+    border: 1px solid black;
+}
+
+
+ @media (max-width:1020px) {
+    .container-data .image img{
+        margin-left: 18% !important;
+    }
+}
+ @media (max-width:860px) {
+ 
+    
+     .container-data .image img{
+        margin-left: 14% !important;
+        width: 80% !important;
+        height: 40% !important;
+    }
+    .container-fluid .container .row h1{
+        margin-left: 37% !important;
+        font-size: x-large !important;
+    }
+}  
+@media (max-width:690px) {
+ 
+    .container-fluid .container .row h1{
+        margin-left: 32% !important;
+        font-size: x-large;
+    }
+    .container-data .image p{
+        margin-left: 30% !important;
+    }
+    .container-data .image img{
+        margin-left: 4% !important;
+        width: 95% !important;
+        height: 40% !important;
+    }
+    .buttons{
+        margin-left: 36%;
+        display: flex;
+        flex-direction: initial;
+    }
+}
+@media (max-width:560px) {
+
+    .buttons{
+        margin-left: 34%;
+        display: flex;
+        flex-direction: initial;
+    }
+}
+@media (max-width:475px) {
+ 
+    .container-fluid .container .row h1{
+        margin-left: 28% !important;
+        font-size: x-large;
+    }
+    .container-data .image p{
+        margin-left: 24% !important;
+    }
+    .container-data .image img{
+        margin-left: 4% !important;
+        width: 100% !important;
+        height: 40% !important;
+    }
+    .buttons{
+        margin-left: 30%;
+        display: flex;
+        flex-direction: initial;
+    }
+}
+@media (max-width:430px) {
+ 
+    .container-fluid .container .row h1{
+        margin-left: 30% !important;
+        font-size: large !important;
+    }
+    .container-data .image p{
+        margin-left: 24% !important;
+        font-size: small !important;
+    }
+    .container-data .image img{
+        margin-left: 0% !important;
+        width: 110% !important;
+        height: 40% !important;
+    }
+    .buttons{
+        margin-left: 26%;
+        display: flex;
+        flex-direction: initial;
+    }
+}
+   

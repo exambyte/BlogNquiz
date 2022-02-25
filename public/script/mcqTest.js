@@ -126,9 +126,10 @@ submit.addEventListener('click', () => {
         questionArea.style.display='none';
         questions.style.display='none';
         showScore.innerHTML = `
-               <h3> Your Score:  ${score}/${window.quizData.length} </h3>
+               <h3> Your Score: ${score}/${window.quizData.length} </h3><br>
+               <h3 class="correct" style="background-color:rgb(52, 187, 52);"> Correct: ${score}</h3>&nbsp&nbsp&nbsp&nbsp
+               <h3 class="incorrect" style="background-color:red;">Incorrect: ${window.quizData.length - score} </h3>
                <button class="btn" onclick="location.reload()">Restart</button>
-               <h3> Correct: ${score}&nbsp&nbsp&nbsp&nbspIncorrect: ${window.quizData.length - score} </h3>
             `;
 
         // showScore.classList.remove('scoreArea');

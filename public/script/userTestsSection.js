@@ -15,17 +15,18 @@ const getAllTestData = async()=>{
 
                 user_tests_section.innerHTML+=`
                     <div class="test-data">
-                        <div class="test Title">
-                            <h2>${testData[i].title}</h2>
+                        <div class="test-title">
+                            <h3>${testData[i].title}</h3>
                         </div>
                         <div class="test-details">
                             <p>No. Of Questions:&nbsp${testData[i].noOfQestions}</p>
                             <p>Created On:&nbsp${date.toLocaleDateString()}</p>
                         </div>
                         <div class="test-link">
-                            <a href="/mcq/${testData[i].slug}" target="_blank">Take Quiz</a>
-                        </div>
+                            <a href="/mcq/${testData[i].slug}" class="link" target="_blank">Start Quiz</a>
+                        </div><hr>
                     </div>
+                    
                 `
             }
         }
