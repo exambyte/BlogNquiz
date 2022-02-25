@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.profile-icon{
+    font-size:6rem;
+}
+
 #show-admin-all-blogs {
     display: none;
     flex-direction: column;
@@ -11,14 +17,16 @@
 .blog-data-section-class {
     height: 6rem;
     width: 90%;
-    background-color: #134d5c;
-    border: 2px solid black;
-    border-radius: 5px;
     display: flex;
     margin:1rem;
+    box-shadow: 1px 8px 12px 4px #888888;
 }
 .navbar .collapse .navbar-nav li:hover{
     background-color: lightblue;
+}
+
+.blog-data-section-class:hover{
+    background-color:rgb(228, 228, 228);
 }
 
 .blog-content {
@@ -27,7 +35,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color:white;
+    color:grey;
+}
+
+.blog-actions-edit{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem;
+}
+
+
+.blog-actions-delete{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem;
+}
+
+.navigation-btns{
+    font-size:1.5rem;
+    margin:.5rem;
+}
+
+.navigation-btns:hover{
+    color:black;
+    transition:all 0.6s ease-in-out;
 }
 
 .blog-actions {
@@ -101,5 +134,23 @@
 @media only screen and (max-width:500px){
     .test-detail{
         flex-direction: column;
+    }
+
+    .navigation-btns{
+        font-size:1rem;
+    }
+
+    .blog-data-section-class{
+        height: 10rem;
+        width: 97%;
+    }
+
+    .blog-content{
+        width: 75%;
+        padding:.5rem;
+    }
+
+    .blog-actions{
+        width:25%;
     }
 }

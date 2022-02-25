@@ -434,3 +434,8 @@ exports.Admin_test_delete= async (req,res)=>{
         res.status(500).send({ message: err });
     })
 }
+
+exports.logout_normalAdmin=async (req,res)=>{
+    res.clearCookie('jwtoken');
+    res.status(200).redirect('/login');
+}

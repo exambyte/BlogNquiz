@@ -325,8 +325,17 @@ button .bttn{
 }
 
 .dashboard-heading-name {
-    margin-top: 8% ;
+    margin-top: 1% ;
     margin-bottom:5% ;
+   
+}
+
+.dashboard-heading-name h2{
+    font-family: 'Roboto', sans-serif;
+}
+
+.dashboard-heading-name h4{
+    font-family: 'Roboto', sans-serif;
 }
 
 #category-blog-section-Mathematics {
@@ -476,7 +485,7 @@ button .bttn{
         margin-left: 20rem !important;
     }
     .dashboard-heading-name {
-        margin-top: 8% !important;
+        margin-top: 2% !important;
         margin-bottom:5% !important;
     }
     

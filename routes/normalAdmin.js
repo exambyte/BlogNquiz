@@ -12,6 +12,8 @@ const multer = require('../middlewares/multer');
 
 
 
+router.get('/logoutNormalAdmin',authenticate,normalAdminControllers.logout_normalAdmin);
+
 router.get('/getAllBlogs', authenticate, normalAdminControllers.allBlogs_get);
 
 router.get('/categoryBlog/:category',normalAdminControllers.Blog_category_get);
@@ -112,6 +114,8 @@ router.put('/updateBlog/:id', authenticate, normalAdminControllers.updateBlog_pu
  * @method DELETE
  */
 router.delete('/deleteBlog/:id', authenticate, normalAdminControllers.deleteBlog_delete);
+
+
 
 
 

@@ -124,11 +124,15 @@ const displayShowBlogSection = async (id) => {
                             <div id="blog-data-section" class="blog-data-section-class">
                                 <div class="blog-content">
                                     <h2>${data[i].title}</h2>
-                                    <p>${data[i].description.substring(0, 100)}</p>
+                                    <p>${data[i].description.substring(0, 100)}....</p>
                                 </div>
                                 <div class="blog-actions">
-                                    <button onclick="editBlog('${id}','${data[i]._id}','${i}')">Edit</button>
-                                    <button onclick="deleteBlog('${data[i]._id}')">Delete</button>
+                                    <div class="blog-actions-edit">
+                                        <a href="javascript:;" class='fas fa-pen' onclick="editBlog('${id}','${data[i]._id}','${i}')">&nbspEdit</a>
+                                    </div>
+                                    <div class="blog-actions-delete">
+                                        <a href="javascript:;" class='fas fa-trash' onclick="deleteBlog('${data[i]._id}')">&nbspDelete</a>
+                                    </div>
                                 </div>
                             </div>
                         `
@@ -166,14 +170,15 @@ const getAdminData = async () => {
             document.getElementById('name').innerHTML = data.name;
             document.getElementById('email').innerHTML = data.email;
             let blogButtons = `
-                <button class="button-sec" onclick="displayCreateBlogSection('${data._id}')">Create a Blog</button>
-                <button class="button-sec" onclick="displayShowBlogSection('${data._id}')">Show all blogs</button>
-                <button class="button-sec" onclick="displayShowTestSection('${data._id}')">My created Tests</button>
+                <a href="javascript:;" class="fa fa-file-text-o navigation-btns" onclick="displayCreateBlogSection('${data._id}')" >&nbspCreate a new blog</a>
+                <a href="javascript:;"  class='fas fa-eye navigation-btns' onclick="displayShowBlogSection('${data._id}')">&nbspShow my blogs</a>
+                <a href="javascript:;" class='fas fa-book-open navigation-btns' onclick="displayShowTestSection('${data._id}')">&nbspMy created Tests</a>
             `;
             document.getElementById('button-section').innerHTML = blogButtons;
             document.getElementById('nav-link-3').innerHTML = `
                 <a class="nav-link" href="javascript:;" onclick="displayCreateBlogSection('${data._id}')">Create Blog</a>
             `
+            displayShowBlogSection(data._id);
         }
     } catch (err) {
         console.log(err);
