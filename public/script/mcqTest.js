@@ -158,7 +158,7 @@ const getTestData = async () => {
 
         const data = await res.json();
         if (data) {
-            console.log(data);
+            document.title = `${slug} ExamBytes`;
             window.quizData = data[0].questions;
             console.log(quizData);
             console.log(window.quizData);
