@@ -1,55 +1,319 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en"
+      dir="rtl">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign IN</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible"
+              content="IE=edge">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Login</title>
 
-    <!-- Style Sheet -->
-    <link rel="stylesheet" href="css/signin.css">
-    <link rel="icon" href="data:,">
-</head>
+        <!-- Prevent the demo from appearing in search engines -->
+        <meta name="robots"
+              content="noindex">
 
-<body>
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap"
+              rel="stylesheet">
 
-    <div class="container" id="container">
+        <!-- Preloader -->
+        <link type="text/css"
+              href="/Theme/vendor/spinkit.css"
+              rel="stylesheet">
 
-        <div class="form-container sign-in-container">
-            <form class="k" id="login-form" action="#" method="post">
-                <h1>Sign in</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your account</span>
-                <input id="email" type="email" autocomplete="off" placeholder="Email" />
-                <input id="password" type="password" autocomplete="off" placeholder="Password" />
-                <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
-                <!-- <p>or</p> -->
-                <a class="signUp-link" href="/register">SIGN UP</a>
-            </form>
+        <!-- Perfect Scrollbar -->
+        <link type="text/css"
+              href="/Theme/vendor/perfect-scrollbar.css"
+              rel="stylesheet">
+
+        <!-- Material Design Icons -->
+        <link type="text/css"
+              href="/Theme/css/material-icons.css"
+              rel="stylesheet">
+
+        <!-- Font Awesome Icons -->
+        <link type="text/css"
+              href="/Theme/css/fontawesome.css"
+              rel="stylesheet">
+
+        <!-- Preloader -->
+        <link type="text/css"
+              href="/Theme/css/preloader.css"
+              rel="stylesheet">
+
+        <!-- App CSS -->
+        <link type="text/css"
+              href="/Theme/css/app.css"
+              rel="stylesheet">
+
+    </head>
+
+    <body class="layout-sticky-subnav layout-default ">
+
+        <div class="preloader">
+            <div class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+
+            <!-- <div class="sk-bounce">
+    <div class="sk-bounce-dot"></div>
+    <div class="sk-bounce-dot"></div>
+  </div> -->
+
+            <!-- More spinner examples at https://github.com/tobiasahlin/SpinKit/blob/master/examples.html -->
         </div>
 
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-right">
-                    <h1>Hello, Friend!</h1>
-                    <p>Enter your personal details and start journey with us</p>
-                    <!-- <button class="ghost" id="signUp"><a class="l" href="signup.html">Sign Up</a></button> -->
-                    <button class="ghost" id="signUp" type="submit" onclick="redirectSignup()">Sign Up</button>
-                    <!-- <button class="ghost" id="signUp"><a class="l" href="signup.html">Sign Up</a></button> -->
+        <!-- Header Layout -->
+        <div class="mdk-header-layout js-mdk-header-layout">
+
+            <!-- Header -->
+
+            <div id="header"
+                 class="mdk-header js-mdk-header mb-0"
+                 data-fixed
+                 data-effects="">
+                <div class="mdk-header__content">
+
+                    <div class="navbar navbar-expand navbar-dark-pickled-bluewood navbar-shadow"
+                         id="default-navbar"
+                         data-primary>
+
+                        <!-- Navbar toggler -->
+                        <button class="navbar-toggler w-auto mr-16pt d-block rounded-0"
+                                type="button"
+                                data-toggle="sidebar">
+                            <span class="material-icons">short_text</span>
+                        </button>
+
+                        <!-- Navbar Brand -->
+                        <a href="index.html"
+                           class="navbar-brand mr-16pt">
+                            <!-- <img class="navbar-brand-icon" src="../../public/images/logo/white-100@2x.png" width="30" alt="Luma"> -->
+
+                            <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
+
+                                <span class="avatar-title rounded bg-primary"><img src="../../public/images/illustration/student/128/white.svg"
+                                         alt="logo"
+                                         class="img-fluid" /></span>
+
+                            </span>
+
+                            <span class="d-none d-lg-block">ExamBytes</span>
+                        </a>
+
+
+                        <ul class="nav navbar-nav ml-auto mr-0">
+                            <li class="nav-item active">
+                                <a href="login.html"
+                                   class="nav-link"
+                                   data-toggle="tooltip"
+                                   data-title="Login"
+                                   data-placement="bottom"
+                                   data-boundary="window"><i class="material-icons">lock_open</i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="signup.html"
+                                   class="btn btn-outline-white">Get Started</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- // END Header -->
+
+            <!-- Header Layout Content -->
+            <div class="mdk-header-layout__content page-content ">
+
+                <div class="pt-32pt pt-sm-64pt pb-32pt">
+                    <div class="container page__container">
+                        <form 
+                              class="col-md-5 p-0 mx-auto" 
+                              id="login-form" action="#" method="post">
+                            <div class="form-group">
+                                <label class="form-label"
+                                       for="email">Email:</label>
+                                <input id="email"
+                                       type="text"
+                                       class="form-control"
+                                       placeholder="Your email address ...">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label"
+                                       for="password">Password:</label>
+                                <input id="password"
+                                       type="password"
+                                       class="form-control"
+                                       placeholder="Your first and last name ...">
+                                <p class="text-right"><a href="reset-password.html"
+                                       class="small">Forgot your password?</a></p>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="page-separator justify-content-center m-0">
+                    <div class="page-separator__text">or sign-in with</div>
+                </div>
+                <div class="bg-body pt-32pt pb-32pt pb-md-64pt text-center">
+                    <div class="container page__container">
+                        <a href="index.html"
+                           class="btn btn-secondary btn-block-xs">Facebook</a>
+                        <a href="index.html"
+                           class="btn btn-secondary btn-block-xs">Twitter</a>
+                        <a href="index.html"
+                           class="btn btn-secondary btn-block-xs">Google+</a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- // END Header Layout Content -->
+
+            <!-- Footer -->
+
+            <div class="bg-white border-top-2 mt-auto">
+                <div class="container page__container page-section d-flex flex-column">
+                    <p class="text-70 brand mb-24pt">
+                        <img class="brand-icon"
+                             src="../../public/images/logo/black-70@2x.png"
+                             width="30"
+                             alt="Luma"> Luma
+                    </p>
+                    <p class="measure-lead-max text-50 small mr-8pt">Luma is a beautifully crafted user interface for modern Education Platforms, including Courses & Tutorials, Video Lessons, Student and Teacher Dashboard, Curriculum Management, Earnings and Reporting, ERP, HR, CMS, Tasks, Projects, eCommerce and more.</p>
+                    <p class="mb-8pt d-flex">
+                        <a href=""
+                           class="text-70 text-underline mr-8pt small">Terms</a>
+                        <a href=""
+                           class="text-70 text-underline small">Privacy policy</a>
+                    </p>
+                    <p class="text-50 small mt-n1 mb-0">Copyright 2019 &copy; All rights reserved.</p>
+                </div>
+            </div>
+
+            <!-- // END Footer -->
+
+        </div>
+        <!-- // END Header Layout -->
+
+        <!-- Drawer -->
+
+        <div class="mdk-drawer js-mdk-drawer"
+             id="default-drawer">
+            <div class="mdk-drawer__content">
+                <div class="sidebar sidebar-dark-pickled-bluewood sidebar-left"
+                     data-perfect-scrollbar>
+
+                    <!-- Sidebar Content -->
+
+                    <div class="d-flex align-items-center navbar-height">
+                        <form action="index.html"
+                              class="search-form search-form--black mx-16pt pr-0 pl-16pt">
+                            <input type="text"
+                                   class="form-control pl-0"
+                                   placeholder="Search">
+                            <button class="btn"
+                                    type="submit"><i class="material-icons">search</i></button>
+                        </form>
+                    </div>
+
+                    <a href="index.html"
+                       class="sidebar-brand ">
+                        <!-- <img class="sidebar-brand-icon" src="../../public/images/illustration/student/128/white.svg" alt="Luma"> -->
+
+                        <span class="avatar avatar-xl sidebar-brand-icon h-auto">
+
+                            <span class="avatar-title rounded bg-primary"><img src="../../public/images/illustration/student/128/white.svg"
+                                     class="img-fluid"
+                                     alt="logo" /></span>
+
+                        </span>
+
+                        <span>ExamBytes</span>
+                    </a>
+
+                   
+                        <li class="sidebar-menu-item active open">
+                            <a class="sidebar-menu-button"
+                               data-toggle="collapse"
+                               href="#account_menu">
+                                <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
+                                Account
+                                <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                            </a>
+                            <ul class="sidebar-submenu collapse show sm-indent"
+                                id="account_menu">
+                                <li class="sidebar-menu-item active">
+                                    <a class="sidebar-menu-button"
+                                       href="login.html">
+                                        <span class="sidebar-menu-text">Login</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button"
+                                       href="signup.html">
+                                        <span class="sidebar-menu-text">Signup</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button"
+                                       href="reset-password.html">
+                                        <span class="sidebar-menu-text">Reset Password</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button"
+                                       href="edit-account-profile.html">
+                                        <span class="sidebar-menu-text">Profile &amp; Privacy</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    
+                    
+
+                    <!-- // END Sidebar Content -->
+
                 </div>
             </div>
         </div>
 
-    </div>
+        <!-- // END Drawer -->
 
-    <script src="script/login.js"></script>
-</body>
+        <!-- jQuery -->
+        <script src="/Theme/vendor/jquery.min.js"></script>
+
+        <!-- Bootstrap -->
+        <script src="/Theme/vendor/popper.min.js"></script>
+        <script src="/Theme/vendor/bootstrap.min.js"></script>
+
+        <!-- Perfect Scrollbar -->
+        <script src="/Theme/vendor/perfect-scrollbar.min.js"></script>
+
+        <!-- DOM Factory -->
+        <script src="/Theme/vendor/dom-factory.js"></script>
+
+        <!-- MDK -->
+        <script src="/Theme/vendor/material-design-kit.js"></script>
+
+        <!-- App JS -->
+        <script src="/Theme/js/app.js"></script>
+
+        <!-- Preloader -->
+        <script src="/Theme/js/preloader.js"></script>
+
+        <script src="script/login.js"></script>
+
+    </body>
 
 </html>

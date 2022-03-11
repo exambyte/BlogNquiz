@@ -9,7 +9,7 @@ const router = express.Router();
 const controller = require('../controllers/home');
 const authenticate = require('../middlewares/authenticate')
 
-router.get('/', authenticate, controller.getHome);
+router.get('/',authenticate, controller.getHome);
 
 router.get('/getData', authenticate, controller.getData);
 
