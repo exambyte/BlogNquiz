@@ -16,10 +16,10 @@ const jwt = require('jsonwebtoken');
  * @async function
  */
 const authenticate = async(req, res, next) => {
+    
     try {
         const token = req.cookies.jwtoken;
         const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
-
         const verifiedUser = await User.findOne({ _id: verifyToken._id, 'tokens?.token': token });
 
         if (!verifiedUser) {
@@ -27,14 +27,17 @@ const authenticate = async(req, res, next) => {
             // res.redirect('/login');
         }
 
-        req.token = token;
-        req.verifiedUser = verifiedUser;
-        req.userId = verifiedUser._id;
-        res.locals.user = verifiedUser
+            req.token = token;
+            req.verifiedUser = verifiedUser;
+            req.userId = verifiedUser._id;
+            res.locals.user = verifiedUser;
+            res.locals.unauthenticated = false;
 
         next();
     } catch (err) {
-        res.redirect('/login');
+        res.locals.unauthenticated = true;
+        // res.redirect('/login');
+        next();
         console.log(err);
     }
 

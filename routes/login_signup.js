@@ -42,7 +42,7 @@ router.post('/login', authcontrollers.login_post);
 
 //......................Routes for Like and bookmark.....................................
 
-router.get('/showBlogUser/:slug', authenticate, authcontrollers.showBlogUser_get)
+router.get('/showBlogUser/:slug',  authcontrollers.showBlogUser_get)
 
 router.put('/like/:id', authenticate, authcontrollers.like);
 

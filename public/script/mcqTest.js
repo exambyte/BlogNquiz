@@ -7,9 +7,9 @@ const option_3 = document.getElementById('option3');
 const option_4 = document.getElementById('option4');
 const submit = document.getElementById('submit');
 const answers = document.querySelectorAll('.answer');
-const showScore = document.querySelector('#showScore');
 const previousBtn = document.getElementById('go-back');
-const questionArea = document.getElementById('question-area');
+const optionArea = document.getElementById('option-area');
+const questionUpdate = document.getElementById('question-update');
 
 
 let questionCount = 0;
@@ -28,6 +28,7 @@ const startQuiz = () => {
         submit.style.display = "block";
     }
     const question_data = window.quizData[questionCount];
+    questionUpdate.innerHTML = `Question ${questionCount+1} of ${window.quizData.length}`
     questions.innerText = question_data.question;
     option_1.innerText = question_data.option1;
     option_2.innerText = question_data.option2;
@@ -123,14 +124,10 @@ submit.addEventListener('click', () => {
         previousSelection();
     }
     else {
-        questionArea.style.display='none';
+       
         questions.style.display='none';
-        showScore.innerHTML = `
-               <h3> Your Score: ${score}/${window.quizData.length} </h3><br>
-               <h3 class="correct" style="background-color:rgb(52, 187, 52);"> Correct: ${score}</h3>&nbsp&nbsp&nbsp&nbsp
-               <h3 class="incorrect" style="background-color:red;">Incorrect: ${window.quizData.length - score} </h3>
-               <button class="btn" onclick="location.reload()">Restart</button>
-            `;
+        questionUpdate.innerHTML = `Your Score: ${score}/${window.quizData.length}`
+        
 
         // showScore.classList.remove('scoreArea');
     }

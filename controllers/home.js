@@ -25,7 +25,7 @@ exports.getHome = async(req, res) => {
     // const {name,email,contactNo,password} = req.verifiedUser;
     const articles = await Article.find();
     const tests = await Test.find();
-    res.render('home', { articles: articles ,tests:tests});
+    res.render('home', { articles: articles ,tests:tests ,unauthorised:res.locals.unauthenticated});
 }
 
 exports.getUserTest=async(req,res)=>{

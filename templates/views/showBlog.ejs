@@ -157,12 +157,11 @@
                                     </div>
                                     <div class="buttons">
                                     <div>
-                                        <% if(article.likes.includes(user._id)) { %>
+                                        <% if( !locals.unauthorised || article.likes.includes(user._id) ){ %>
                                             <a href="" class="text-50 d-flex align-items-center text-decoration-0"
                                                 onclick="like_func(event);" class="like-btn"
                                                 data-post-id="<%= article.id %>" class="left_div__like" id="like_btn"><i
                                                     class="material-icons icon--left red-color">favorite</i> </a>
-
                                             <span id="likes-count-<%= article.id %>">
                                                 <%= article.likes.length %>
                                             </span>
@@ -173,12 +172,12 @@
                                                 onclick="like_func(event);" class="unlike-btn"
                                                 data-post-id="<%= article.id %>" class="left_div__like" id="like_btn"><i
                                                     class="material-icons icon--left">favorite_border</i> </a>
-                                            <!-- <span id="likes-count-<%= article.id %>">
+                                             <span id="likes-count-<%= article.id %>">
                                                 <%= article.likes.length %>
                                             </span>
                                         </div>
                                         <% } %>
-                                            <% if(user.bookmarks.includes(article._id)) { %>
+                                            <% if(!locals.unauthorised || user.bookmarks.includes(article._id)) { %>
                                                 <div>
                                                     <a href=""
                                                         class="text-50 d-flex align-items-center text-decoration-0"
@@ -194,9 +193,8 @@
                                                             class="unsave-btn" onclick="save_func(event);"
                                                             data-post-id="<%= article.id %>" class="left_div__save"
                                                             id="save_btn"><i class="material-icons icon--left">bookmark_border</i> </a>
-
                                                     </div>
-                                                    <% } %> -->
+                                                    <% } %> 
                                                    
                                 </div>
                             </div>
@@ -715,7 +713,6 @@
                     <script>
                         // for like btn
                         const like = document.getElementById('like_btn');
-
                         var toggleButtonText = {
                             Like: function (button) {
                                 button.textContent = "Unlike";
@@ -724,7 +721,6 @@
                                 button.textContent = "Like";
                             }
                         };
-
                         var updatePostStats = {
                             Like: function (postId) {
                                 document.querySelector('#likes-count-' + postId).textContent++;
@@ -733,19 +729,15 @@
                                 document.querySelector('#likes-count-' + postId).textContent--;
                             }
                         };
-
                         const like_func = async (e) => {
                             e.preventDefault();
                             var postId = event.target.dataset.postId;
-
                             var action = event.target.textContent.trim();
                             // console.log(action)
                             toggleButtonText[action](event.target);
                             updatePostStats[action](postId);
-
                             try {
                                 const liked = await fetch(`/like/${postId}`, {
-
                                     method: 'PUT',
                                     headers: {
                                         "Content-Type": "application/json",
@@ -756,10 +748,7 @@
                                 console.log('err')
                             }
                         };
-
-
                         // for save btn               
-
                         var toggleButtonTextSave = {
                             Save: function (button) {
                                 button.textContent = "Unsave";
@@ -768,23 +757,15 @@
                                 button.textContent = "Save";
                             }
                         };
-
-
                         const save_func = async (e) => {
-
                             e.preventDefault();
                             var postId = event.target.dataset.postId;
                             console.log(postId)
-
                             // we can also implement that a post a alread saved in a user collection or not with action below
                             var action = event.target.textContent.trim();
-
                             toggleButtonTextSave[action](event.target);
-
-
                             try {
                                 const saved = await fetch(`/bookmark/${postId}`, {
-
                                     method: 'PUT',
                                     headers: {
                                         "Content-Type": "application/json",
