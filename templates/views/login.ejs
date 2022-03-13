@@ -30,212 +30,83 @@
 
     <!-- App CSS -->
     <link type="text/css" href="/Theme/css/app.css" rel="stylesheet">
-
 </head>
 
-<body class="layout-sticky-subnav layout-default ">
+<body class="layout-default layout-login-centered-boxed">
 
-    <div class="preloader">
-        <div class="sk-chase">
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
+    <div class="layout-login-centered-boxed__form card">
+        <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-5 navbar-light">
+            <a href="/" class="navbar-brand flex-column mb-2 align-items-center mr-0" style="min-width: 0">
+
+                <span class="avatar avatar-sm navbar-brand-icon mr-0">
+
+                    <!-- <span class="avatar-title rounded bg-primary"><img src="../../public/images/illustration/student/128/white.svg"
+                             alt="logo"
+                             class="img-fluid" /></span> -->
+
+                </span>
+
+                ExamByte
+            </a>
+            <p class="m-0">Login to access your ExamByte Account </p>
         </div>
 
-        <!-- <div class="sk-bounce">
-    <div class="sk-bounce-dot"></div>
-    <div class="sk-bounce-dot"></div>
-  </div> -->
+        <div class="alert alert-soft-success d-flex" role="alert">
+            <i class="material-icons mr-12pt">check_circle</i>
+            <div class="text-body">An email with password reset instructions has been sent to your email address, if it
+                exists on our system.</div>
+        </div>
 
-        <!-- More spinner examples at https://github.com/tobiasahlin/SpinKit/blob/master/examples.html -->
+        <a href="/" class="btn btn-light btn-block mb-24pt">
+            <span class="fab fa-google icon--left"></span>
+            Continue with Google
+        </a>
+
+        <div class="page-separator justify-content-center">
+            <div class="page-separator__text bg-white">or</div>
+        </div>
+
+        <form action="/" id="login-form" novalidate>
+            <div class="form-group">
+                <label class="text-label" for="email_2">Email Address:</label>
+                <div class="input-group input-group-merge">
+                    <input id="email" type="email" required="" class="form-control form-control-prepended"
+                        placeholder="john@doe.com">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="far fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="text-label" for="password_2">Password:</label>
+                <div class="input-group input-group-merge">
+                    <input id="password" type="password" required="" class="form-control form-control-prepended"
+                        placeholder="Enter your password">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fa fa-key"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-block btn-primary" type="submit">Login</button>
+            </div>
+            <div class="form-group text-center">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" checked="" id="remember">
+                    <label class="custom-control-label" for="remember">Remember me for 30 days</label>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <a href="">Forgot password?</a> <br>
+                Don't have an account? <a class="text-body text-underline" href="/register">Sign up!</a>
+            </div>
+        </form>
     </div>
 
-    <!-- Header Layout -->
-    <div class="mdk-header-layout js-mdk-header-layout">
-
-        <!-- Header -->
-
-        <div id="header" class="mdk-header js-mdk-header mb-0" data-fixed data-effects="">
-            <div class="mdk-header__content">
-
-                <div class="navbar navbar-expand navbar-dark-pickled-bluewood navbar-shadow" id="default-navbar"
-                    data-primary>
-
-                    <!-- Navbar toggler -->
-                    <button class="navbar-toggler w-auto mr-16pt d-block rounded-0" type="button" data-toggle="sidebar">
-                        <span class="material-icons">short_text</span>
-                    </button>
-
-                    <!-- Navbar Brand -->
-                    <a href="/" class="navbar-brand mr-16pt">
-                        <!-- <img class="navbar-brand-icon" src="../../public/images/logo/white-100@2x.png" width="30" alt="Luma"> -->
-
-                        <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
-
-                            <!-- <span class="avatar-title rounded bg-primary"><img src="../../public/images/illustration/student/128/white.svg"
-                                         alt="logo"
-                                         class="img-fluid" /></span> -->
-
-                        </span>
-
-                        <span class="d-none d-lg-block">ExamByte</span>
-                    </a>
-
-
-                    <ul class="nav navbar-nav ml-auto mr-0">
-                        <li class="nav-item active">
-                            <a href="/login" class="nav-link" data-toggle="tooltip" data-title="Login"
-                                data-placement="bottom" data-boundary="window"><i
-                                    class="material-icons">lock_open</i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/register" class="btn btn-outline-white">Get Started</a>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- // END Header -->
-
-        <!-- Header Layout Content -->
-        <div class="mdk-header-layout__content page-content ">
-
-            <div class="pt-32pt pt-sm-64pt pb-32pt">
-                <div class="container page__container">
-                    <form class="col-md-5 p-0 mx-auto" id="login-form" action="#" method="post">
-                        <div class="form-group">
-                            <label class="form-label" for="email">Email:</label>
-                            <input id="email" type="text" class="form-control" placeholder="Your email address ...">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="password">Password:</label>
-                            <input id="password" type="password" class="form-control"
-                                placeholder="Your first and last name ...">
-                            <p class="text-right"><a href="reset-password.html" class="small">Forgot your password?</a>
-                            </p>
-                        </div>
-                        <div class="text-center">
-                            <button class="btn btn-primary">Login</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="page-separator justify-content-center m-0">
-                <div class="page-separator__text">or sign-in with</div>
-            </div>
-            <div class="bg-body pt-32pt pb-32pt pb-md-64pt text-center">
-                <div class="container page__container">
-                    <a href="/" class="btn btn-secondary btn-block-xs">Facebook</a>
-                    <a href="/" class="btn btn-secondary btn-block-xs">Twitter</a>
-                    <a href="/" class="btn btn-secondary btn-block-xs">Google+</a>
-                </div>
-            </div>
-
-        </div>
-        <!-- // END Header Layout Content -->
-
-        <!-- Footer -->
-
-        <div class="bg-white border-top-2 mt-auto">
-            <div class="container page__container page-section d-flex flex-column">
-                <p class="text-70 brand mb-24pt">
-                    <!-- <img class="brand-icon"
-                             src="../../public/images/logo/black-70@2x.png"
-                             width="30"
-                             alt="Luma">  --> ExamByte
-                </p>
-                <p class="measure-lead-max text-50 small mr-8pt">Exambyte provides innovative and easy-to-understand
-                    learning material from the best IIT-JEE & NEET coaching experts and veterans in the industry .
-                </p>
-                <p class="mb-8pt d-flex">
-                    <a href="#" class="text-70 text-underline mr-8pt small">Terms</a>
-                    <a href="#" class="text-70 text-underline small">Privacy policy</a>
-                </p>
-                <p class="text-50 small mt-n1 mb-0">Copyright 2022 &copy; All rights reserved.</p>
-            </div>
-        </div>
-
-        <!-- // END Footer -->
-
-    </div>
-    <!-- // END Header Layout -->
-
-    <!-- Drawer -->
-
-    <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
-        <div class="mdk-drawer__content">
-            <div class="sidebar sidebar-dark-pickled-bluewood sidebar-left" data-perfect-scrollbar>
-
-                <!-- Sidebar Content -->
-
-                <div class="d-flex align-items-center navbar-height">
-                    <form action="/" class="search-form search-form--black mx-16pt pr-0 pl-16pt">
-                        <input type="text" class="form-control pl-0" placeholder="Search">
-                        <button class="btn" type="submit"><i class="material-icons">search</i></button>
-                    </form>
-                </div>
-
-                <a href="/" class="sidebar-brand ">
-                    <!-- <img class="sidebar-brand-icon" src="../../public/images/illustration/student/128/white.svg" alt="Luma"> -->
-
-                    <span class="avatar avatar-xl sidebar-brand-icon h-auto">
-
-                        <!-- <span class="avatar-title rounded bg-primary"><img
-                                src="../../public/images/illustration/student/128/white.svg" class="img-fluid"
-                                alt="logo" /></span> -->
-
-                    </span>
-
-                    <span>ExamBytes</span>
-                </a>
-
-
-                <li class="sidebar-menu-item active open">
-                    <a class="sidebar-menu-button" data-toggle="collapse" href="#account_menu">
-                        <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">account_box</span>
-                        Account
-                        <span class="ml-auto sidebar-menu-toggle-icon"></span>
-                    </a>
-                    <ul class="sidebar-submenu collapse show sm-indent" id="account_menu">
-                        <li class="sidebar-menu-item active">
-                            <a class="sidebar-menu-button" href="/login">
-                                <span class="sidebar-menu-text">Login</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="/register">
-                                <span class="sidebar-menu-text">Signup</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="reset-password.html">
-                                <span class="sidebar-menu-text">Reset Password</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="edit-account-profile.html">
-                                <span class="sidebar-menu-text">Profile &amp; Privacy</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                </ul>
-
-
-
-
-                <!-- // END Sidebar Content -->
-
-            </div>
-        </div>
-    </div>
-
-    <!-- // END Drawer -->
 
     <!-- jQuery -->
     <script src="/Theme/vendor/jquery.min.js"></script>
