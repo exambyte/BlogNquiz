@@ -15,6 +15,9 @@ const questionUpdate = document.getElementById('question-update');
 let questionCount = 0;
 let score = 0;
 let inputsId = [];
+let userID = null;
+let quizID = null;
+let points = 0;
 
 const startQuiz = () => {
     if(questionCount === 0){
@@ -104,6 +107,31 @@ const checkRepeatedAnswer = (checkAnswer) => {
 }
 
 
+const saveQuizData = async(score,userid,quizid)=>{
+    const tests = quizid;
+    const points = score;
+    try{
+        const res = await fetch(`/saveUserQuizData/data?userID=${userid}`,{
+            method:'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body:JSON.stringify({
+                tests:tests,
+                points:points
+            })
+        });
+
+        const data = await res.json();
+        if(res.status === 200){
+            console.log('data saved');
+        }
+
+    }catch(err){
+        console.log(err);
+    }
+}
+
+
+
 submit.addEventListener('click', () => {
     const checkAnswer = getCheckAnswer();
     if (checkRepeatedAnswer(checkAnswer) != 0) {
@@ -125,10 +153,12 @@ submit.addEventListener('click', () => {
     }
     else {
        
-        questions.style.display='none';
+        optionArea.style.display='none';
         questionUpdate.innerHTML = `Your Score: ${score}/${window.quizData.length}`
-        
-
+        window.points = score;
+        let userid = window.userID;
+        let quizid = window.quizID;
+        saveQuizData(score,userid,quizid);
         // showScore.classList.remove('scoreArea');
     }
 
@@ -140,10 +170,11 @@ submit.addEventListener('click', () => {
 
 
 
-const getTestData = async () => {
+const getTestData = async (slug,userid) => {
     let queryString = window.location.href;
     console.log(queryString);
-    let slug = queryString.substring(26);
+    // let slug = queryString.substring(26);
+    window.userID = userid;
     console.log(slug);
     try {
         const res = await fetch(`/getTestData/${slug}`, {
@@ -157,6 +188,7 @@ const getTestData = async () => {
         if (data) {
             document.title = `${slug} ExamBytes`;
             window.quizData = data[0].questions;
+            window.quizID = data[0]._id;
             console.log(quizData);
             console.log(window.quizData);
             startQuiz();
@@ -167,7 +199,6 @@ const getTestData = async () => {
     }
 }
 
-getTestData();
-
+// getTestData();
 
 

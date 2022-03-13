@@ -249,7 +249,7 @@
                                                     </div>
                                                     <div class="flex">
                                                         <div class="card-title"><a href="javascript;"
-                                                                onclick="redirectTest('<%=test.slug%>')"
+                                                                onclick="redirectTest('<%=test.slug%>','<%=locals.userID%>')"
                                                                 target="_blank">
                                                                 <%= test.title %>
                                                             </a></div>
@@ -674,8 +674,9 @@
     <script src="/Theme/js/preloader.js"></script>
 
     <script>
-        const redirectTest = (slug) => {
-            location.assign(`/mcq/${slug}`);
+        const redirectTest = (slug , userID) => {
+                    // console.log(slug , userID);
+                    location.assign(`/mcq/Quiz?slug=${slug}&userID=${userID}`);
         }
 
         const showUserBlog = (slug) => {

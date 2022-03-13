@@ -23,9 +23,10 @@ const Test = require('../models/Test');
  */
 exports.getHome = async(req, res) => {
     // const {name,email,contactNo,password} = req.verifiedUser;
+    // console.log(res.locals.user._id);
     const articles = await Article.find();
     const tests = await Test.find();
-    res.render('home', { articles: articles ,tests:tests ,unauthorised:res.locals.unauthenticated});
+    res.render('home', { articles: articles ,tests:tests ,unauthorised:res.locals.unauthenticated,userID:res.locals.id});
 }
 
 exports.getUserTest=async(req,res)=>{

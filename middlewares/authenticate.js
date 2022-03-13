@@ -32,10 +32,12 @@ const authenticate = async(req, res, next) => {
             req.userId = verifiedUser._id;
             res.locals.user = verifiedUser;
             res.locals.unauthenticated = false;
+            res.locals.id = verifiedUser._id;
 
         next();
     } catch (err) {
         res.locals.unauthenticated = true;
+        res.locals.id = null;
         // res.redirect('/login');
         next();
         console.log(err);
