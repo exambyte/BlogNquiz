@@ -5,6 +5,7 @@
 
 
  const User = require('../models/userSchema'); //acquiring Schema for user model
+ const Test = require('../models/Test');
  const bcrypt = require('bcryptjs');
  const Article = require('../models/Blog');
  const Details = require('../models/userSchema');
@@ -289,7 +290,7 @@
  exports.saveUserQuizData = async(req,res)=>{
      const id = req.query.userID;
      const {tests,points} = req.body;
-     console.log(id);
+     console.log(tests);
      try{
          const data = await User.findByIdAndUpdate(id,{$push:{tests:tests},$inc:{points:points}},{ useFindAndModify: false });
          console.log(data);
@@ -298,4 +299,32 @@
          console.log(err);
          res.status(500).json('Database Error');
      }
+ }
+
+
+
+ exports.userDashboard_get = async(req, res)=>{
+     res.render('studentDashboard',{userID:res.locals.id});
+ }
+
+
+ exports.userQuizData_get = async (req,res)=>{
+     const id = req.params.id;
+     try{
+         const data = await User.findById(id).
+         populate({path:'tests',populate:{path:'test'}}).exec();
+
+         if(data){
+             res.status(200).json({userQuizes:data.tests, userPoints:data.points, userId:data._id});
+         }
+     }catch(err){
+         console.log(err);
+     }
+ }
+
+
+ exports.showUserProfile_get = async (req, res)=>{
+     const id = req.params.id;
+     console.log(res.locals.user);
+     res.render('userProfile',{userData:res.locals.user});
  }

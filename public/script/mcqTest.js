@@ -108,14 +108,16 @@ const checkRepeatedAnswer = (checkAnswer) => {
 
 
 const saveQuizData = async(score,userid,quizid)=>{
-    const tests = quizid;
+    const test = quizid;
     const points = score;
     try{
         const res = await fetch(`/saveUserQuizData/data?userID=${userid}`,{
             method:'PUT',
             headers: {'Content-Type': 'application/json'},
             body:JSON.stringify({
-                tests:tests,
+                tests:{test:test,
+                        marksScored:points
+                      },
                 points:points
             })
         });

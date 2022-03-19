@@ -39,6 +39,14 @@
   * @method POST
   */
  router.post('/login', authcontrollers.login_post);
+
+ //......................Routes for authenticated user.....................................
+
+router.get('/userDashboard',authenticate,authcontrollers.userDashboard_get);
+
+router.get('/userProfile/:id',authenticate,authcontrollers.showUserProfile_get);
+
+
  
  //......................Routes for Like and bookmark.....................................
  
@@ -50,14 +58,14 @@
  
  
  
- //......................Routes for Like and bookmark.....................................
+ //......................Routes for User Quiz.....................................
  
  
  router.put('/saveUserQuizData/data',authenticate, authcontrollers.saveUserQuizData);
  
  router.get('/showUserQuiz/:id',authenticate, authcontrollers.showUserQuiz);
  
- 
+ router.get('/userQuizData/:id',authenticate, authcontrollers.userQuizData_get);
  
  
  
