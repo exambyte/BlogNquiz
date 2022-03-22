@@ -328,3 +328,8 @@
      console.log(res.locals.user);
      res.render('userProfile',{userData:res.locals.user});
  }
+
+ exports.StudentQuizResults_get = async (req, res)=>{
+     console.log("coming to backend");
+    res.render('userQuizResults');
+ }

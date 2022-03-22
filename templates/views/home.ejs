@@ -570,7 +570,7 @@
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="student-quiz-results.html">
+                        <a class="sidebar-menu-button" href="javascript:;" onclick="redirectStudentQuizResult('<%=userID%>')">
                             <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">poll</span>
                             <span class="sidebar-menu-text">My Quizzes</span>
                         </a>
@@ -683,6 +683,10 @@
             location.assign(`/showBlogUser/${slug}`);
         }
 
+
+        const redirectStudentQuizResult = (userID)=>{
+            location.assign(`/userQuizResults/${userID}`);
+        }
 
         (function () {
             'use strict';

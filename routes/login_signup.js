@@ -67,7 +67,7 @@ router.get('/userProfile/:id',authenticate,authcontrollers.showUserProfile_get);
  
  router.get('/userQuizData/:id',authenticate, authcontrollers.userQuizData_get);
  
- 
+ router.get('/userQuizResults/:id',authcontrollers.StudentQuizResults_get);
  
  
  //......................Routes for Logout.....................................
