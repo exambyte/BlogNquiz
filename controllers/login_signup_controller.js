@@ -329,8 +329,9 @@
      res.render('userProfile',{userData:res.locals.user});
  }
  exports.StudentQuizResults_get = async (req, res)=>{
+     const id = req.params.id;
      console.log("coming to backend");
-    res.render('userQuizResults');
+    res.render('userQuizResults',{UserID:id});
  }
 
  exports.userTakeQuiz_get = async (req, res)=>{

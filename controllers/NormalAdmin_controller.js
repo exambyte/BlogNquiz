@@ -7,6 +7,8 @@
  const bcrypt = require('bcryptjs');
  const Article = require('../models/Blog');
  const Test = require('../models/Test');
+const Details = require('../models/userSchema');
+
  
  
  
@@ -88,8 +90,12 @@
   * @param {NormalAdminDashBoard.ejs} res 
   * @exports dashboard_get
   */
- exports.dashboard_get = (req, res) => {
-     res.render('NormalAdminDashboard');
+ exports.dashboard_get = async(req, res) => {
+    const articles = await Article.find();
+    const tests = await Test.find();
+    console.log("coming to backend to get tests");
+    console.log(tests);
+     res.render('NormalAdminDashboard',{ articles: articles ,tests:tests ,unauthorised:res.locals.unauthenticated,userID:res.locals.id});
  };
  
  /**
