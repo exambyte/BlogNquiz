@@ -31,6 +31,10 @@
     <!-- App CSS -->
     <link type="text/css" href="/Theme/css/app.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    
+
     <link rel="icon" href="data:,">
 </head>
 
@@ -388,6 +392,35 @@
                 </div>
             </div>
 
+            <!-- VEDIOS -->
+
+            <div class="page-section border-bottom-2">
+                <div class="container page__container">
+                    <div class="page-separator">
+                        <div class="page-separator__text">Course Vedios</div>
+                    </div>
+                    <div class="owl-carousel">
+                        <div class="item-video" data-merge="1">
+                            <a class="owl-video" href="https://www.youtube.com/watch?v=7XbBXKX8VcY" ></a>
+                           
+                        </div>
+                        <div class="item-video m-1" data-merge="2">
+                           
+                            <a class="owl-video" href="https://www.youtube.com/watch?v=t-4bEsjMt3Q&t=1s" ></a>
+                        </div>
+                        <div class="item-video" data-merge="3">
+                            <a class="owl-video" href="https://www.youtube.com/watch?v=r3MG1AuTU2Y&t=3s" ></a>
+                        </div>
+                        <div class="item-video" data-merge="4">
+                            <a class="owl-video" href="https://www.youtube.com/watch?v=aUtlQn322i4" ></a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
             <div class="page-section bg-alt">
                 <div class="container page__container">
 
@@ -651,6 +684,8 @@
 
     <!-- // END Drawer -->
 
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- jQuery -->
     <script src="/Theme/vendor/jquery.min.js"></script>
 
@@ -673,7 +708,40 @@
     <!-- Preloader -->
     <script src="/Theme/js/preloader.js"></script>
 
+    <!-- Owl crousal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
     <script>
+
+
+        // Owl carousel for vedios section
+        $(".owl-carousel").owlCarousel({
+            merge: true,
+            loop: true,
+            margin:10,
+            video: true,
+            center: true,
+            width:200,
+            responsive:{
+            300:{
+                items:1
+            },
+            480:{
+                items:1
+            },
+            600:{
+                items:4
+            },
+            1200:{
+                items:4
+            }
+        }
+        });
+
+
+
         const redirectTest = (slug , userID) => {
                     // console.log(slug , userID);
                     location.assign(`/mcq/Quiz?slug=${slug}&userID=${userID}`);
