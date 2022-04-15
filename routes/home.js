@@ -9,13 +9,13 @@ const router = express.Router();
 const controller = require('../controllers/home');
 const authenticate = require('../middlewares/authenticate')
 
-router.get('/',authenticate, controller.getHome);
+router.get('/', controller.getHome);
 
 router.get('/getData', authenticate, controller.getData);
 
-router.get('/userTestsSection',controller.getUserTest);
+router.get('/userTestsSection', controller.getUserTest);
 
-router.get('/allTests',controller.allTests_get);
+router.get('/allTests', controller.allTests_get);
 
 // router.put('/like/:id', authenticate, controller.like);
 

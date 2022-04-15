@@ -16,7 +16,7 @@ const jwt = require('jsonwebtoken');
  * @async function
  */
 const authenticate = async(req, res, next) => {
-    
+
     try {
         const token = req.cookies.jwtoken;
         const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
@@ -27,12 +27,12 @@ const authenticate = async(req, res, next) => {
             // res.redirect('/login');
         }
 
-            req.token = token;
-            req.verifiedUser = verifiedUser;
-            req.userId = verifiedUser._id;
-            res.locals.user = verifiedUser;
-            res.locals.unauthenticated = false;
-            res.locals.id = verifiedUser._id;
+        req.token = token;
+        req.verifiedUser = verifiedUser;
+        req.userId = verifiedUser._id;
+        res.locals.user = verifiedUser;
+        res.locals.unauthenticated = false;
+        res.locals.id = verifiedUser._id;
 
         next();
     } catch (err) {

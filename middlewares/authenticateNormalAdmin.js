@@ -19,7 +19,7 @@ const normalAdminauthenticate = async(req, res, next) => {
         req.AdminId = verifiedAdmin._id;
         req.Admin = verifiedAdmin
         res.locals.user = verifiedAdmin
-        
+
         next();
 
     } catch (err) {

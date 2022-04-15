@@ -10,8 +10,7 @@
     <!-- Prevent the demo from appearing in search engines -->
     <meta name="robots" content="noindex">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap" rel="stylesheet">
 
     <!-- Preloader -->
     <link type="text/css" href="/Theme/vendor/spinkit.css" rel="stylesheet">
@@ -32,6 +31,9 @@
     <link type="text/css" href="/Theme/css/app.css" rel="stylesheet">
 
     <link rel="icon" href="data:,">
+
+    <!-- home css -->
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body class="layout-sticky-subnav layout-default ">
@@ -80,8 +82,7 @@
                         </a>
 
                         <!-- Navbar toggler -->
-                        <button class="navbar-toggler w-auto mr-16pt d-block rounded-0" type="button"
-                            data-toggle="sidebar">
+                        <button class="navbar-toggler w-auto mr-16pt d-block rounded-0" type="button" data-toggle="sidebar">
                             <span class="material-icons">short_text</span>
                         </button>
 
@@ -89,19 +90,17 @@
                             <li class="nav-item active">
                                 <a href="/" class="nav-link">Home</a>
                             </li>
-                           
+
                         </ul>
 
-                        <form class="search-form form-control-rounded navbar-search d-none d-lg-flex mr-16pt"
-                            action="/" style="max-width: 230px">
+                        <form class="search-form form-control-rounded navbar-search d-none d-lg-flex mr-16pt" action="/" style="max-width: 230px">
                             <button class="btn" type="submit"><i class="material-icons">search</i></button>
                             <input type="text" class="form-control" placeholder="Search ...">
                         </form>
 
                         <ul class="nav navbar-nav ml-auto mr-0">
                             <li class="nav-item">
-                                <a href="/login" class="nav-link" data-toggle="tooltip" data-title="Login"
-                                    data-placement="bottom" data-boundary="window"><i
+                                <a href="/login" class="nav-link" data-toggle="tooltip" data-title="Login" data-placement="bottom" data-boundary="window"><i
                                         class="material-icons">lock_open</i></a>
                             </li>
                             <li class="nav-item">
@@ -120,24 +119,18 @@
         <!-- Header Layout Content -->
         <div class="mdk-header-layout__content page-content ">
 
-            <div class="mdk-box mdk-box--bg-white-35 bg-white js-mdk-box mb-0"
-                data-effects="parallax-background blend-background">
+            <div class="mdk-box mdk-box--bg-white-35 bg-white js-mdk-box mb-0" data-effects="parallax-background blend-background">
                 <div class="mdk-box__bg">
-                    <div class="mdk-box__bg-front"
-                        style="background-image: url(../../Theme/images/photodune-4161018-group-of-students-m.jpg);">
+                    <div class="mdk-box__bg-front" style="background-image: url(../../Theme/images/photodune-4161018-group-of-students-m.jpg);">
                     </div>
                 </div>
-                <div class="mdk-box__content d-flex align-items-center justify-content-center container page__container text-center py-112pt"
-                    style="min-height: 656px;">
+                <div class="mdk-box__content d-flex align-items-center justify-content-center container page__container text-center py-112pt" style="min-height: 656px;">
                     <div class="card card--transparent mb-0">
                         <div class="card-body px-32pt py-24pt">
                             <h1>Enhance Your Learning</h1>
-                            <p class="lead measure-lead mx-auto mb-32pt">Better Online
-                                Learning Experience for IIT-JEE Aspirants With Hands On Quizzes ,
-                                Exam Updates &amp; Subject Categorised Compact Preparation Guides with Experienced Tutors.</p>
+                            <p class="lead measure-lead mx-auto mb-32pt">Better Online Learning Experience for IIT-JEE Aspirants With Hands On Quizzes , Exam Updates &amp; Subject Categorised Compact Preparation Guides with Experienced Tutors.</p>
 
-                            <a href="https://play.google.com/store/apps/details?id=com.exambyte"
-                                class="btn btn-lg btn-accent btn--raised mb-16pt">DOWNLOAD NOW</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.exambyte" class="btn btn-lg btn-accent btn--raised mb-16pt">DOWNLOAD NOW</a>
 
                             <p class="mb-0"><a href=""><strong>Are you a teacher?</strong></a></p>
 
@@ -227,8 +220,7 @@
                         <% tests.forEach(test=> { %>
                             <div class="col-sm-4 card-group-row__col">
 
-                                <div class="card js-overlay card-sm overlay--primary-dodger-blue stack stack--1 card-group-row__card"
-                                    data-toggle="popover" data-trigger="click">
+                                <div class="card js-overlay card-sm overlay--primary-dodger-blue stack stack--1 card-group-row__card" data-toggle="popover" data-trigger="click">
 
                                     <div class="card-body d-flex flex-column">
                                         <div class="d-flex align-items-center">
@@ -248,11 +240,11 @@
                                             </div> -->
                                                     </div>
                                                     <div class="flex">
-                                                        <div class="card-title"><a href="javascript;"
-                                                                onclick="redirectTest('<%=test.slug%>','<%=locals.userID%>')"
-                                                                target="_blank">
+                                                        <div class="card-title">
+                                                            <a href="javascript;" onclick="redirectTest('<%=test.slug%>','<%=locals.userID%>')" target="_blank">
                                                                 <%= test.title %>
-                                                            </a></div>
+                                                            </a>
+                                                        </div>
                                                         <p class="flex text-50 lh-1 mb-0"><small>
                                                                 <%= test.noOfQestions %>&nbsp&nbspQuestions
                                                             </small></p>
@@ -272,23 +264,21 @@
                                 <div class="popoverContainer d-none">
                                     <div class="media">
                                         <div class="media-left mr-12pt">
-                                            <img src="../../public/images/paths/react_40x40@2x.png" width="40"
-                                                height="40" alt="Angular" class="rounded">
+                                            <img src="../../public/images/paths/react_40x40@2x.png" width="40" height="40" alt="Angular" class="rounded">
                                         </div>
                                         <div class="media-body">
-                                            <div class="card-title"><a href="javascript;"
-                                                    onclick="redirectTest('<%=test.slug%>')" target="_blank">
+                                            <div class="card-title">
+                                                <a href="javascript;" onclick="redirectTest('<%=test.slug%>')" target="_blank">
                                                     <%= test.title %>
-                                                </a></div>
+                                                </a>
+                                            </div>
                                             <p class="text-50 d-flex lh-1 mb-0 small">
                                                 <%= test.noOfQestions %>&nbsp&nbspQuestions
                                             </p>
                                         </div>
                                     </div>
 
-                                    <p class="mt-16pt text-70">Learn the fundamentals of working with React
-                                        Native and how
-                                        to create basic applications.</p>
+                                    <p class="mt-16pt text-70">Learn the fundamentals of working with React Native and how to create basic applications.</p>
 
                                     <div class="my-32pt">
                                         <div class="d-flex align-items-center mb-8pt justify-content-center">
@@ -298,8 +288,7 @@
                                                 </p>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <span
-                                                    class="material-icons icon-16pt text-50 mr-4pt">play_circle_outline</span>
+                                                <span class="material-icons icon-16pt text-50 mr-4pt">play_circle_outline</span>
                                                 <p class="flex text-50 lh-1 mb-0"><small>12 lessons</small></p>
                                             </div>
                                         </div>
@@ -354,14 +343,12 @@
                                     <div class="posts-card-popular__content">
                                         <div class="card-body d-flex align-items-center">
                                             <div class="avatar-group flex">
-                                                <div class="avatar avatar-xs" data-toggle="tooltip" data-placement="top"
-                                                    title="Janell D.">
+                                                <div class="avatar avatar-xs" data-toggle="tooltip" data-placement="top" title="Janell D.">
                                                     <a href=""><i class="material-icons mr-1"
                                                             style="font-size: 1rem;">account_circle</i></a>
                                                 </div>
                                             </div>
-                                            <a style="text-decoration: none;" class="d-flex align-items-center"
-                                                href=""><i class="material-icons mr-1"
+                                            <a style="text-decoration: none;" class="d-flex align-items-center" href=""><i class="material-icons mr-1"
                                                     style="font-size: inherit;">date_range</i>
                                                 <small>
                                                     <%= article.createdAt.toLocaleDateString() %>
@@ -371,8 +358,7 @@
                                             <small class="text-muted text-uppercase">
                                                 <%= article.markdown %>
                                             </small>
-                                            <a class="card-title" href="javascript:;"
-                                                onclick="showUserBlog('<%= article.slug %>')">
+                                            <a class="card-title" href="javascript:;" onclick="showUserBlog('<%= article.slug %>')">
                                                 <%= article.title %>
                                             </a>
                                         </div>
@@ -388,7 +374,95 @@
                 </div>
             </div>
 
-            <div class="page-section bg-alt">
+
+            <!-- have to work in here to add instructor details -->
+
+            <!--White Board Section End-->
+            <section id="it-up-about" class="it-up-about-section">
+                <div class="about-content container">
+                    <div class="it-up-section-title-2 headline-1 pb-5 text-center">
+                        <h2>Learn from the Best</h2>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6 pd-rg">
+                            <div class="faculty">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img width="100%" src="/Faculty_pics/teacher_1.jpeg" alt="">
+                                    </div>
+                                    <div class="col-md-8 f-content">
+                                        <h4>Krishna Kumar</h4>
+                                        <b> MSc. Chemistry. Ex-Faculty: Allen, Kota & Bansal Classes, Jaipur. Over 17 yrs of exp.</b>
+                                        <p>Krishna Kumar Sir is an authority when it comes to Chemistry. With a shining 18 years of experience, he has handled everyone of his students with care and passion, in crossing the hurdles of JEE and NEET examinations.</p>
+                                        <!--                                <p>His lucid approach, meticulous explanation, and in-depth analysis lead his students to come to terms with the intricacies of the subject with relative ease. He is a great motivator. He inspires his students to work within their areas of strength and not to be demoralized by others.</p>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pd-lf">
+                            <div class="faculty">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img width="100%" src="/Faculty_pics/teacher_3.jpeg" alt="">
+                                    </div>
+                                    <div class="col-md-8 f-content">
+                                        <h4>Ravi Raj</h4>
+                                        <b>B.Tech, IIT-Kharagpur. Ex-Faculty: Resonance, Kota & Bansal Classes, Kota. Over 12 yrs of exp. </b>
+                                        <p>Ravi Raj Sir is an outstanding Physics teacher. His knack for problem solving, razor sharp precision and stronghold over the fundamentals puts him in a different league, altogether.
+
+                                        </p>
+                                        <!--                                <p>He has a penchant for teaching Physics and says that the best hours are spent when he is taking classes. His love for mentoring, in- depth knowledge of the subject and conceptual clarity makes him one of the most sought after Physics faculty.</p>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 pd-rg">
+                            <div class="faculty">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img width="100%" src="/Faculty_pics/teacher_5.jpeg" alt="">
+                                    </div>
+                                    <div class="col-md-8 f-content">
+                                        <h4>Rajneesh Mishra</h4>
+                                        <b>B.Tech, IIT-BHU. Ex-Faculty: FIIT-JEE, Delhi & VMC, Delhi. Over 13 yrs of exp.
+                                </b>
+                                        <p>Rajneesh Mishra Sir is one of the most celebrated and popular teachers for IIT- JEE Mathematics. His stronghold over the subject and the ability to make things analytical is what sets him apart.
+
+                                        </p>
+                                        <!--                                <p>He believes in invoking the thought process involved behind a particular problem instead of presenting crammed solutions to the same. He belongs to the school of thought that "mathematics can be fun” and that's what he endeavors to do in his right earnest.</p>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pd-lf">
+                            <div class="faculty">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img width="100%" src="/Faculty_pics/teacher_7.jpeg" alt="">
+                                    </div>
+                                    <div class="col-md-8 f-content">
+                                        <h4>Shivam Mishra</h4>
+                                        <b>B.Tech, IIT-BHU. Ex-Faculty: Resonance, Kota & Resonance, Delhi. Over 11 yrs of exp.
+                                </b>
+                                        <p>Shivam Mishra Sir’s penchant for teaching Chemistry and his love for mentoring, makes him one of the most sought-after Chemistry Faculties. He believes in invoking the thought-process.
+                                        </p>
+                                        <!--                                <p>He believes in invoking the thought process involved behind a particular problem instead of presenting crammed solutions to the same. He belongs to the school of thought that "mathematics can be fun” and that's what he endeavors to do in his right earnest.</p>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Features"></div>
+                </div>
+            </section>
+
+
+
+            <!-- till here -->
+
+            <div class="page-section bg-alt mt-5">
                 <div class="container page__container">
 
                     <!--FEEDBACK-->
@@ -432,9 +506,7 @@
 
                             <div class="card card-feedback card-body">
                                 <blockquote class="blockquote mb-0">
-                                    <p class="text-70 small mb-0">A wonderful course on how to start. Eddie beautifully
-                                        conveys all essentials of a becoming a good Angular developer. Very glad to have
-                                        taken this course. Thank you Eddie Bryan.</p>
+                                    <p class="text-70 small mb-0">A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.</p>
                                 </blockquote>
                             </div>
                             <div class="media ml-12pt">
@@ -463,9 +535,7 @@
 
                             <div class="card card-feedback card-body">
                                 <blockquote class="blockquote mb-0">
-                                    <p class="text-70 small mb-0">A wonderful course on how to start. Eddie beautifully
-                                        conveys all essentials of a becoming a good Angular developer. Very glad to have
-                                        taken this course. Thank you Eddie Bryan.</p>
+                                    <p class="text-70 small mb-0">A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.</p>
                                 </blockquote>
                             </div>
                             <div class="media ml-12pt">
@@ -507,9 +577,7 @@
                                  width="30"
                                  alt="Luma"> Luma -->ExamByte
                 </p>
-                <p class="measure-lead-max text-white-50 small mr-8pt">Exambyte provides innovative and
-                    easy-to-understand
-                    learning material from the best IIT-JEE & NEET coaching experts and veterans in the industry.</p>
+                <p class="measure-lead-max text-white-50 small mr-8pt">Exambyte provides innovative and easy-to-understand learning material from the best IIT-JEE & NEET coaching experts and veterans in the industry.</p>
                 <p class="mb-8pt d-flex">
                     <a href="#" class="text-white-70 text-underline mr-8pt small">Terms</a>
                     <a href="#" class="text-white-70 text-underline small">Privacy policy</a>
@@ -517,7 +585,7 @@
                 <p class="text-white-50 small mt-n1 mb-0">Copyright 2022 &copy; All rights reserved.</p>
             </div>
         </div>
-    
+
 
         <!-- // END Footer -->
 
@@ -591,8 +659,7 @@
 
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button" data-toggle="collapse" href="#community_menu">
-                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">people_outline</span>
-                            Community
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">people_outline</span> Community
                             <span class="ml-auto sidebar-menu-toggle-icon"></span>
                         </a>
                         <ul class="sidebar-submenu collapse sm-indent" id="community_menu">
@@ -674,9 +741,9 @@
     <script src="/Theme/js/preloader.js"></script>
 
     <script>
-        const redirectTest = (slug , userID) => {
-                    // console.log(slug , userID);
-                    location.assign(`/mcq/Quiz?slug=${slug}&userID=${userID}`);
+        const redirectTest = (slug, userID) => {
+            // console.log(slug , userID);
+            location.assign(`/mcq/Quiz?slug=${slug}&userID=${userID}`);
         }
 
         const showUserBlog = (slug) => {
@@ -684,17 +751,17 @@
         }
 
 
-        const redirectStudentQuizResult = (userID)=>{
+        const redirectStudentQuizResult = (userID) => {
             location.assign(`/userQuizResults/${userID}`);
         }
 
-        (function () {
+        (function() {
             'use strict';
             var headerNode = document.querySelector('.mdk-header')
             var layoutNode = document.querySelector('.mdk-header-layout')
             var componentNode = layoutNode ? layoutNode : headerNode
-            componentNode.addEventListener('domfactory-component-upgraded', function () {
-                headerNode.mdkHeader.eventTarget.addEventListener('scroll', function () {
+            componentNode.addEventListener('domfactory-component-upgraded', function() {
+                headerNode.mdkHeader.eventTarget.addEventListener('scroll', function() {
                     var progress = headerNode.mdkHeader.getScrollState().progress
                     var navbarNode = headerNode.querySelector('#default-navbar')
                     navbarNode.classList.toggle('bg-transparent', progress <= 0.2)
