@@ -17,6 +17,8 @@ const jwt = require('jsonwebtoken');
  */
 const authenticate = async(req, res, next) => {
 
+    // console.log("in user middleware")
+
     try {
         const token = req.cookies.jwtoken;
         const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
