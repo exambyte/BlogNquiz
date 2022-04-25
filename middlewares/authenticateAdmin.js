@@ -15,7 +15,7 @@ const Adminauthenticate = async(req, res, next) => {
         const verifiedAdmin = await Admin.findOne({ _id: verifyToken._id, 'tokens?.token': token });
 
         if (!verifiedAdmin) { throw new Error(`Could not find Admin`); }
-
+        
         console.log(verifiedAdmin);
         req.verifiedAdmin = verifiedAdmin;
         req.userId = verifiedAdmin._id;

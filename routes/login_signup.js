@@ -38,6 +38,7 @@ router.get('/login', authcontrollers.login_get);
  * @module normal_user_login_signup
  * @method POST
  */
+
 router.post('/login', authcontrollers.login_post);
 
 //......................Routes for authenticated user.....................................
