@@ -7,7 +7,8 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/home');
-const authenticate = require('../middlewares/authenticate')
+const authenticate = require('../middlewares/authenticate');
+const vimeoController = require('../controllers/vimeo_controllers');
 
 router.get('/', controller.getHome);
 
@@ -16,6 +17,9 @@ router.get('/getData', authenticate, controller.getData);
 router.get('/userTestsSection', controller.getUserTest);
 
 router.get('/allTests', controller.allTests_get);
+
+router.get('/getvideos',vimeoController.get_freeVideos);
+
 
 // router.put('/like/:id', authenticate, controller.like);
 
