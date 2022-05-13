@@ -49,17 +49,20 @@ const routes = require('./routes/home');
  * Acquiring route to login/signup
  * @require
  */
+
+const Vimeo = require('vimeo').Vimeo;
 const authRoute = require('./routes/login_signup');
 const adminRoute = require('./routes/superAdmin');
 const normalAdmin = require('./routes/normalAdmin');
 const test = require('./routes/test');
 
 
+
 dotenv.config({ path: './config.env' });
 
 const PORT = process.env.PORT || 2000; //Getting PORT Dynamically in case not Dynamic a port 3000 is mentioned
 const DB = process.env.DATABASE; //Getting Databse URI
-
+// const cl = new Vimeo(process.env.CLIENT_ID, process.env.CLIENT_SECRET, process.env.ACCESS_TOKEN);
 
 /**
  * @connect {*}Setting mongoose Connection
@@ -82,6 +85,9 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './templates/views'));
 
+
+
+
 /**
  * @routes
  */
@@ -90,6 +96,7 @@ app.use('', authRoute);
 app.use('', adminRoute);
 app.use('', normalAdmin);
 app.use('', test);
+
 
 /**
  * @listen 

@@ -48,9 +48,6 @@ exports.allTests_get=async(req,res)=>{
 
 
 
-
-
-
 exports.getData = async(req, res) => {
     const articles = await Article.find();
     res.render('home', { articles: articles });
