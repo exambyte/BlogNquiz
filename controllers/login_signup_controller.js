@@ -244,6 +244,32 @@ module.exports.bookmark_put = async(req, res) => {
     }
 }
 
+// comments for blog
+
+module.exports.comment_put = async(req, res) => {
+    // console.log(100)
+    const comment_ = {
+        text: req.body.data,
+        createdBy: res.locals.user._id,
+        createdByName: res.locals.user.name,
+        createdAt: Date.now()
+    }
+
+    try {
+        const post = await Article.findById(req.params.id);
+
+        post.comments.push(comment_)
+
+        await post.save();
+
+        return res.json({ "msg": 'commeted success' });
+    } catch (error) {
+        // console.log(error.message);
+        return res.status(500).json({ "msg": error.message });
+    }
+}
+
+
 
 // showBlog
 // exports.showBlog_get = async(req, res) => {

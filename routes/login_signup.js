@@ -57,6 +57,8 @@ router.put('/like/:id', authenticate, authcontrollers.like);
 
 router.put('/bookmark/:id', authenticate, authcontrollers.bookmark_put);
 
+router.put('/comment/:id' , authenticate , authcontrollers.comment_put);
+
 
 
 //......................Routes for User Quiz.....................................

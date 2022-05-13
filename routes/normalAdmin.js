@@ -84,6 +84,7 @@ router.get('/addBlog/:id', authenticate, normalAdminControllers.addBlog_get);
  * @module normal_admin_router
  * @method POST
  */
+
 router.post('/addBlog/:id', authenticate, multer.array('file'), normalAdminControllers.addBlog_post);
 
 /**
@@ -92,7 +93,7 @@ router.post('/addBlog/:id', authenticate, multer.array('file'), normalAdminContr
  * @method GET
  */
 
-router.get(`/:slug`, normalAdminControllers.showBlog_get);
+router.get(`/:slug`, authenticate, normalAdminControllers.showBlog_get);
 
 /**
  * Route to get all blogs of admin
