@@ -20,6 +20,7 @@ router.get('/allTests', controller.allTests_get);
 
 router.get('/getvideos',vimeoController.get_freeVideos);
 
+router.get('/uploadvideo/info',vimeoController.upload_video);
 
 // router.put('/like/:id', authenticate, controller.like);
 
