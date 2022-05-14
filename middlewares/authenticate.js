@@ -26,7 +26,7 @@ const authenticate = async(req, res, next) => {
 
         if (!verifiedUser) {
             throw new Error(`Could not find user`);
-            // res.redirect('/login');
+            
         }
 
         req.token = token;
@@ -40,7 +40,7 @@ const authenticate = async(req, res, next) => {
     } catch (err) {
         res.locals.unauthenticated = true;
         res.locals.id = null;
-        // res.redirect('/login');
+        res.redirect('/login');
         next();
         console.log(err);
     }

@@ -31,7 +31,7 @@ exports.get_freeVideos = (req, res) => {
 }
 
 exports.upload_video = (req,res)=>{
-  let file_name = './public/current-electricity.mp4';
+  let file_name = req.query.path;
   const description = req.query.description;
   const name = req.query.name;
   console.log(file_name, description,name);

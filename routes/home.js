@@ -10,7 +10,7 @@ const controller = require('../controllers/home');
 const authenticate = require('../middlewares/authenticate');
 const vimeoController = require('../controllers/vimeo_controllers');
 
-router.get('/', controller.getHome);
+router.get('/',authenticate,controller.getHome);
 
 router.get('/getData', authenticate, controller.getData);
 
