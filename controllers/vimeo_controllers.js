@@ -1,5 +1,6 @@
 const vimeo = require('vimeo').Vimeo;
 const env = require('dotenv');
+const axios = require('axios');
 
 
 env.config({ path: '../config.env' });
@@ -19,27 +20,27 @@ exports.get_freeVideos = (req, res) => {
       if (error) {
         console.log(error)
       }
-      // console.log(body);
-      let data =[];
-      body.data.forEach(element=>{
-        data.push({element});
-      });
       console.log(body);
+      let data = [];
+      body.data.forEach(element => {
+        data.push({ element });
+      });
+      // console.log(body);
       res.status(status_code).json(data);
     }
   )
 }
 
-exports.upload_video = (req,res)=>{
+exports.upload_video = (req, res) => {
   let file_name = req.query.path;
   const description = req.query.description;
   const name = req.query.name;
-  console.log(file_name, description,name);
+  console.log(file_name, description, name);
   let client = new vimeo(process.env.CLIENT_ID, process.env.CLIENT_SECRET, process.env.ACCESS_TOKEN);
   client.upload(
     file_name,
     {
-      'name':name,
+      'name': name,
       'description': description
     },
     function (uri) {
@@ -53,4 +54,38 @@ exports.upload_video = (req,res)=>{
       console.log('Failed because: ' + error)
     }
   )
+}
+
+exports.showVideoByFolder = (req, res) => {
+  let project_id = 0;
+  let className = req.params.folder;
+  if (className == '11') {
+    project_id = 10695809;
+  }
+  else if (className == '12') {
+    project_id = 'class-12';
+  }
+  else {
+    project_id = 10697891;
+  }
+
+  let client = new vimeo(process.env.CLIENT_ID, process.env.CLIENT_SECRET, process.env.ACCESS_TOKEN);
+  client.request({
+    method: 'GET',
+    path: `/me/projects/${project_id}/videos`
+  },
+    function (error, body, status_code, headers) {
+      if (error) {
+        console.log(error)
+      }
+      console.log(body.data);
+      // let data = [];
+      // body.data.forEach(element => {
+      //   data.push({ element });
+      // });
+      // console.log(body);
+      // res.status(status_code).json(data);
+    }
+  )
+
 }
