@@ -131,7 +131,7 @@ const saveQuiz =async(ID) =>{
             document.getElementById('show-quiz-link').style.display ="block";
             document.getElementById('link').value = `http://localhost:8000/mcq/${data}`;
             document.getElementById('direct-link').innerHTML=`
-                <a href='http://localhost:8000/mcq/${data}' target='_blank'><b>click here to go to test</b></a>
+                <a href='http://localhost:2000/mcq/${data}' target='_blank'><b>click here to go to test</b></a>
             
             `
         }
