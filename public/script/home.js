@@ -1,7 +1,7 @@
-const videoContainer = document.getElementById('video-container');
+const videoContainer = document.getElementById('video-container-free');
 
 const loadVideo = async()=>{
-    const res = await fetch('/getvideos',{
+    const res = await fetch('/getfreevideos',{
         method:'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -11,7 +11,8 @@ const loadVideo = async()=>{
     console.log(data);
     if(data){
         for(let i =0;i<=data.length;i++){
-            videoContainer.innerHTML += `<div class="video_section">
+            videoContainer.innerHTML += `
+            <div class="video_section">
             <iframe src="${data[i].element.player_embed_url}&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=244555" width="300" height="280" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" title="Test video" style="margin: 1vmax"></iframe>
             </div>`
         }

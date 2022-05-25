@@ -18,11 +18,11 @@ router.get('/userTestsSection', controller.getUserTest);
 
 router.get('/allTests', controller.allTests_get);
 
-router.get('/getvideos',vimeoController.get_freeVideos);
+router.get('/getfreevideos',vimeoController.get_freeVideos);
 
 router.get('/uploadvideo/info',vimeoController.upload_video);
 
-router.get('/showVideo/:folder',vimeoController.showVideoByFolder);
+router.get('/showVideo/data',vimeoController.showVideoByFolder);
 
 // router.put('/like/:id', authenticate, controller.like);
 
