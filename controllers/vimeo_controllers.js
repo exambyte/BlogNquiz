@@ -1,5 +1,6 @@
 const vimeo = require("vimeo").Vimeo;
 const env = require("dotenv");
+const axios = require("axios");
 
 env.config({ path: "../config.env" });
 
@@ -24,12 +25,12 @@ exports.get_freeVideos = (req, res) => {
       if (error) {
         console.log(error);
       }
-      // console.log(body);
+      console.log(body);
       let data = [];
       body.data.forEach((element) => {
         data.push({ element });
       });
-      console.log(body);
+      // console.log(body);
       res.status(status_code).json(data);
     }
   );
@@ -60,6 +61,42 @@ exports.upload_video = (req, res) => {
     },
     function (error) {
       console.log("Failed because: " + error);
+    }
+  );
+};
+
+exports.showVideoByFolder = (req, res) => {
+  let project_id = 0;
+  let className = req.params.folder;
+  if (className == "11") {
+    project_id = 10695809;
+  } else if (className == "12") {
+    project_id = "class-12";
+  } else {
+    project_id = 10697891;
+  }
+
+  let client = new vimeo(
+    process.env.CLIENT_ID,
+    process.env.CLIENT_SECRET,
+    process.env.ACCESS_TOKEN
+  );
+  client.request(
+    {
+      method: "GET",
+      path: `/me/projects/${project_id}/videos`,
+    },
+    function (error, body, status_code, headers) {
+      if (error) {
+        console.log(error);
+      }
+      console.log(body.data);
+      // let data = [];
+      // body.data.forEach(element => {
+      //   data.push({ element });
+      // });
+      // console.log(body);
+      // res.status(status_code).json(data);
     }
   );
 };

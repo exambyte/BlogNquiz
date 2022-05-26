@@ -33,6 +33,9 @@ const userSchema = new mongoose.Schema({
         type: Number,
         require: true
     },
+    class:{
+        type:Number
+    },
     about:{
         type:String
     },
@@ -53,6 +56,10 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    courses:[{
+        course:{cName:String},
+        coursePayment:{type: Number, default:0.00}
+    }],
     password: {
         type: String,
         require: true

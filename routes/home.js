@@ -22,6 +22,8 @@ router.get('/getvideos',vimeoController.get_freeVideos);
 
 router.get('/uploadvideo/info',vimeoController.upload_video);
 
+router.get('/showVideo/:folder',vimeoController.showVideoByFolder);
+
 // router.put('/like/:id', authenticate, controller.like);
 
 // router.put('/bookmark/:id', authenticate, controller.bookmark_put);

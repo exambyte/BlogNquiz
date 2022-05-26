@@ -1,34 +1,20 @@
-AOS.init();
-// const getDisplayNone = () => {
-//     document.getElementById('logout').style.display = "none";
-// }
-// const getDisplay = () => {
-//     document.getElementById('logout').style.display = "inline";
-// }
+const videoContainer = document.getElementById('video-container');
 
-const userHome = async() => {
-    try {
-        const res = await fetch('/getData', {
-            method: 'GET',
-            headers: {
-                'Content-type': 'application/json'
-            },
-        });
-        console.log('in home page')
-        const data = await res.json;
-
-        if (data) {
-            // getDisplay();
-            // document.getElementById('name').innerHTML = `HI ${data.name}`;
-            // document.getElementById('email').innerHTML = `Your Email: ${data.email}`;
-            // document.getElementById('userId').innerHTML = `Your Id: ${data._id}`;
+const loadVideo = async()=>{
+    const res = await fetch('/getvideos',{
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json'
         }
-    } catch (err) {
-        // getDisplayNone()
-        console.log(err)
+    });
+    const data = await res.json();
+    console.log(data);
+    if(data){
+        for(let i =0;i<=data.length;i++){
+            videoContainer.innerHTML += `<div class="video_section">
+            <iframe src="${data[i].element.player_embed_url}&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=244555" width="300" height="280" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" title="Test video" style="margin: 1vmax"></iframe>
+            </div>`
+        }
+         
     }
-}
-
-
-userHome();
-// getAllData();
+} 
