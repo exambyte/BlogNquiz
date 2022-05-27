@@ -9,6 +9,9 @@ const req = require("express/lib/request");
 const Article = require("../models/Blog");
 const Details = require("../models/userSchema");
 const Test = require("../models/Test");
+const jsSHA = require("jssha");
+const request = require("request");
+const bodyParser = require("body-parser");
 
 /**
  * @name get/home
@@ -52,4 +55,84 @@ exports.getData = async (req, res) => {
   const articles = await Article.find();
   res.render("home", { articles: articles });
   // res.send(req.verifiedUser);
+};
+
+exports.getFullView = async (req, res) => {
+  res.render("courseFullView");
+};
+
+exports.getPayment = async (req, res) => {
+  res.render("payment");
+};
+
+exports.postPayment = (req, res) => {
+  console.log("post request in payumoney");
+  console.log(req.body);
+  const pay = req.body;
+
+  // program to generate random strings
+
+  // declare all characters
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  function generateString(length) {
+    let result = " ";
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+  }
+
+  pay.txnid = generateString(14);
+
+  const hashString =
+    "rUBT9u" + // merchant key
+    "|" +
+    pay.txnid +
+    "|" +
+    pay.amount +
+    "|" +
+    pay.productinfo +
+    "|" +
+    pay.firstname +
+    "|" +
+    pay.email +
+    "|" +
+    "||||||||||" +
+    "xWcdyfWT"; //merchant salt
+  const sha = new jsSHA("SHA-512", "TEXT");
+  sha.update(hashString);
+  //Getting hashed value from sha module
+
+  const hash = sha.getHash("HEX");
+
+  //We have to additionally pass merchant key to API so remember to include it.
+  pay.key = "rUBT9u"; //store in in different file;
+  pay.surl = "http://localhost:2000/payment/success";
+  pay.furl = "http://localhost:2000/payment/fail";
+  pay.hash = hash;
+  //Making an HTTP/HTTPS call with request
+  // console.log(pay);
+
+  request.post(
+    {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      url: "https://secure.payu.in/_payment", //production url
+      form: pay,
+    },
+    function (error, httpRes, body) {
+      if (error) res.send({ status: false, message: error.toString() });
+      if (httpRes.statusCode === 200) {
+        res.send(body);
+      } else if (httpRes.statusCode >= 300 && httpRes.statusCode <= 400) {
+        res.redirect(httpRes.headers.location.toString());
+      }
+    }
+  );
 };

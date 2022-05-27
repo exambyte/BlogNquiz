@@ -7,8 +7,8 @@ env.config({ path: "../config.env" });
 env.config({ path: "../config.env" });
 
 exports.get_freeVideos = (req, res) => {
-  console.log(process.env.CLIENT_ID);
-  console.log("coming here");
+  // console.log(process.env.CLIENT_ID);
+  // console.log("coming here");
 
   let client = new vimeo(
     process.env.CLIENT_ID,
@@ -19,13 +19,13 @@ exports.get_freeVideos = (req, res) => {
   client.request(
     {
       method: "GET",
-      path: "/me/videos",
+      path: "/me/projects/10697891/videos",
     },
     function (error, body, status_code, headers) {
       if (error) {
         console.log(error);
       }
-      console.log(body);
+      // console.log(body);
       let data = [];
       body.data.forEach((element) => {
         data.push({ element });
@@ -40,7 +40,7 @@ exports.upload_video = (req, res) => {
   let file_name = req.query.path;
   const description = req.query.description;
   const name = req.query.name;
-  console.log(file_name, description, name);
+  // console.log(file_name, description, name);
   let client = new vimeo(
     process.env.CLIENT_ID,
     process.env.CLIENT_SECRET,
@@ -67,13 +67,22 @@ exports.upload_video = (req, res) => {
 
 exports.showVideoByFolder = (req, res) => {
   let project_id = 0;
-  let className = req.params.folder;
-  if (className == "11") {
-    project_id = 10695809;
-  } else if (className == "12") {
-    project_id = "class-12";
+  let className = req.query.class;
+  let subjectName = req.query.subject;
+  if (className == "11" && subjectName == "chemistry") {
+    project_id = 10695841;
+  } else if (className == "11" && subjectName == "physics") {
+    project_id = 10695811;
+  } else if (className == "11" && subjectName == "mathematics") {
+    project_id = 10695824;
+  } else if (className == "12" && subjectName == "chemistry") {
+    project_id = 10695601;
+  } else if (className == "12" && subjectName == "physics") {
+    project_id = 10695605;
+  } else if (className == "12" && subjectName == "chemistry") {
+    project_id = 10695786;
   } else {
-    project_id = 10697891;
+    res.status(404).send({ error: "No data found" });
   }
 
   let client = new vimeo(
@@ -90,13 +99,12 @@ exports.showVideoByFolder = (req, res) => {
       if (error) {
         console.log(error);
       }
-      console.log(body.data);
-      // let data = [];
-      // body.data.forEach(element => {
-      //   data.push({ element });
-      // });
-      // console.log(body);
-      // res.status(status_code).json(data);
+      // console.log(body.data);
+      let data = [];
+      body.data.forEach((element) => {
+        data.push({ element });
+      });
+      res.status(200).json(data);
     }
   );
 };
