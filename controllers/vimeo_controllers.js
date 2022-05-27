@@ -1,9 +1,11 @@
 const vimeo = require('vimeo').Vimeo;
 const env = require('dotenv');
 const axios = require('axios');
+const vimeoDB = require('../models/video');
 
 
 env.config({ path: '../config.env' });
+
 
 
 exports.get_freeVideos = (req, res) => {
@@ -79,7 +81,7 @@ exports.showVideoByFolder = (req, res) => {
     project_id = 10695786;
   }
   else {
-    res.status(404).send({error: 'No data found'});
+    res.status(404).send({ error: 'No data found' });
   }
 
   let client = new vimeo(process.env.CLIENT_ID, process.env.CLIENT_SECRET, process.env.ACCESS_TOKEN);
@@ -100,4 +102,94 @@ exports.showVideoByFolder = (req, res) => {
     }
   )
 
+}
+
+exports.post_vimeoVideoData = async (req, res) => {
+  const reqData = req.body;
+  console.log(reqData);
+  const vimeoData = new vimeoDB(reqData);
+  try {
+    const data = await vimeoData.save();
+    if(data){
+      console.log(data);
+      res.status(200).json(data);
+    }
+  }
+  catch(error){
+    console.log(error);
+  }
+}
+
+
+exports.get_VimeoCourseData = async (req, res) => {
+  try{
+    const data = await vimeoDB.find();
+    if(data){
+      console.log(data);
+      res.status(200).json(data);
+    }
+  }catch(error){
+    console.log(error);
+  }
+}
+
+exports.get_exploreCourse=async(req,res)=>{
+  const id = req.params.id;
+  const vimeoData = await vimeoDB.findOne({subject_id:id});
+  res.render('exploreCourse',{courses:vimeoData});
+}
+
+exports.get_VimeoCoursePreview= async (req,res)=>{
+  const id = req.params.id;
+  let project_id = 0;
+  let subjectName = '';
+  let client = new vimeo(process.env.CLIENT_ID, process.env.CLIENT_SECRET, process.env.ACCESS_TOKEN);
+  try{
+    const data = await vimeoDB.findOne({subject_id:id});
+    if(data){
+      project_id = data.freeTopics.freeTopic[0].freeTopic_id;
+      subjectName = data.subjectName;
+    }
+  }catch(err){
+    console.log(err);
+  }
+  client.request({
+    method: 'GET',
+    path: `/me/projects/${project_id}/videos`
+  },
+    function (error, body, status_code, headers) {
+      if (error) {
+        console.log(error)
+      }
+      console.log(body);
+      let data = [];
+      body.data.forEach(element => {
+        data.push({ name:element.name, description:element.description,url:element.player_embed_url,duration:element.duration});
+      });
+      console.log(data);
+      res.render('coursePreview',{course:subjectName,videoData:data});
+    }
+  )
+}
+
+exports.get_exploreSubTopic = async (req,res)=>{
+  const project_id = req.params.id;
+  let client = new vimeo(process.env.CLIENT_ID, process.env.CLIENT_SECRET, process.env.ACCESS_TOKEN);
+  console.log(project_id);
+  client.request({
+    method: 'GET',
+    path: `/me/projects/${project_id}/videos`
+  },
+    function (error, body, status_code, headers) {
+      if (error) {
+        console.log(error)
+      }
+      let data = [];
+      body.data.forEach(element => {
+        data.push({ name:element.name, description:element.description,url:element.player_embed_url,duration:element.duration});
+      });
+      console.log(data);
+      res.render('exploreSubTopic',{videoData:data});
+    }
+  )
 }

@@ -57,8 +57,9 @@ const userSchema = new mongoose.Schema({
         default: 0
     },
     courses:[{
-        course:{cName:String},
-        coursePayment:{type: Number, default:0.00}
+        course:{subjectName:String},
+        coursePayment:{type: Number, default:0.00},
+        course_id:{type:Number}
     }],
     password: {
         type: String,

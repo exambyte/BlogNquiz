@@ -11,6 +11,7 @@ const req = require('express/lib/request');
 const Article = require('../models/Blog');
 const Details = require('../models/userSchema');
 const Test = require('../models/Test');
+const VideoDB = require('../models/video');
 
 /**
  * @name get/home
@@ -26,7 +27,8 @@ exports.getHome = async(req, res) => {
     // console.log(res.locals.user._id);
     const articles = await Article.find();
     const tests = await Test.find();
-    res.render('home', { articles: articles ,tests:tests ,unauthorised:res.locals.unauthenticated,userID:res.locals.id});
+    const videoData = await VideoDB.find();
+    res.render('home', { articles: articles ,tests:tests ,unauthorised:res.locals.unauthenticated,userID:res.locals.id,courses:videoData});
 }
 
 exports.getUserTest=async(req,res)=>{

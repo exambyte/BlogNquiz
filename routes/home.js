@@ -18,11 +18,24 @@ router.get('/userTestsSection', controller.getUserTest);
 
 router.get('/allTests', controller.allTests_get);
 
+
+// videos section routes
+
 router.get('/getfreevideos',vimeoController.get_freeVideos);
 
 router.get('/uploadvideo/info',vimeoController.upload_video);
 
 router.get('/showVideo/data',vimeoController.showVideoByFolder);
+
+router.post('/addVimeoVideoData',vimeoController.post_vimeoVideoData);
+
+router.get('/getVimeoCourseData',vimeoController.get_VimeoCourseData);
+
+router.get('/exploreCourse/:id',vimeoController.get_exploreCourse);
+
+router.get('/coursePreview/:id',vimeoController.get_VimeoCoursePreview);
+
+router.get('/exploreSubTopic/:id',vimeoController.get_exploreSubTopic);
 
 // router.put('/like/:id', authenticate, controller.like);
 

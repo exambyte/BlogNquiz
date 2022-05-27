@@ -1,5 +1,24 @@
 const videoContainer = document.getElementById('video-container-free');
 
+// const loadCourses = async()=>{
+//     const res = await fetch('/getVimeoCourseData',{
+//         method:'GET',
+//         headers:{
+//             'Content-Type':'application/json'
+//         }
+//     }); 
+
+//     const data = await res.json();
+//     if (data){
+//         console.log(data);
+//         data.forEach()
+//     }
+
+// }
+
+
+
+
 const loadVideo = async()=>{
     const res = await fetch('/getfreevideos',{
         method:'GET',
@@ -18,4 +37,16 @@ const loadVideo = async()=>{
         }
          
     }
+
+    // loadCourses();
 } 
+
+
+const exploreCourse =(id)=>{
+    console.log(id);
+    console.log("Loading");
+}
+
+
+
+
