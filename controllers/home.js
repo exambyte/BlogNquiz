@@ -12,6 +12,9 @@ const Test = require("../models/Test");
 const jsSHA = require("jssha");
 const request = require("request");
 const bodyParser = require("body-parser");
+const VideoDB = require("../models/video");
+const router = require( "../routes/home" );
+const Course = require("../models/video")
 
 /**
  * @name get/home
@@ -27,11 +30,13 @@ exports.getHome = async (req, res) => {
   // console.log(res.locals.user._id);
   const articles = await Article.find();
   const tests = await Test.find();
+  const videoData = await VideoDB.find();
   res.render("home", {
     articles: articles,
     tests: tests,
     unauthorised: res.locals.unauthenticated,
     userID: res.locals.id,
+    courses: videoData,
   });
 };
 
@@ -57,24 +62,25 @@ exports.getData = async (req, res) => {
   // res.send(req.verifiedUser);
 };
 
-exports.getFullView = async (req, res) => {
-  res.render("courseFullView");
-};
+// exports.getFullView = async (req, res) => {
+//   res.render("courseFullView");
+// };
 
 exports.getPayment = async (req, res) => {
-  res.render("payment");
+  console.log(req.params.id)
+  res.render("payment" , {courseId : req.params.id});
 };
 
 exports.postPayment = (req, res) => {
+  // console.log(req.params.id)
   console.log("post request in payumoney");
   console.log(req.body);
   const pay = req.body;
-
+  
   // program to generate random strings
 
   // declare all characters
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const characters ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
   function generateString(length) {
     let result = " ";
@@ -111,7 +117,7 @@ exports.postPayment = (req, res) => {
 
   //We have to additionally pass merchant key to API so remember to include it.
   pay.key = "rUBT9u"; //store in in different file;
-  pay.surl = "http://localhost:2000/payment/success";
+  pay.surl = `http://localhost:2000/payment/success/${req.body.courseId}`;
   pay.furl = "http://localhost:2000/payment/fail";
   pay.hash = hash;
   //Making an HTTP/HTTPS call with request
@@ -136,3 +142,28 @@ exports.postPayment = (req, res) => {
     }
   );
 };
+
+
+exports.post_paymentSuccess = async (req,res)  =>{
+  console.log(req.body.email)
+  console.log(req.params.id);
+  const user = await Details.findOne({ email: req.body.email });
+  user.check = "true";
+  const courseDB = await Course.findOne({subject_id : req.params.id});
+  let newCourse = {course : courseDB.subjectName , coursePayment : true, course_id : req.params.id};
+  user.courses.push(newCourse);
+  user.save();
+  res.render("success.ejs");
+}
+
+exports.post_paymentFail = async (req,res) =>{
+  window.alert("payment failed");
+  res.render("home");
+}
+
+exports.get_myCourses = async (req,res) =>{
+  // console.log(req.verifiedUser)
+  const user = await Details.findOne({ email: req.verifiedUser.email });
+  // console.log(user)
+  res.render('myCourses' , {courses : user.courses});
+}

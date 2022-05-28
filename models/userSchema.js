@@ -57,8 +57,8 @@ const userSchema = new mongoose.Schema({
         default: 0
     },
     courses:[{
-        course:{subjectName:String},
-        coursePayment:{type: Number, default:0.00},
+        course:{type:String},
+        coursePayment:{type: String, default:false},
         course_id:{type:Number}
     }],
     password: {
@@ -71,6 +71,10 @@ const userSchema = new mongoose.Schema({
             required: true
         }
     }],
+    check:{
+        type:String,
+        default:"false"
+    },
     followers: [{ type: Schema.Types.ObjectId }],
     following: [{ type: Schema.Types.ObjectId }],
     bookmarks: [{ type: Schema.Types.ObjectId }],

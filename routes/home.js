@@ -39,10 +39,16 @@ router.get("/exploreSubTopic/:id", vimeoController.get_exploreSubTopic);
 
 // router.put('/bookmark/:id', authenticate, controller.bookmark_put);
 
-router.get("/courseFullView", controller.getFullView);
+// router.get("/courseFullView", controller.getFullView);
 
-router.get("/payment", controller.getPayment);
+router.get("/payment/:id", controller.getPayment);
 
 router.post("/payment_gateway/payumoney", controller.postPayment);
+
+router.post("/payment/success/:id" , controller.post_paymentSuccess);
+
+router.post("/payment/fail" , controller.post_paymentFail);
+
+router.get("/myCourses"  ,authenticate ,controller.get_myCourses);
 
 module.exports = router;
