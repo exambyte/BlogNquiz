@@ -148,7 +148,7 @@ exports.post_paymentSuccess = async (req,res)  =>{
   console.log(req.body.email)
   console.log(req.params.id);
   const user = await Details.findOne({ email: req.body.email });
-  user.check = "true";
+  // user.check = "true";
   const courseDB = await Course.findOne({subject_id : req.params.id});
   let newCourse = {course : courseDB.subjectName , coursePayment : true, course_id : req.params.id};
   user.courses.push(newCourse);
@@ -161,9 +161,3 @@ exports.post_paymentFail = async (req,res) =>{
   res.render("home");
 }
 
-exports.get_myCourses = async (req,res) =>{
-  // console.log(req.verifiedUser)
-  const user = await Details.findOne({ email: req.verifiedUser.email });
-  // console.log(user)
-  res.render('myCourses' , {courses : user.courses});
-}

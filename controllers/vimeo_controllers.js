@@ -2,6 +2,7 @@ const vimeo = require("vimeo").Vimeo;
 const env = require("dotenv");
 const axios = require("axios");
 const vimeoDB = require("../models/video");
+const User = require("../models/userSchema");
 
 env.config({ path: "../config.env" });
 
@@ -203,6 +204,7 @@ exports.get_exploreSubTopic = async (req, res) => {
       if (error) {
         console.log(error);
       }
+      console.log(body.data);
       let data = [];
       body.data.forEach((element) => {
         data.push({
@@ -217,3 +219,26 @@ exports.get_exploreSubTopic = async (req, res) => {
     }
   );
 };
+
+
+
+exports.get_subTopicVideo = async(req, res) => {
+   const url = req.query.url;
+   const name = req.query.name;
+   console.log(name);
+   res.render("subTopicVideo", {url:url,name:name});
+}
+
+
+exports.get_myCourses = async (req,res)=>{
+  console.log("coming in this section");
+  const id = req.params.id;
+  try{
+    const data = await User.findById(id);
+    if(data){
+      res.render('myCourses',{courses:data.courses});
+    }
+  }catch(error){
+    console.log(error);
+  }
+}
