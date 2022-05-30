@@ -48,6 +48,7 @@ const videoschema = new mongoose.Schema(
             subTopic_id: {
               type: Number,
             },
+            check: {type:String, default:"false"}
           },
         ],
       },

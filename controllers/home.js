@@ -143,7 +143,6 @@ exports.postPayment = (req, res) => {
   );
 };
 
-
 exports.post_paymentSuccess = async (req,res)  =>{
   console.log(req.body.email)
   console.log(req.params.id);
@@ -157,6 +156,165 @@ exports.post_paymentSuccess = async (req,res)  =>{
 }
 
 exports.post_paymentFail = async (req,res) =>{
+  window.alert("payment failed");
+  res.render("home");
+}
+
+
+
+// subtopic payment part
+
+exports.getPayment2 = async (req, res) => {
+  console.log(req.params.id)
+  res.render("paymentSubtopic" , {courseId : req.params.id});
+};
+
+exports.postPayment2 = (req, res) => {
+  // console.log(req.params.id)
+  console.log("post request in payumoney");
+  console.log(req.body);
+  const pay = req.body;
+  
+  // program to generate random strings
+
+  // declare all characters
+  const characters ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  function generateString(length) {
+    let result = " ";
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+  }
+
+  pay.txnid = generateString(14);
+
+  const hashString =
+    "rUBT9u" + // merchant key
+    "|" +
+    pay.txnid +
+    "|" +
+    pay.amount +
+    "|" +
+    pay.productinfo +
+    "|" +
+    pay.firstname +
+    "|" +
+    pay.email +
+    "|" +
+    "||||||||||" +
+    "xWcdyfWT"; //merchant salt
+  const sha = new jsSHA("SHA-512", "TEXT");
+  sha.update(hashString);
+  //Getting hashed value from sha module
+
+  const hash = sha.getHash("HEX");
+
+  //We have to additionally pass merchant key to API so remember to include it.
+  pay.key = "rUBT9u"; //store in in different file;
+  pay.surl = `http://localhost:2000/payment2/success/${req.body.courseId}`;
+  pay.furl = "http://localhost:2000/payment2/fail";
+  pay.hash = hash;
+  //Making an HTTP/HTTPS call with request
+  // console.log(pay);
+
+  request.post(
+    {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      url: "https://secure.payu.in/_payment", //production url
+      form: pay,
+    },
+    function (error, httpRes, body) {
+      if (error) res.send({ status: false, message: error.toString() });
+      if (httpRes.statusCode === 200) {
+        res.send(body);
+      } else if (httpRes.statusCode >= 300 && httpRes.statusCode <= 400) {
+        res.redirect(httpRes.headers.location.toString());
+      }
+    }
+  );
+};
+
+
+
+exports.post_paymentSuccess2 = async (req,res)  => {
+
+  function getSubjectId(id){
+    let subjId = "";
+
+    var plusC = 1;
+    for(var i=0;i<id.length;i++){
+      if(id[i] == " "){
+        return subjId;
+      }
+      subjId += id[i];
+    }
+  }
+  
+  function getTopicId(id){
+    let topicId = "";
+    let subtopicId = "";
+    var flag = 0;
+    for(var i=0;i<id.length;i++){
+      if(id[i] == " "){
+        flag += 1;
+      }
+      else if(flag == 1){
+        topicId += id[i];
+      }
+    }
+    return topicId;
+  }
+
+  function getSubTopicId(id){
+    let topicId = "";
+    let subtopicId = "";
+    var flag = 0;
+    for(var i=0;i<id.length;i++){
+      if(id[i] == " "){
+        flag += 1;
+      }
+      else if(flag == 2){
+        subtopicId += id[i];
+      }
+      
+    }
+    return subtopicId;
+  }
+
+  let tid = getTopicId(req.params.id);
+  let sid = getSubTopicId(req.params.id);
+  let subid = getSubjectId(req.params.id);
+  console.log(tid)
+  console.log(sid);
+  console.log(subid);
+
+  let Alltopics = await Course.find({subject_id : subid});
+  console.log(Alltopics)
+  Alltopics.forEach(element => {
+    if(element.topic_Id == tid){
+      console.log(element.topicName)
+      element.subTopics.forEach(element2 => {
+        if(element2.subTopic_id == sid){
+          element2.check = "true";
+          return;
+        }
+      });
+    }
+  });
+  // await Alltopics.save();
+  console.log("success")
+  
+  res.render("success.ejs");
+}
+
+exports.post_paymentFail2 = async (req,res) =>{
   window.alert("payment failed");
   res.render("home");
 }

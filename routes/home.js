@@ -53,6 +53,18 @@ router.post("/payment/success/:id" , controller.post_paymentSuccess);
 
 router.post("/payment/fail" , controller.post_paymentFail);
 
+
+// payment for subtopics
+router.get("/payment2/:id", controller.getPayment2);
+
+router.post("/payment_gateway2/payumoney", controller.postPayment2);
+
+router.post("/payment2/success/:id" , controller.post_paymentSuccess2);
+
+router.post("/payment2/fail" , controller.post_paymentFail2);
+
+
+
 // router.get("/myCourses/:id"  ,authenticate ,controller.get_myCourses);
 
 module.exports = router;
