@@ -140,8 +140,50 @@ exports.get_VimeoCourseData = async (req, res) => {
 
 exports.get_exploreCourse = async (req, res) => {
   const id = req.params.id;
+  const emailId = req.verifiedUser.email;
+  // console.log(emailId)
+
   const vimeoData = await vimeoDB.findOne({ subject_id: id });
-  res.render("exploreCourse", { courses: vimeoData });
+  // user courses
+  const user = await User.findOne({email : emailId});
+  var flag=0;
+  user.courses.forEach(course =>{
+    if(id == course.course_id){
+      flag = 1;
+    }
+  })
+
+  const purchasedCourses = [];
+  const unpurchasedCourses = [];
+  const purchasedSet = new Set([]);
+
+  if(flag == 1){
+
+    vimeoData.topics.forEach(topic =>{
+        purchasedCourses.push(topic);
+    })
+
+    res.render("exploreCourse", { courses: unpurchasedCourses , curruser : purchasedCourses, subject_id : id , subjectPrice: 0.0});
+
+  }
+
+  user.topics.forEach(topic2 =>{
+    purchasedSet.add(topic2.topic_Id)
+  })
+
+  // console.log(purchasedSet)
+  
+  vimeoData.topics.forEach(topic =>{
+      if(purchasedSet.has(topic.topic_Id)){
+        purchasedCourses.push(topic);
+      }
+      else{
+        unpurchasedCourses.push(topic);
+      }
+    })
+  // console.log(purchasedCourses)
+  // console.log(unpurchasedCourses);
+  res.render("exploreCourse", { courses: unpurchasedCourses , curruser : purchasedCourses, subject_id : id , subjectPrice: vimeoData.subjectPrice});
 };
 
 exports.get_VimeoCoursePreview = async (req, res) => {

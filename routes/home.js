@@ -29,11 +29,11 @@ router.post("/addVimeoVideoData", vimeoController.post_vimeoVideoData);
 
 router.get("/getVimeoCourseData", vimeoController.get_VimeoCourseData);
 
-router.get("/exploreCourse/:id", vimeoController.get_exploreCourse);
+router.get("/exploreCourse/:id", authenticate, vimeoController.get_exploreCourse);
 
-router.get("/coursePreview/:id", vimeoController.get_VimeoCoursePreview);
+router.get("/coursePreview/:id",authenticate, vimeoController.get_VimeoCoursePreview);
 
-router.get("/exploreSubTopic/:id", vimeoController.get_exploreSubTopic);
+router.get("/exploreSubTopic/:id",authenticate, vimeoController.get_exploreSubTopic);
 
 router.get("/subTopicVideo/:url",vimeoController.get_subTopicVideo);
 

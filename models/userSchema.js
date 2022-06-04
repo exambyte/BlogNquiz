@@ -78,6 +78,17 @@ const userSchema = new mongoose.Schema({
     followers: [{ type: Schema.Types.ObjectId }],
     following: [{ type: Schema.Types.ObjectId }],
     bookmarks: [{ type: Schema.Types.ObjectId }],
+    topics: [
+        {
+        subject_id: {
+            type: Number,
+        },
+          topic_Id: {
+            type: String,
+          }
+        },
+      ],
+    
 }, {
     collection: 'userData'
 });

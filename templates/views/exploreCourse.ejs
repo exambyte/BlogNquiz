@@ -319,7 +319,7 @@
                                     <div class="accordion js-accordion
                                         accordion--boxed list-group-flush"
                                         id="parent">
-                                        <% courses.topics.forEach(topic=>{ %>
+                                        <% courses.forEach(topic=>{ %>
                                             
                                             <div class="accordion__item">
                                                 <a href="#"
@@ -329,12 +329,16 @@
                                                     data-target="#course-toc-1"
                                                     data-parent="#parent">
                                                     <span class="flex">
+                                                        
                                                         <%= topic.topicName %>
                                                         </span>
-                                                        <span
-                                                            class="accordion__toggle-icon
+
+                                                        <span  class="text " style="color:red;" >
+                                                            <strong>₹&nbsp99</strong> </span>
+
+                                                        <span  class="accordion__toggle-icon
                                                             material-icons">keyboard_arrow_down</span>
-                                                    </a>
+                                                </a>
                                                     
                                                     <!-- subtopic starts from here -->
 
@@ -344,46 +348,71 @@
                                                                 <span class="icon-holder icon-holder--small icon-holder--dark  rounded-circle  d-inline-flex   icon--left">
                                                                     <i class="material-icons icon-16pt">book</i>
                                                                 </span>
-                                                                <!-- href="/exploreSubTopic/<%= subTopic.subTopic_id %>"  add in below div for video -->
-                                                                <% if(subTopic.check == "true") { %>
-                                                                <a class="flex subtopic" id="<%= subTopic.subTopic_id %>" type="button" href="/exploreSubTopic/<%= subTopic.subTopic_id  %>">
-                                                                    <%= subTopic.subTopicName  %>
-                                                                </a>
-
-                                                                <% } else { %>
-                                                                    
-                                                                    <a class="flex subtopic" id="<%= subTopic.subTopic_id %>" type="button" href="/payment2/<%= courses.subject_id %>+<%= topic.topic_Id %>+<%= subTopic.subTopic_id %>">
+                                                                                                                                    
+                                                                    <a class="flex subtopic" id="<%= subTopic.subTopic_id %>" type="button" href="/payment2/<%= subject_id %>+<%= topic.topic_Id %>">
                                                                         <%= subTopic.subTopicName  %>
                                                                     </a>
-
-                                                                <% } %>
-
-                                                                <span  class="text " style="color:red;" >
-                                                                    <strong>₹&nbsp99</strong>
-                                                                    <!-- <strong><%= subTopic.subTopic_id %></strong> -->
-                                                                </span>
-
+                                                        
                                                             </div>
                                                         </div>
                                                     <% }) %>
-                                                                <div class="accordion__menu collapse" id="course-toc-1">
-                                                                    <div class="accordion__menu-link">
-                                                                        <span  class="icon-holder  icon-holder--small icon-holder--dark rounded-circle d-inline-flex icon--left">
-                                                                            <i class="material-icons icon-16pt">vpn_key</i>
-                                                                        </span>
-                                                                        <a class="flex" href="student-lesson.html"><strong>Unlock Topic</strong></a>
-                                                                        <span  class="text" style="color:red;">
-                                                                            <strong>₹&nbsp<%=topic.topicPrice %></strong>
-                                                                        </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <% }) %>
-                                                            </div>
+                                                      
+                                            </div>
+                                        <% }) %>
+                                            
 
                                                             <!-- subtopic part ends here -->
 
-                                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                                                                <!-- purchased   topics  -->
+                            <div class="row mb-0">
+                                <div class="col-lg-7">
+
+                                    <div class="accordion js-accordion accordion--boxed list-group-flush" id="parent">
+                                        <% curruser.forEach(topic=>{ %>
+                                            
+                                            <div class="accordion__item">
+                                                <a href="#"  class="accordion__toggle collapsed" data-toggle="collapse"  data-target="#course-toc-1"
+                                                    data-parent="#parent">
+                                                    <span class="flex"> <%= topic.topicName %> </span>
+                                                    <span  class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                                                </a>
+                                                    
+                                                    <!-- subtopic starts from here -->
+
+                                                <% topic.subTopics.forEach(subTopic=>{ %>
+                                                    <div class="accordion__menu collapse" id="course-toc-1" >
+                                                        <div class="accordion__menu-link" >
+                                                            <span class="icon-holder icon-holder--small icon-holder--dark  rounded-circle  d-inline-flex   icon--left">
+                                                                <i class="material-icons icon-16pt">book</i>
+                                                            </span>
+                                                            
+                                                            
+                                                            <a class="flex subtopic" id="<%= subTopic.subTopic_id %>" type="button" href="/exploreSubTopic/<%= subTopic.subTopic_id  %>">
+                                                                <%= subTopic.subTopicName  %>
+                                                            </a>
+
+            
+
+                                                        </div>
+                                                    </div>
+                                                <% }) %>
+                                            </div>                
+                                        <% }) %>
+                                    </div>
+
+                                                            <!-- subtopic part ends here -->
+
+                                </div>
+
+                            </div>
+
+
+                             <!-- purchased section ends here -->
+
                                                             <div class="col-lg-5
                                                                 justify-content-center">
                                                                 <div
@@ -415,10 +444,10 @@
                                                                             in
                                                                             the
                                                                             library</p>
-                                                                        <a href="/payment/<%= courses.subject_id %>"
+                                                                        <a href="/payment/<%= subject_id %>"
                                                                             class="btn
                                                                             btn-accent
-                                                                            mb-8pt">₹&nbsp<%=courses.subjectPrice%></a>
+                                                                            mb-8pt">₹&nbsp<%= subjectPrice %></a>
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -426,7 +455,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                
 
                                                 <div class="page-section
                                                     bg-white border-bottom-2">
@@ -631,8 +660,7 @@
                                                                             class="avatar
                                                                             avatar-4by3
                                                                             mr-12pt">
-                                                                            <img
-                                                                                /Theme/images/paths/angular_routing_200x168.png"
+                                                                            <img src="/Theme/images/paths/angular_routing_200x168.png"
                                                                                 alt="Angular
                                                                                 Routing
                                                                                 In-Depth"

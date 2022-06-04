@@ -144,8 +144,8 @@ exports.postPayment = (req, res) => {
 };
 
 exports.post_paymentSuccess = async (req,res)  =>{
-  console.log(req.body.email)
-  console.log(req.params.id);
+  // console.log(req.body.email)
+  // console.log(req.params.id);
   const user = await Details.findOne({ email: req.body.email });
   // user.check = "true";
   const courseDB = await Course.findOne({subject_id : req.params.id});
@@ -245,6 +245,8 @@ exports.postPayment2 = (req, res) => {
 
 exports.post_paymentSuccess2 = async (req,res)  => {
 
+  console.log(req.body.email)
+
   function getSubjectId(id){
     let subjId = "";
 
@@ -256,7 +258,7 @@ exports.post_paymentSuccess2 = async (req,res)  => {
       subjId += id[i];
     }
   }
-  
+
   function getTopicId(id){
     let topicId = "";
     let subtopicId = "";
@@ -272,43 +274,17 @@ exports.post_paymentSuccess2 = async (req,res)  => {
     return topicId;
   }
 
-  function getSubTopicId(id){
-    let topicId = "";
-    let subtopicId = "";
-    var flag = 0;
-    for(var i=0;i<id.length;i++){
-      if(id[i] == " "){
-        flag += 1;
-      }
-      else if(flag == 2){
-        subtopicId += id[i];
-      }
-      
-    }
-    return subtopicId;
-  }
-
   let tid = getTopicId(req.params.id);
-  let sid = getSubTopicId(req.params.id);
   let subid = getSubjectId(req.params.id);
   console.log(tid)
-  console.log(sid);
   console.log(subid);
 
-  let Alltopics = await Course.find({subject_id : subid});
-  console.log(Alltopics)
-  Alltopics.forEach(element => {
-    if(element.topic_Id == tid){
-      console.log(element.topicName)
-      element.subTopics.forEach(element2 => {
-        if(element2.subTopic_id == sid){
-          element2.check = "true";
-          return;
-        }
-      });
-    }
-  });
-  // await Alltopics.save();
+  const user = await Details.findOne({ email: req.body.email });
+  const courseDB = await Course.findOne({subject_id : parseInt(subid)});
+  let newTopic = {subject_id : parseInt(subid) , topic_Id : (tid)};
+  user.topics.push(newTopic);
+  user.save();
+
   console.log("success")
   
   res.render("success.ejs");
