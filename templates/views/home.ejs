@@ -288,9 +288,9 @@
                     </div>
 
                     <div class="row card-group-row" id="course-card-container">
-
+                        <% courses.forEach(course=> { %>
                         <div class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
-                            <% courses.forEach(course=> { %>
+                            
                                 <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card"
                                     data-toggle="popover" data-trigger="click">
 
@@ -417,9 +417,9 @@
                                     </div>
 
                                 </div>
-                            <%})%>
 
                         </div>
+                        <%})%>
                     </div>
                 </div>
             </div>

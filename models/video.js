@@ -13,6 +13,12 @@ const videoschema = new mongoose.Schema(
       type: Number,
       default: 0.0,
     },
+    subjectDescription: {
+      type: String
+    },
+    subjectFaculty:{
+      type:String
+    },
     freeTopics: {
       freeTopics_id: {
         type: Number,
@@ -43,12 +49,14 @@ const videoschema = new mongoose.Schema(
         subTopics: [
           {
             subTopicName: {
-              type: String,
+              type: String
             },
             subTopic_id: {
-              type: Number,
+              type: Number
             },
-            check: {type:String, default:"false"}
+            subTopicDescription: {
+              type:String
+            }
           },
         ],
       },

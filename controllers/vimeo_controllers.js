@@ -112,7 +112,7 @@ exports.showVideoByFolder = (req, res) => {
 };
 
 exports.post_vimeoVideoData = async (req, res) => {
-  const reqData = req.body;
+  const reqData = req.body[0];
   console.log(reqData);
   const vimeoData = new vimeoDB(reqData);
   try {
