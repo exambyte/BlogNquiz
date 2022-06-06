@@ -315,8 +315,12 @@
                                                     <i class="material-icons icon-16pt">play_circle_outline</i>
                                                 </span>
                                                 <a class="flex"
-                                                   href="/subTopicVideo/show?url=<%= vdata.url %>&name=<%= vdata.name %>"><%= vdata.name %></a>
-                                                <span class="text-muted"><%= vdata.duration %></span>
+                                                   href="/subTopicVideo/show?url=<%= vdata.url %>&name=<%= vdata.name %>&desc=<%= vdata.description %>&duration=<%= vdata.duration %>"><%= vdata.name %></a>
+                                                <span class="text-muted"><%let minutes = Math.floor(vdata.duration/60);
+                                                    let seconds = vdata.duration - minutes*60;
+                                                    let time = `${minutes}:${seconds}`
+                                                     %>
+                                                     <%= time %></span>
                                             </div>
                                         </div>
                                         <% }) %>

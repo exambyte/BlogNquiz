@@ -144,6 +144,7 @@ exports.get_exploreCourse = async (req, res) => {
   // console.log(emailId)
 
   const vimeoData = await vimeoDB.findOne({ subject_id: id });
+  console.log(vimeoData);
   // user courses
   const user = await User.findOne({email : emailId});
   var flag=0;
@@ -156,6 +157,9 @@ exports.get_exploreCourse = async (req, res) => {
   const purchasedCourses = [];
   const unpurchasedCourses = [];
   const purchasedSet = new Set([]);
+  const CourseName = vimeoData.subjectName;
+  const CourseDesc = vimeoData.subjectDescription;
+  console.log(CourseName,CourseDesc)
 
   if(flag == 1){
 
@@ -163,7 +167,7 @@ exports.get_exploreCourse = async (req, res) => {
         purchasedCourses.push(topic);
     })
 
-    res.render("exploreCourse", { courses: unpurchasedCourses , curruser : purchasedCourses, subject_id : id , subjectPrice: 0.0});
+    res.render("exploreCourse", { courses: unpurchasedCourses , curruser : purchasedCourses, subject_id : id ,subjectName:CourseName,subjectDescription:CourseDesc, subjectPrice: 0.0});
 
   }
 
@@ -183,7 +187,7 @@ exports.get_exploreCourse = async (req, res) => {
     })
   // console.log(purchasedCourses)
   // console.log(unpurchasedCourses);
-  res.render("exploreCourse", { courses: unpurchasedCourses , curruser : purchasedCourses, subject_id : id , subjectPrice: vimeoData.subjectPrice});
+  res.render("exploreCourse", { courses: unpurchasedCourses , curruser : purchasedCourses, subject_id : id ,subjectName:CourseName,subjectDescription:CourseDesc, subjectPrice: vimeoData.subjectPrice});
 };
 
 exports.get_VimeoCoursePreview = async (req, res) => {
@@ -267,8 +271,10 @@ exports.get_exploreSubTopic = async (req, res) => {
 exports.get_subTopicVideo = async(req, res) => {
    const url = req.query.url;
    const name = req.query.name;
-   console.log(name);
-   res.render("subTopicVideo", {url:url,name:name});
+   const description = req.query.desc;
+   const duration = req.query.duration;
+   console.log(name,description,duration);
+   res.render("subTopicVideo", {url:url,name:name,desc:description,duration:duration});
 }
 
 

@@ -31,6 +31,7 @@ exports.getHome = async (req, res) => {
   const articles = await Article.find();
   const tests = await Test.find();
   const videoData = await VideoDB.find();
+  console.log(videoData);
   res.render("home", {
     articles: articles,
     tests: tests,

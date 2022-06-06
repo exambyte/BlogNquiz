@@ -312,7 +312,7 @@
                                                     id="course-name-heading-1">
                                                     <%=course.subjectName %>
                                                 </a>
-                                                <small class="text-50 font-weight-bold mb-4pt">Elijah Murray</small>
+                                                <small class="text-50 font-weight-bold mb-4pt"><%= course.subjectFaculty %> </small>
                                             </div>
                                             <a href="student-course.html" data-toggle="tooltip"
                                                 data-title="Add Favorite" data-placement="top" data-boundary="window"
@@ -360,12 +360,12 @@
                                             </div>
                                             <p class="lh-1 mb-0">
                                                 <span class="text-50 small">with</span>
-                                                <span class="text-50 small font-weight-bold">Elijah Murray</span>
+                                                <span class="text-50 small font-weight-bold"><%= course.subjectFaculty %></span>
                                             </p>
                                         </div>
                                     </div>
 
-                                    <p class="my-16pt text-70">Learn the core concepts in PCM to crack IIT-JEE</p>
+                                    <p class="my-16pt text-70"><%= course.subjectDescription %></p>
 
                                     <div class="mb-16pt">
                                         <div class="d-flex align-items-center">
