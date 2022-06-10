@@ -1,39 +1,42 @@
 const quizChart = document.getElementById('topicIqChart').getContext('2d');
+const iqChart = document.getElementById('iqChart').getContext('2d');
 const heighestScore = document.getElementById('heigest-score');
 const pointsEarned = document.getElementById('points-earned');
 const myProfileBtn = document.getElementById('my-profile-btn');
 const quizCardArea = document.getElementById('quiz-card-area');
+const bestScoreTest = document.getElementById('best-score-test');
+const experienceIq = document.getElementById('experience-iq');
 
-let userID ='';
+let userID = '';
 
-let userQuizData =[];
+let userQuizData = [];
 let current_page = 1;
 let records_per_page = 2;
 
-const prevPage=()=>{
+const prevPage = () => {
     if (current_page > 1) {
         current_page--;
         changePage(current_page);
     }
 }
-const nextPage=()=>{
+const nextPage = () => {
     if (current_page < numPages()) {
         current_page++;
         changePage(current_page);
     }
 }
 
-const  changePage=(page)=>{
+const changePage = (page) => {
     let btn_next = document.getElementById("btn_next");
     let btn_prev = document.getElementById("btn_prev");
- 
+
     // Validate page
     if (page < 1) page = 1;
     if (page > numPages()) page = numPages();
 
     quizCardArea.innerHTML = "";
 
-    for (let i = (page-1) * records_per_page; i < (page * records_per_page); i++) {
+    for (let i = (page - 1) * records_per_page; i < (page * records_per_page); i++) {
         quizCardArea.innerHTML += `
         
         <div class="card-group-row__col col-md-6">
@@ -121,62 +124,92 @@ const  changePage=(page)=>{
 
 
 
-const numPages=()=>{
+const numPages = () => {
     return Math.ceil(userQuizData.length / records_per_page);
 }
 
 
 
 
-const getUserQuizData = async (userId)=>{
+const getUserQuizData = async (userId) => {
+    const coloPicker = ['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(179, 245, 0)','rgb(162, 179, 174)']
     userID = userId;
-    try{
-        const res = await fetch(`/userQuizData/${userId}`,{
-            method:'GET',
-            contentType:'application/json'
+    try {
+        const res = await fetch(`/userQuizData/${userId}`, {
+            method: 'GET',
+            contentType: 'application/json'
         });
-        
+
         const data = await res.json();
-        if(data){
+        if (data) {
             console.log(data);
-            let labeldata=[]; //Array for labels of graph
-            let marksdata=[]; //Array for marks data in graph
-            
-            data.userQuizes.forEach(element=>{
+            let labeldata = []; //Array for labels of graph
+            let marksdata = []; //Array for marks data in graph
+            data.userQuizes.sort((a,b)=>(a.marksScored > b.marksScored)?1:-1);
+            data.userQuizes.reverse();
+            data.userQuizes.forEach(element => {
                 marksdata.push(element.marksScored);
                 labeldata.push(`${element.test.title}`);
                 userQuizData.push(element);
             })
-            console.log(userQuizData);
-            let highScore = Math.max(...marksdata); //variable to show highest Score
+            
+            // userQuizData.sort((a,b)=>
+            //     (a.marksScored > b.marksScored)?1:-1)
+            // console.log(userQuizData.reverse());
+            
+            let highScore = marksdata[0]; //variable to show highest Score
+            let highScoreTest = labeldata[0]; //getting test having highest Score
 
             heighestScore.innerHTML = highScore;
             pointsEarned.innerHTML = `${data.userPoints} points earned`;
+            bestScoreTest.innerHTML = `${highScoreTest}`;
+            experienceIq.innerHTML = `${data.userPoints}`
 
             myProfileBtn.innerHTML = `
-                <a href="/userProfile/${data.userId}"
-                class="btn btn-light">My Profile</a>
+                <a href="/userProfile/${data.userId}" class="btn btn-outline-secondary">My Profile</a>
             `
 
-            const myChart = new Chart(quizChart,{
-                type:'line',
-                data:{
-                    labels:  labeldata,
+            const myChart = new Chart(quizChart, {
+                type: 'doughnut',
+                data: {
+                    labels: labeldata.slice(0,5),
                     datasets: [{
                         label: 'Quiz Stats',
-                        data: marksdata,
-                        fill: false,
-                        borderColor: 'rgb(75, 192, 192)',
-                        tension: 0.1
-                      }]
+                        data: marksdata.slice(0,5),
+                        // fill: false,
+
+                        // borderColor: 'rgb(75, 192, 192)',
+                        // tension: 0.5
+                        backgroundColor: coloPicker.slice(0,marksdata.length),
+                          hoverOffset: 4
+                    }]
                 }
             });
 
-
+            let labeldata1 = [];
+            let marksdata1 = [];
+            data.userQuizes.forEach(element => {
+                marksdata1.push(element.marksScored);
+                labeldata1.push(`${element.test.title}`);
+                
+            })
+            const myIqChart = new Chart(iqChart, {
+                type: 'line',
+                data: {
+                    labels: labeldata1.slice(0,5),
+                    datasets: [{
+                        label: 'IQ Stats',
+                        data: marksdata.slice(0,5),
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.5
+                    }]
+                }
+            });
             changePage(1);
 
         }
-    }catch(err){
+    } catch (err) {
         console.log(err);
     }
 }
