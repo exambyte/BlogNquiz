@@ -5,6 +5,7 @@ const bestScoreTest = document.getElementById('best-score-test');
 
 const getUserQuizData = async (userId)=>{
     const coloPicker = ['rgb(255, 99, 132)','rgb(54, 162, 235)','rgb(255, 205, 86)','rgb(179, 245, 0)','rgb(162, 179, 174)']
+
     try{
         const res = await fetch(`/userQuizData/${userId}`,{
             method:'GET',
@@ -48,6 +49,7 @@ const getUserQuizData = async (userId)=>{
                 }
             });
 
+
             let labeldata1 = [];
             let marksdata1 = [];
             data.userQuizes.forEach(element => {
@@ -68,6 +70,7 @@ const getUserQuizData = async (userId)=>{
                     }]
                 }
             });
+
 
         }
     }catch(err){
