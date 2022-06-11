@@ -20,6 +20,7 @@ const prevPage = () => {
     }
 }
 
+
 const nextPage = () => {
     if (current_page < numPages()) {
         current_page++;
@@ -123,9 +124,14 @@ const changePage = (page) => {
 }
 
 
+
+
+
+
 const numPages = () => {
     return Math.ceil(userQuizData.length / records_per_page);
 }
+
 
 
 
@@ -149,10 +155,12 @@ const getUserQuizData = async (userId) => {
             data.userQuizes.reverse();
             data.userQuizes.forEach(element => {
 
+
                 marksdata.push(element.marksScored);
                 labeldata.push(`${element.test.title}`);
                 userQuizData.push(element);
             })
+
 
             
             // userQuizData.sort((a,b)=>
@@ -214,4 +222,6 @@ const getUserQuizData = async (userId) => {
     } catch (err) {
         console.log(err);
     }
+
 }
+
