@@ -113,7 +113,7 @@ exports.showVideoByFolder = (req, res) => {
 
 exports.post_vimeoVideoData = async (req, res) => {
   const reqData = req.body[0];
-  console.log(reqData);
+  // console.log(reqData);
   const vimeoData = new vimeoDB(reqData);
   try {
     const data = await vimeoData.save();
@@ -144,7 +144,7 @@ exports.get_exploreCourse = async (req, res) => {
   // console.log(emailId)
 
   const vimeoData = await vimeoDB.findOne({ subject_id: id });
-  console.log(vimeoData);
+  // console.log(vimeoData);
   // user courses
   const user = await User.findOne({email : emailId});
   var flag=0;
@@ -159,7 +159,7 @@ exports.get_exploreCourse = async (req, res) => {
   const purchasedSet = new Set([]);
   const CourseName = vimeoData.subjectName;
   const CourseDesc = vimeoData.subjectDescription;
-  console.log(CourseName,CourseDesc)
+  // console.log(CourseName,CourseDesc)
 
   if(flag == 1){
 
@@ -217,7 +217,7 @@ exports.get_VimeoCoursePreview = async (req, res) => {
       if (error) {
         console.log(error);
       }
-      console.log(body);
+      // console.log(body);
       let data = [];
       body.data.forEach((element) => {
         data.push({
@@ -227,7 +227,7 @@ exports.get_VimeoCoursePreview = async (req, res) => {
           duration: element.duration,
         });
       });
-      console.log(data);
+      // console.log(data);
       res.render("coursePreview", { course: subjectName, videoData: data });
     }
   );
@@ -240,7 +240,7 @@ exports.get_exploreSubTopic = async (req, res) => {
     process.env.CLIENT_SECRET,
     process.env.ACCESS_TOKEN
   );
-  console.log(project_id);
+  // console.log(project_id);
   client.request(
     {
       method: "GET",
@@ -273,7 +273,7 @@ exports.get_subTopicVideo = async(req, res) => {
    const name = req.query.name;
    const description = req.query.desc;
    const duration = req.query.duration;
-   console.log(name,description,duration);
+  //  console.log(name,description,duration);
    res.render("subTopicVideo", {url:url,name:name,desc:description,duration:duration});
 }
 
