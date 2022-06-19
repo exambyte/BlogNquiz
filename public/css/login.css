@@ -225,6 +225,10 @@ label {
   margin: 20px 0;
 }
 
+#heading{font-size: 40px;margin-top: 2rem;}
+.page-separator{margin-top: -2rem;}
+.forAccount{margin-left: -10rem;margin-top: -1rem;}
+
 .social-container a {
   border: 1px solid #DDDDDD;
   border-radius: 50%;
@@ -235,38 +239,45 @@ label {
   height: 40px;
   width: 40px;
 }
+
+#forgot{margin-left: 4rem;margin-top: -1rem;width: 50vw;}
+.custom-control{width: 80%;margin-left: 5rem;margin-top: -2rem;}
+
+
 @media (max-width: 1424px) {
     #heading{font-size: 40px;margin-top: 2rem;}.page-separator{margin-top: -2rem;}
     #email-body{margin-top: -1rem;}#pass-body{margin-top: -1rem;}.forAccount{margin-left: -1rem;}
 }
 @media (max-width: 1386px) {
-    #heading{font-size: 35px;margin-top: 2rem;}.custom-control{width: 60%;}.forAccount{margin-left: -4rem;;}
+
+    #heading{font-size: 35px;margin-top: 2rem;}.custom-control{width: 60%;}.forAccount{margin-left: -6rem;}
 }
 @media (max-width: 1243px) {
-    #heading{font-size: 35px;margin-top: -1rem;}.page-separator{margin-top: -2rem;}.form-group-button{margin-left: -.5rem;margin-top: -1rem;}
-    .custom-control{width: 60%;margin-left: 9rem;}#forgot{margin-left: -12rem;margin-top: -1rem;width: 50vw;}
-    #email-body{margin-left: -6rem;}#pass-body{margin-left: -6rem;}.forAccount{margin-left: -5rem;}
+    #heading{font-size: 35px;margin-top: -1rem;}.page-separator{margin-top: -2rem;}.form-group.form-group-button{margin-left:-4rem;margin-top: -1rem;}
+    .custom-control{width: 60%;margin-left: 6rem;}#forgot{margin-left: 1rem;margin-top: -1rem;width: 50vw;}
+    #email-body{margin-left: -6rem;}#pass-body{margin-left: -6rem;}.forAccount{margin-left: -8rem;}
 }
 @media (max-width: 940px) {
-    #email-body{margin-left: -4rem;}#pass-body{margin-left: -4rem;}  .custom-control{width: 90%;margin-left: 6rem;}
-    .forAccount{margin-left: -1rem;}
+    #email-body{margin-left: -4rem;}#pass-body{margin-left: -4rem;}  .custom-control{width: 25vw;margin-left: 2rem;}
+    .forAccount{margin-left: -10rem;}
 }
 @media (max-width: 792px) {
-  #email-body,#pass-body{margin-left: -1rem;}      .forAccount{margin-left: 1rem;}
+  #email-body,#pass-body{margin-left: -1rem;}      .forAccount{margin-left: -13rem;}
 }
 @media (max-width: 708px) {
   #email-body,#pass-body{margin-left: 2rem;}#email,#password{margin-left: -6rem;}
-  #forgot{margin-left: -12rem;margin-top: -1rem;width: 70vw;}      .forAccount{margin-left: -.5rem;}
+  #forgot{margin-left: -1rem;margin-top: -1rem;width: 70vw;}      .forAccount{margin-left: -11rem;}
 }
 @media (max-width: 612px) {
   #heading{font-size: 30px;margin-top: -1rem;}
-  #forgot{margin-left: -12rem;margin-top: -1rem;width: 70vw;}  .custom-control{width: 30vw;margin-left: 3rem;} 
-  .forAccount .text-body{margin-top: 2rem;margin-left: 3rem;}    .forAccount{margin-left: 1rem;}
+  #forgot{margin-left: -1rem;margin-top: -1rem;width: 70vw;}  .custom-control{width: 30vw;margin-left: 3rem;} 
+  .forAccount .text-body{margin-top: 2rem;margin-left: 3rem;}    .forAccount{margin-left: -11rem;}
 }
 @media (max-width: 575px) {
   #heading{font-size: 30px;margin-top: -1rem;width: 20vw;}
-  #forgot{margin-left: -12rem;margin-top: -1rem;width: 70vw;}  .custom-control{width: 30vw;margin-left: 3rem;} 
-.text-body{margin-top: 2rem;margin-left: 5rem;}    .forAccount{margin-left: -.7rem;}
+  #forgot{margin-left: -1rem;margin-top: -1rem;width: 70vw;}  .custom-control{width: 30vw;margin-left: 2.5rem;} 
+.text-body{margin-top: 2rem;margin-left: 5rem;}    .forAccount{margin-left: -11rem;font-size: 5px;}
+
 }
 
 @media (max-width: 500px) {
@@ -276,9 +287,11 @@ label {
     margin: 0 auto;
   }.custom-control{width: 50vw;margin-left: 6rem;} 
   #heading{font-size: 35px;margin-top: -1rem;width: 30vw;}
-  .forAccount{margin-left: -4rem;}
+
+  .forAccount{margin-left: -9rem;}
   #email-body,#pass-body{margin-left: -4rem;}#email,#password{margin-left: -4rem;}
-  #forgot{margin-left: -10rem;margin-top: -1rem;width: 80vw;} 
+  #forgot{margin-left: -1rem;margin-top: -1rem;width: 80vw;} 
+
   h1 {
     font-size: 1.6rem;
   }
@@ -307,6 +320,8 @@ label {
   }
 }
 @media (max-width: 391px) {
-  #forgot{margin-left: -10rem;margin-top: -1rem;width: 100vw;} 
+
+  #forgot{margin-left: -2rem;margin-top: -1rem;width: 100vw;} 
+
   #heading{font-size: 35px;margin-top: -1rem;width: 50vw;}
 }
