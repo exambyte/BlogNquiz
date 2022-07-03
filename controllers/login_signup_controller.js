@@ -298,7 +298,13 @@ exports.showBlogUser_get = async(req, res) => {
     }
 }
 
-
+/**
+ * GET request to show user quiz
+ * @module showUserQuiz
+ * @param {Number} req 
+ * @param {Number} res 
+ * @exports showUserQuiz
+ */
 exports.showUserQuiz = async(req, res) => {
     const id = req.params.id;
     try {
@@ -312,7 +318,13 @@ exports.showUserQuiz = async(req, res) => {
     }
 }
 
-
+/**
+ * POST request to save User Quiz Data
+ * @module saveUserQuizData
+ * @param {Number} req 
+ * @param {Number} res 
+ * @exports saveUserQuizData
+ */
 exports.saveUserQuizData = async(req, res) => {
     const id = req.query.userID;
     const { tests, points } = req.body;
@@ -328,12 +340,24 @@ exports.saveUserQuizData = async(req, res) => {
 }
 
 
-
+/**
+ * GET request to get student Dashboard ejs file
+ * @module userDashboard_get
+ * @param {} req 
+ * @param {Number} res 
+ * @exports userDashboard_get
+ */
 exports.userDashboard_get = async(req, res) => {
     res.render('studentDashboard', { userID: res.locals.id });
 }
 
-
+/**
+ * GET request to get student Dashboard ejs file
+ * @module userQuizData_get
+ * @param {Number} req 
+ * @param {Object} res 
+ * @exports userDashboard_get
+ */
 exports.userQuizData_get = async(req, res) => {
     const id = req.params.id;
     try {
@@ -348,18 +372,39 @@ exports.userQuizData_get = async(req, res) => {
     }
 }
 
-
+/**
+ * GET request to get student Profile ejs file
+ * @module showUserProfile_get
+ * @param {Number} req 
+ * @param {Object} res 
+ * @exports showUserProfile_get
+ */
 exports.showUserProfile_get = async(req, res) => {
     const id = req.params.id;
     console.log(res.locals.user);
     res.render('userProfile', { userData: res.locals.user });
 }
+
+/**
+ * GET request to get Student Quiz Results ejs file
+ * @module showUserProfile_get
+ * @param {Number} req 
+ * @param {Number} res 
+ * @exports showUserProfile_get
+ */
 exports.StudentQuizResults_get = async(req, res) => {
     const id = req.params.id;
     console.log("coming to backend");
     res.render('userQuizResults', { UserID: id });
 }
 
+/**
+ * GET request to get user Quiz section ejs file
+ * @module showUserProfile_get
+ * @param {*} req 
+ * @param {*} res 
+ * @exports showUserProfile_get
+ */
 exports.userTakeQuiz_get = async(req, res) => {
     res.render('userTakeQuiz');
 }

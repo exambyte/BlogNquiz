@@ -31,25 +31,119 @@
  * @see &lt;a href="routes_home.js.html">see the source code Here&lt;/a>
  */
 
-
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const controller = require('../controllers/home');
-const authenticate = require('../middlewares/authenticate')
+const controller = require("../controllers/home");
+const authenticate = require("../middlewares/authenticate");
+const vimeoController = require("../controllers/vimeo_controllers");
 
-router.get('/',authenticate, controller.getHome);
+router.get("/", authenticate, controller.getHome);
 
-router.get('/getData', authenticate, controller.getData);
+router.get("/getData", authenticate, controller.getData);
 
-router.get('/userTestsSection',controller.getUserTest);
+router.get("/userTestsSection", controller.getUserTest);
 
-router.get('/allTests',controller.allTests_get);
+router.get("/allTests", controller.allTests_get);
+
+// Vimeo videos section routes
+
+/**
+ * Route to get free videos
+ * @module get_freeVideos
+ * @method GET
+ */
+router.get("/getfreevideos", vimeoController.get_freeVideos);
+/**
+ * Route to upload videos from local computer to vimeo
+ * @module upload_video
+ * @method GET
+ */
+router.get("/uploadvideo/info", vimeoController.upload_video);
+/**
+ * Route to get video from vimeo with specific folder names
+ * @module showVideoByFolder
+ * @method GET
+ */
+router.get("/showVideo/data", vimeoController.showVideoByFolder);
+/**
+ * Route to add video in vimeo server
+ * @module post_vimeoVideoData
+ * @method POST
+ */
+router.post("/addVimeoVideoData", vimeoController.post_vimeoVideoData);
+/**
+ * Route to get video from vimeo server
+ * @module get_VimeoCourseData
+ * @method GET
+ */
+router.get("/getVimeoCourseData", vimeoController.get_VimeoCourseData);
+/**
+ * Route to get video from vimeo server with specific  vimeo folder id
+ * @module get_exploreCourse
+ * @method GET
+ */
+router.get("/exploreCourse/:id", authenticate, vimeoController.get_exploreCourse);
+/**
+ * Route to get video from database with specific  vimeo folder id
+ * @module get_VimeoCoursePreview
+ * @method GET
+ */
+router.get("/coursePreview/:id",authenticate, vimeoController.get_VimeoCoursePreview);
+/**
+ * Route to get video from database with specific  vimeo folder id
+ * @module get_VimeoCoursePreview
+ * @method GET
+ */
+router.get("/exploreSubTopic/:id",authenticate, vimeoController.get_exploreSubTopic);
+/**
+ * Route to get vidios from a subtopic through the url
+ * @module get_subTopicVideo
+ * @method GET
+ */
+router.get("/subTopicVideo/:url",vimeoController.get_subTopicVideo);
+/**
+ * Route to get all courses from database 
+ * @module get_myCourses
+ * @method GET
+ */
+router.get('/myCourses/:id',vimeoController.get_myCourses);
 
 // router.put('/like/:id', authenticate, controller.like);
 
 // router.put('/bookmark/:id', authenticate, controller.bookmark_put);
 
-module.exports = router;</code></pre>
+// router.get("/courseFullView", controller.getFullView);
+
+router.get("/payment/:id", controller.getPayment);
+
+router.post("/payment_gateway/payumoney", controller.postPayment);
+
+router.post("/payment/success/:id" , controller.post_paymentSuccess);
+
+router.post("/payment/fail" , controller.post_paymentFail);
+
+
+// payment for subtopics
+router.get("/payment2/:id", controller.getPayment2);
+
+router.post("/payment_gateway2/payumoney", controller.postPayment2);
+
+router.post("/payment2/success/:id" , controller.post_paymentSuccess2);
+
+router.post("/payment2/fail" , controller.post_paymentFail2);
+
+
+
+// router.get("/myCourses/:id"  ,authenticate ,controller.get_myCourses);
+
+
+
+//......................Route for terms and condition.......................
+router.get("/terms-condition", controller.get_termsAndConditions);
+
+
+module.exports = router;
+</code></pre>
         </article>
     </section>
 
@@ -59,13 +153,13 @@ module.exports = router;</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-addBlog_get.html">addBlog_get</a></li><li><a href="module-addBlog_post.html">addBlog_post</a></li><li><a href="module-admin_details_get.html">admin_details_get</a></li><li><a href="module-adminProfile_get.html">adminProfile_get</a></li><li><a href="module-create_admin.html">create_admin</a></li><li><a href="module-dashboard_get.html">dashboard_get</a></li><li><a href="module-delete_admin_data.html">delete_admin_data</a></li><li><a href="module-deleteBlog_delete.html">deleteBlog_delete</a></li><li><a href="module-edit_admin_data_get.html">edit_admin_data_get</a></li><li><a href="module-get_login.html">get/login</a></li><li><a href="module-get_register.html">get/register</a></li><li><a href="module-get_admin_data.html">get_admin_data</a></li><li><a href="module-get_superadmin_panel.html">get_superadmin_panel</a></li><li><a href="module-getAllDocuments.html">getAllDocuments</a></li><li><a href="module-loginAdmin_post.html">loginAdmin_post</a></li><li><a href="module-normal_admin_router.html">normal_admin_router</a></li><li><a href="module-normal_user_home.html">normal_user_home</a></li><li><a href="module-normal_user_login_post.html">normal_user_login_post</a></li><li><a href="module-normal_user_login_signup.html">normal_user_login_signup</a></li><li><a href="module-normal_user_logout_get.html">normal_user_logout_get</a></li><li><a href="module-register_normal_user_post.html">register_normal_user_post</a></li><li><a href="module-saveTest_post.html">saveTest_post</a></li><li><a href="module-showAllBlogs_get.html">showAllBlogs_get</a></li><li><a href="module-showBlog_get.html">showBlog_get</a></li><li><a href="module-super_Admin_Routes.html">super_Admin_Routes</a></li><li><a href="module-SuperAdmin_login_post.html">SuperAdmin_login_post</a></li><li><a href="module-superAdmin_logout_get.html">superAdmin_logout_get</a></li><li><a href="module-SuperAdmin_register_post.html">SuperAdmin_register_post</a></li><li><a href="module-test_module.html">test_module</a></li><li><a href="module-testAdmin_get.html">testAdmin_get</a></li><li><a href="module-testData_get.html">testData_get</a></li><li><a href="module-testSlug_get.html">testSlug_get</a></li><li><a href="module-update_admin_data_put.html">update_admin_data_put</a></li><li><a href="module-updateBlog_put.html">updateBlog_put</a></li><li>{mongoose.module:model}</li></ul><h3>Global</h3><ul><li><a href="global.html#adminPanel">adminPanel</a></li><li><a href="global.html#adminSchema">adminSchema</a></li><li><a href="global.html#authRoute">authRoute</a></li><li><a href="global.html#bcrypt">bcrypt</a></li><li><a href="global.html#bodyParser">bodyParser</a></li><li><a href="global.html#cookieParser">cookieParser</a></li><li><a href="global.html#DELETE">DELETE</a></li><li><a href="global.html#deleteAdmin">deleteAdmin</a></li><li><a href="global.html#deleteBlog">deleteBlog</a></li><li><a href="global.html#displayCreateBlogSection">displayCreateBlogSection</a></li><li><a href="global.html#displayData">displayData</a></li><li><a href="global.html#displayShowBlogSection">displayShowBlogSection</a></li><li><a href="global.html#dotenv">dotenv</a></li><li><a href="global.html#editAdmin">editAdmin</a></li><li><a href="global.html#editBlog">editBlog</a></li><li><a href="global.html#express">express</a></li><li><a href="global.html#fillInputfields">fillInputfields</a></li><li><a href="global.html#formFields">formFields</a></li><li><a href="global.html#GET">GET</a></li><li><a href="global.html#getAdminData">getAdminData</a></li><li><a href="global.html#getAdminId">getAdminId</a></li><li><a href="global.html#getAllData">getAllData</a></li><li><a href="global.html#loginUser">loginUser</a></li><li><a href="global.html#mongoose">mongoose</a></li><li><a href="global.html#normalAdminSchema">normalAdminSchema</a></li><li><a href="global.html#path">path</a></li><li><a href="global.html#POST">POST</a></li><li><a href="global.html#postBlog">postBlog</a></li><li><a href="global.html#PUT">PUT</a></li><li><a href="global.html#redirectSignup">redirectSignup</a></li><li><a href="global.html#routes">routes</a></li><li><a href="global.html#SuperAdminSchema">SuperAdminSchema</a></li><li><a href="global.html#userSchema">userSchema</a></li><li>{<a href="global.html#POST">POST</a>}</li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-addBlog_get.html">addBlog_get</a></li><li><a href="module-addBlog_post.html">addBlog_post</a></li><li><a href="module-admin_details_get.html">admin_details_get</a></li><li><a href="module-adminProfile_get.html">adminProfile_get</a></li><li><a href="module-create_admin.html">create_admin</a></li><li><a href="module-dashboard_get.html">dashboard_get</a></li><li><a href="module-delete_admin_data.html">delete_admin_data</a></li><li><a href="module-deleteBlog_delete.html">deleteBlog_delete</a></li><li><a href="module-edit_admin_data_get.html">edit_admin_data_get</a></li><li><a href="module-get_login.html">get/login</a></li><li><a href="module-get_register.html">get/register</a></li><li><a href="module-get_admin_data.html">get_admin_data</a></li><li><a href="module-get_superadmin_panel.html">get_superadmin_panel</a></li><li><a href="module-getAllDocuments.html">getAllDocuments</a></li><li><a href="module-loginAdmin_post.html">loginAdmin_post</a></li><li><a href="module-normal_admin_router.html">normal_admin_router</a></li><li><a href="module-normal_user_home.html">normal_user_home</a></li><li><a href="module-normal_user_login_post.html">normal_user_login_post</a></li><li><a href="module-normal_user_login_signup.html">normal_user_login_signup</a></li><li><a href="module-normal_user_logout_get.html">normal_user_logout_get</a></li><li><a href="module-register_normal_user_post.html">register_normal_user_post</a></li><li><a href="module-saveTest_post.html">saveTest_post</a></li><li><a href="module-saveUserQuizData.html">saveUserQuizData</a></li><li><a href="module-showAllBlogs_get.html">showAllBlogs_get</a></li><li><a href="module-showBlog_get.html">showBlog_get</a></li><li><a href="module-showUserProfile_get.html">showUserProfile_get</a></li><li><a href="module-showUserQuiz.html">showUserQuiz</a></li><li><a href="module-super_Admin_Routes.html">super_Admin_Routes</a></li><li><a href="module-SuperAdmin_login_post.html">SuperAdmin_login_post</a></li><li><a href="module-superAdmin_logout_get.html">superAdmin_logout_get</a></li><li><a href="module-SuperAdmin_register_post.html">SuperAdmin_register_post</a></li><li><a href="module-test_module.html">test_module</a></li><li><a href="module-testAdmin_get.html">testAdmin_get</a></li><li><a href="module-testData_get.html">testData_get</a></li><li><a href="module-testSlug_get.html">testSlug_get</a></li><li><a href="module-update_admin_data_put.html">update_admin_data_put</a></li><li><a href="module-updateBlog_put.html">updateBlog_put</a></li><li><a href="module-userDashboard_get.html">userDashboard_get</a></li><li><a href="module-userQuizData_get.html">userQuizData_get</a></li><li>{mongoose.module:model}</li></ul><h3>Global</h3><ul><li><a href="global.html#adminPanel">adminPanel</a></li><li><a href="global.html#adminSchema">adminSchema</a></li><li><a href="global.html#bcrypt">bcrypt</a></li><li><a href="global.html#bodyParser">bodyParser</a></li><li><a href="global.html#cookieParser">cookieParser</a></li><li><a href="global.html#DELETE">DELETE</a></li><li><a href="global.html#deleteAdmin">deleteAdmin</a></li><li><a href="global.html#deleteBlog">deleteBlog</a></li><li><a href="global.html#displayCreateBlogSection">displayCreateBlogSection</a></li><li><a href="global.html#displayData">displayData</a></li><li><a href="global.html#displayShowBlogSection">displayShowBlogSection</a></li><li><a href="global.html#dotenv">dotenv</a></li><li><a href="global.html#editAdmin">editAdmin</a></li><li><a href="global.html#editBlog">editBlog</a></li><li><a href="global.html#express">express</a></li><li><a href="global.html#fillInputfields">fillInputfields</a></li><li><a href="global.html#formFields">formFields</a></li><li><a href="global.html#GET">GET</a></li><li><a href="global.html#get_exploreCourse">get_exploreCourse</a></li><li><a href="global.html#get_exploreSubTopic">get_exploreSubTopic</a></li><li><a href="global.html#get_freeVideos">get_freeVideos</a></li><li><a href="global.html#get_myCourses">get_myCourses</a></li><li><a href="global.html#get_subTopicVideo">get_subTopicVideo</a></li><li><a href="global.html#get_VimeoCourseData">get_VimeoCourseData</a></li><li><a href="global.html#get_VimeoCoursePreview">get_VimeoCoursePreview</a></li><li><a href="global.html#getAdminData">getAdminData</a></li><li><a href="global.html#getAdminId">getAdminId</a></li><li><a href="global.html#getAllData">getAllData</a></li><li><a href="global.html#loginUser">loginUser</a></li><li><a href="global.html#mongoose">mongoose</a></li><li><a href="global.html#normalAdminSchema">normalAdminSchema</a></li><li><a href="global.html#path">path</a></li><li><a href="global.html#POST">POST</a></li><li><a href="global.html#post_vimeoVideoData">post_vimeoVideoData</a></li><li><a href="global.html#postBlog">postBlog</a></li><li><a href="global.html#PUT">PUT</a></li><li><a href="global.html#redirectSignup">redirectSignup</a></li><li><a href="global.html#routes">routes</a></li><li><a href="global.html#showVideoByFolder">showVideoByFolder</a></li><li><a href="global.html#SuperAdminSchema">SuperAdminSchema</a></li><li><a href="global.html#upload_video">upload_video</a></li><li><a href="global.html#userSchema">userSchema</a></li><li><a href="global.html#Vimeo">Vimeo</a></li><li>{<a href="global.html#POST">POST</a>}</li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Tue Mar 22 2022 20:50:39 GMT+0530 (India Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Sun Jul 03 2022 21:22:49 GMT+0530 (India Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

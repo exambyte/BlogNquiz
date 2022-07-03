@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: public/script/register.js</title>
+    <title>JSDoc: Module: saveUserQuizData</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,69 +17,32 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: public/script/register.js</h1>
+    <h1 class="page-title">Module: saveUserQuizData</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Getting properties of DOM elements
- */
-const formFields = document.querySelector('form'); //Getting Form property
+        
+            
+        
+    
+</header>
 
-const name_error = document.querySelector('.form-name');
-const email_error = document.querySelector('.form-email');
-const password_error = document.querySelector('.form-password');
-const confirm_password_error = document.querySelector('.form-cpassword');
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>POST request to save User Quiz Data</p></div>
+        
 
-//Adding Event Listener on submit Button
-formFields.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // getting values of Form input fields
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const contactNo = document.getElementById('contactNo').value;
-    const password = document.getElementById('password').value;
-    const confirm_password = document.getElementById('confirm_password').value;
-    console.log(name, email)//Testing Purpose
-    try {
-        /**
-         * @method POST
-         * @header {Object}
-         * @body {String}
-         */
-        const res = await fetch('/register', {
-            method: "POST",
-            body: JSON.stringify({
-                name,
-                email,
-                contactNo,
-                password,
-                confirm_password
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-
-        const data = await res.json(); //Getting Response from the server
-        console.log(data); //For testing Purpose
-        if (res.status === 201) {
-            location.assign('/login'); //Successfully Login
-        } else {
-            window.alert('Please enter valid Details')
-        }
-
-    } catch (err) {
-        console.log(err);
-    }
-
-})
+        
+            
 
 
 
@@ -91,6 +54,121 @@ formFields.addEventListener('submit', async (e) => {
 
 
 
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_login_signup_controller.js.html">controllers/login_signup_controller.js</a>, <a href="controllers_login_signup_controller.js.html#line321">line 321</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
 
 
 
@@ -111,38 +189,32 @@ formFields.addEventListener('submit', async (e) => {
 
 
 
+        
+    
+    </div>
 
+    
 
-// const form = document.getElementById('reg-form');
-// form.addEventListener('submit', registerUser);
+    
 
-// async function registerUser(e) {
-//     e.preventDefault();
-//     const name = document.getElementById('name').value;
-//     const email = document.getElementById('email').value;
-//     const phone = document.getElementById('phone').value;
-//     const password = document.getElementById('password').value;
-//     const cpassword = document.getElementById('cpassword').value;
+    
 
-//     const result = await fetch('/register', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({ name, email, phone, password, cpassword })
-//     }).then((res) => { res.json() });
+    
 
-//     if (result === 'ok') {
-//         alert('Success');
-//     }
-//     else {
-//         alert('registration failed');
-//     }
+    
 
-//     console.log(result);
-// }</code></pre>
-        </article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
